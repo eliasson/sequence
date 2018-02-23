@@ -1,5 +1,5 @@
 {
-  "name": "sequence",
+  "name": "@eliasson/sequence",
   "version": "0.0.1",
   "description": "A simple sequence diagram tool",
   "main": "dist/sequence.js",
