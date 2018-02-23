@@ -1,6 +1,6 @@
 {
   "name": "@eliasson/sequence",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A simple sequence diagram tool",
   "main": "dist/sequence.js",
   "bin": {
