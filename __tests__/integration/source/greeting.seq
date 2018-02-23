@@ -1,0 +1,8 @@
+Name "Greetings"
+
+Actor Alice
+Actor Bob
+
+Sequence Test
+    Alice tell Bob "Hi bob"
+    Bob tell Alice "Hi alice"

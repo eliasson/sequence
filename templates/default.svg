@@ -1,0 +1,110 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" font-family="Arial">
+    <style>
+        svg {
+            padding: 2px;
+        }
+    </style>
+    <desc>{{=it.name}}</desc>
+
+    {{?it.sequences.length === 0}}
+        <!-- Render all actors -->
+        {{~ it.actors :actor :actorIndex }}
+            <g stroke="black" text-anchor="middle" transform="translate({{= actor.position.x }}, {{= actor.position.y }})">
+                <circle cx="60" cy="6" r="4" fill="none" />
+                <line x1="60" y1="10" x2="60" y2="26" />
+                <line x1="50" y1="18" x2="70" y2="18" />
+                <line x1="60" y1="26" x2="70" y2="36" />
+                <line x1="60" y1="26" x2="50" y2="36" />
+                <text x="60" y="50" stroke="black" stroke-width="0" dominant-baseline="middle">{{= actor.name }}</text>
+            </g>
+        {{~}}
+
+        <!-- Render all objects -->
+        {{~ it.objects :object :objectIndex }}
+            <g class="seq-object" stroke="black" text-anchor="middle" transform="translate({{= object.position.x }}, {{= object.position.y }})">
+                <rect width="120" height="60" stroke="#000000" fill="#FFFFFF" stroke-width="2"></rect>
+                <text x="60" y="30" stroke="black" stroke-width="0" dominant-baseline="middle">{{= object.name }}</text>
+            </g>
+        {{~}}
+    {{??}}
+        {{~ it.sequences :sequence :seqIndex }}
+            <g class="seq-{{=seqIndex}}" transform="translate({{= sequence.baseX }}, {{= sequence.baseY }})">
+                <!-- Render all actors -->
+                {{~ it.actors :actor :actorIndex }}
+                    <g stroke="black" text-anchor="middle" transform="translate({{= actor.position.x }}, {{= actor.position.y }})">
+                        <circle cx="60" cy="6" r="4" fill="none" />
+                        <line x1="60" y1="10" x2="60" y2="26" />
+                        <line x1="50" y1="18" x2="70" y2="18" />
+                        <line x1="60" y1="26" x2="70" y2="36" />
+                        <line x1="60" y1="26" x2="50" y2="36" />
+                        <text x="60" y="50" stroke="black" stroke-width="0" dominant-baseline="middle">{{= actor.name }}</text>
+                        <line x1="60" y1="60" x2="60" y2="{{= sequence.height }}" />
+                    </g>
+                {{~}}
+
+                <!-- Render all objects -->
+                {{~ it.objects :object :objectIndex}}
+                    <g class="seq-object" stroke="black" text-anchor="middle" transform="translate({{= object.position.x }}, {{= object.position.y }})">
+                        <rect width="120" height="60" stroke="#000000" fill="#FFFFFF" stroke-width="2"></rect>
+                        <text x="60" y="30" stroke="black" stroke-width="0" dominant-baseline="middle">{{= object.name }}</text>
+                        <line x1="60" y1="60" x2="60" y2="{{= sequence.height }}" />
+                    </g>
+                {{~}}
+
+                <!-- Render all messages for this sequence -->
+                {{~sequence.messages :message :messageIndex }}
+                    <g xtransform="translate({{= sequence.baseX }}, {{= sequence.baseY }})">
+                        {{? message.type === "reply" }}
+                            <g stroke="black" stroke-width="2" stroke-dasharray="2, 3">
+                                <line x1="{{= message.startPosition.x }}" y1="{{= message.startPosition.y }}" x2="{{= message.endPosition.x }}" y2="{{= message.endPosition.y }}" />
+
+                                <!-- Response arrow is open (async) but in the other direction -->
+                                {{? message.directionRight }}
+                                    <line x1="{{= message.endPosition.x - 9 }}" y1="{{= message.endPosition.y - 8 }}" x2="{{= message.endPosition.x - 1 }}" y2="{{= message.endPosition.y }}" />
+                                    <line x1="{{= message.endPosition.x - 9 }}" y1="{{= message.endPosition.y + 8 }}" x2="{{= message.endPosition.x - 1 }}" y2="{{= message.endPosition.y }}" />
+                                    <text x="{{= message.startPosition.x + 18 }}" y="{{= message.startPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{??}}
+                                    <line x1="{{= message.endPosition.x + 1 }}" y1="{{= message.endPosition.y }}" x2="{{= message.endPosition.x + 9 }}" y2="{{= message.endPosition.y - 8 }}" />
+                                    <line x1="{{= message.endPosition.x + 1 }}" y1="{{= message.endPosition.y }}" x2="{{= message.endPosition.x + 9 }}" y2="{{= message.endPosition.y + 8 }}" />
+                                    <text x="{{= message.endPosition.x + 18 }}" y="{{= message.endPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{?}}
+                            </g>
+                        {{?}}
+                        {{?message.type === "asynchronous"}}
+                            <g stroke="black" stroke-width="2">
+                                <line x1="{{= message.startPosition.x }}" y1="{{= message.startPosition.y }}" x2="{{= message.endPosition.x }}" y2="{{= message.endPosition.y }}" />
+
+                                <!-- Open arrow head used for async messages -->
+                                {{? message.directionRight }}
+                                    <line x1="{{= message.endPosition.x - 9 }}" y1="{{= message.endPosition.y - 8 }}" x2="{{= message.endPosition.x - 1 }}" y2="{{= message.endPosition.y }}" />
+                                    <line x1="{{= message.endPosition.x - 9 }}" y1="{{= message.endPosition.y + 8 }}" x2="{{= message.endPosition.x - 1 }}" y2="{{= message.endPosition.y }}" />
+                                    <text x="{{= message.startPosition.x + 18 }}" y="{{= message.startPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{??}}
+                                    <line x1="{{= message.endPosition.x + 1 }}" y1="{{= message.endPosition.y - 8 }}" x2="{{= message.endPosition.x + 9 }}" y2="{{= message.endPosition.y }}" />
+                                    <line x1="{{= message.endPosition.x + 1 }}" y1="{{= message.endPosition.y + 8 }}" x2="{{= message.endPosition.x + 9 }}" y2="{{= message.endPosition.y }}" />
+                                    <text x="{{= message.endPosition.x + 18 }}" y="{{= message.endPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{?}}
+                            </g>
+                        {{?}}
+                        {{?message.type === "synchronous"}}
+                            <g stroke="black" stroke-width="2">
+                                <line x1="{{=message.startPosition.x}}" y1="{{=message.startPosition.y}}" x2="{{=message.endPosition.x }}" y2="{{=message.endPosition.y}}" />
+
+                                <!-- Solid arrow head for a standarad synchornous message -->
+                                {{? message.directionRight }}
+                                    <polygon points="{{= message.endPosition.x - 9 }},{{= message.startPosition.y - 8 }} {{= message.endPosition.x - 9 }},{{= message.startPosition.y + 8 }} {{= message.endPosition.x - 1 }},{{= message.startPosition.y }}" />
+                                    <text x="{{= message.startPosition.x + 18 }}" y="{{= message.startPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{??}}
+                                    <polygon points="{{= message.endPosition.x + 9 }},{{= message.startPosition.y - 8 }} {{= message.endPosition.x + 9 }},{{= message.startPosition.y + 8 }} {{= message.endPosition.x + 1 }},{{= message.startPosition.y }}" />
+                                    <text x="{{= message.endPosition.x + 18 }}" y="{{= message.endPosition.y - 8 }}" stroke-width="0" dominant-baseline="top" font-size="12">{{= message.message }}</text>
+                                {{?}}
+                            </g>
+                        {{?}}
+                    </g>
+                {{~}}
+            </g>
+        {{~}}
+    {{?}}
+</svg>

@@ -1,0 +1,26 @@
+Name "Multiple sequences"
+
+Object Alpha
+Object Bravo
+Object Charlie
+Object Delta
+Object Echo
+Object Foxtrot
+
+Sequence First
+    Alpha tell Bravo "One"
+    Bravo tell Charlie "Two"
+    Charlie tell Delta "Three"
+    Delta tell Echo "Four"
+    Echo tell Foxtrot "Five"
+
+Sequence Second
+    Bravo tell Delta "Future"
+    Foxtrot replies Alpha "And back"
+
+Sequence Three
+    Delta tell Foxtrot "This is a message to you rudy"
+    Delta tell Alpha "Bowie in space"
+    Bravo ask Echo "What's the frequency Kenneth?"
+    Echo replies Bravo "Que?"
+    Bravo replies Echo "Nevermind"

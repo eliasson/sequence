@@ -1,0 +1,11 @@
+Name "Hello"
+
+Object Alice        # This is a trailing comment
+Object Bob
+
+# This is a comments on multiple lines
+# Alright
+Sequence Hello
+    Alice ask Bob
+    # Bob is bob
+    Alice ask Bob

@@ -1,0 +1,15 @@
+Name "Example sequence diagram"
+
+Actor User is "Any system user"
+Object TodoApp is "Our todo-app SaaS"
+Object IdP is "OpenID Connect Identity Provider"
+
+Sequence Login
+    User tell TodoApp "Loading page"
+    Todo replies User "Go and authenticate"
+    User tell IdP "Authenticating"
+    IdP replies User "Ok, return to TodoApp"
+    User tell TodoApp "Load page"
+
+Sequence Logout
+    User tell TodoApp "Logout"

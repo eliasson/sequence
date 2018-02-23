@@ -1,0 +1,6 @@
+Name "Example sequence diagram"
+Actor Who is "Doctor Who"
+Object Alpha is "Moonbase Alpha"
+Object Bravo is "Bravo two zero"
+Object Charlie is "Charlies Angles"
+Object Delta is "Delta Force"
