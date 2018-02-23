@@ -21,7 +21,7 @@ Sequence Test
 
 Will produce the following SVG output:
 
-![Example sequence flow](/example/demo.svg)
+![Example sequence flow](/example/demo.png)
 
 _Please note that while at a usable state, sequence is still under development,
 especially error reporting and verification of syntax is under construction._
