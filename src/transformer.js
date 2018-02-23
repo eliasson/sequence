@@ -6,6 +6,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as doT from 'dot';
+import { getInstalledPathSync } from 'get-installed-path';
 
 export const DEFAULT_SIZES = {
     participantWidth:             120,
@@ -14,6 +15,31 @@ export const DEFAULT_SIZES = {
     messageLaneHeight:             80,
     sequenceMargin:               160,
 };
+
+/**
+ * Resolve the absolute path to the SVG template file. Prioritize a local
+ * template over an installed package version to allow for development.
+ *
+ * It is needed since the template will be read from various locations when
+ * sequence is used as a CLI program.
+ *
+ * @param {string} template The template file to resolve path to
+ * @returns The absolute path to the template file
+ */
+function resolveTemplate(template) {
+    // Favour a local file if existing
+    let templatePath = path.join('./templates/', template);
+    if (fs.existsSync(templatePath)) return templatePath;
+
+    try {
+        const packagePath = getInstalledPathSync('@eliasson/sequence');
+        templatePath = path.join(packagePath, path.join('templates/', template));
+    }
+    catch(e) {
+        throw new Error(`No template file found either in installed package or locally (templates/${template})`);
+    }
+    return templatePath;
+}
 
 /**
  * Transform the Sequence AST into SVG and return as a string. Calculate positions and sizes
@@ -100,7 +126,7 @@ export class SVGTransformer {
     }
 
     transform(template='default.svg') {
-        const sourceXML = fs.readFileSync(path.join('./templates/', template), 'utf-8');
+        const sourceXML = fs.readFileSync(resolveTemplate(template), 'utf-8');
         const templateFn = doT.template(sourceXML);
         return templateFn(this.generateContext());
     }

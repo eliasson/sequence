@@ -24,7 +24,8 @@
   ],
   "dependencies": {
     "antlr4": "^4.7.1",
-    "dot": "^1.1.2"
+    "dot": "^1.1.2",
+    "get-installed-path": "^4.0.8"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 33);
+/******/ 	return __webpack_require__(__webpack_require__.s = 37);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -1555,7 +1555,7 @@ exports.INVALID_INTERVAL = INVALID_INTERVAL;
 //  in the input, where it is in the ATN, the rule invocation stack,
 //  and what kind of problem occurred.
 
-var PredicateTransition = __webpack_require__(8).PredicateTransition;
+var PredicateTransition = __webpack_require__(9).PredicateTransition;
 
 function RecognitionException(params) {
 	Error.call(this);
@@ -1717,6 +1717,12 @@ exports.ParseCancellationException = ParseCancellationException;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -1726,7 +1732,7 @@ exports.ParseCancellationException = ParseCancellationException;
  */
 ///
 
-var RuleContext = __webpack_require__(14).RuleContext;
+var RuleContext = __webpack_require__(16).RuleContext;
 var Hash = __webpack_require__(0).Hash;
 
 function PredictionContext(cachedHashCode) {
@@ -2453,7 +2459,7 @@ exports.getCachedPredictionContext = getCachedPredictionContext;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -2461,7 +2467,7 @@ exports.getCachedPredictionContext = getCachedPredictionContext;
  * can be found in the LICENSE.txt file in the project root.
  */
 
-var LL1Analyzer = __webpack_require__(35).LL1Analyzer;
+var LL1Analyzer = __webpack_require__(39).LL1Analyzer;
 var IntervalSet = __webpack_require__(2).IntervalSet;
 
 function ATN(grammarType , maxTokenType) {
@@ -2600,7 +2606,7 @@ ATN.INVALID_ALT_NUMBER = 0;
 exports.ATN = ATN;
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -2624,8 +2630,8 @@ exports.ATN = ATN;
 var Token = __webpack_require__(1).Token;
 var Interval = __webpack_require__(2).Interval;
 var IntervalSet = __webpack_require__(2).IntervalSet;
-var Predicate = __webpack_require__(10).Predicate;
-var PrecedencePredicate = __webpack_require__(10).PrecedencePredicate;
+var Predicate = __webpack_require__(11).Predicate;
+var PrecedencePredicate = __webpack_require__(11).PrecedencePredicate;
 
 function Transition (target) {
     // The target of this transition.
@@ -2921,7 +2927,7 @@ exports.PrecedencePredicateTransition = PrecedencePredicateTransition;
 exports.AbstractPredicateTransition = AbstractPredicateTransition;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -2936,12 +2942,12 @@ exports.AbstractPredicateTransition = AbstractPredicateTransition;
 // graph-structured stack.
 ///
 
-var ATN = __webpack_require__(7).ATN;
+var ATN = __webpack_require__(8).ATN;
 var Utils = __webpack_require__(0);
 var Hash = Utils.Hash;
 var Set = Utils.Set;
-var SemanticContext = __webpack_require__(10).SemanticContext;
-var merge = __webpack_require__(6).merge;
+var SemanticContext = __webpack_require__(11).SemanticContext;
+var merge = __webpack_require__(7).merge;
 
 function hashATNConfig(c) {
 	return c.hashCodeForConfigSet();
@@ -3182,7 +3188,7 @@ exports.OrderedATNConfigSet = OrderedATNConfigSet;
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -3592,7 +3598,7 @@ exports.Predicate = Predicate;
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -3602,7 +3608,7 @@ exports.Predicate = Predicate;
  */
 ///
 
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
 var Utils = __webpack_require__(0);
 var Hash = Utils.Hash;
 var Set = Utils.Set;
@@ -3750,36 +3756,42 @@ exports.PredPrediction = PredPrediction;
 
 
 /***/ }),
-/* 12 */
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
  * Use of this file is governed by the BSD 3-clause license that
  * can be found in the LICENSE.txt file in the project root.
  */
-exports.atn = __webpack_require__(34);
-exports.codepointat = __webpack_require__(29);
-exports.dfa = __webpack_require__(41);
-exports.fromcodepoint = __webpack_require__(30);
-exports.tree = __webpack_require__(43);
-exports.error = __webpack_require__(44);
+exports.atn = __webpack_require__(38);
+exports.codepointat = __webpack_require__(30);
+exports.dfa = __webpack_require__(45);
+exports.fromcodepoint = __webpack_require__(31);
+exports.tree = __webpack_require__(47);
+exports.error = __webpack_require__(48);
 exports.Token = __webpack_require__(1).Token;
-exports.CharStreams = __webpack_require__(46).CharStreams;
+exports.CharStreams = __webpack_require__(50).CharStreams;
 exports.CommonToken = __webpack_require__(1).CommonToken;
-exports.InputStream = __webpack_require__(20).InputStream;
-exports.FileStream = __webpack_require__(47).FileStream;
-exports.CommonTokenStream = __webpack_require__(48).CommonTokenStream;
-exports.Lexer = __webpack_require__(15).Lexer;
-exports.Parser = __webpack_require__(50).Parser;
-var pc = __webpack_require__(6);
+exports.InputStream = __webpack_require__(21).InputStream;
+exports.FileStream = __webpack_require__(51).FileStream;
+exports.CommonTokenStream = __webpack_require__(52).CommonTokenStream;
+exports.Lexer = __webpack_require__(17).Lexer;
+exports.Parser = __webpack_require__(54).Parser;
+var pc = __webpack_require__(7);
 exports.PredictionContextCache = pc.PredictionContextCache;
-exports.ParserRuleContext = __webpack_require__(19).ParserRuleContext;
+exports.ParserRuleContext = __webpack_require__(20).ParserRuleContext;
 exports.Interval = __webpack_require__(2).Interval;
 exports.Utils = __webpack_require__(0);
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -3798,7 +3810,7 @@ exports.Utils = __webpack_require__(0);
 ///
 
 var DecisionState = __webpack_require__(3).DecisionState;
-var SemanticContext = __webpack_require__(10).SemanticContext;
+var SemanticContext = __webpack_require__(11).SemanticContext;
 var Hash = __webpack_require__(0).Hash;
 
 
@@ -3960,7 +3972,7 @@ exports.ATNConfig = ATNConfig;
 exports.LexerATNConfig = LexerATNConfig;
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -3992,7 +4004,7 @@ exports.LexerATNConfig = LexerATNConfig;
 
 var RuleNode = __webpack_require__(4).RuleNode;
 var INVALID_INTERVAL = __webpack_require__(4).INVALID_INTERVAL;
-var INVALID_ALT_NUMBER = __webpack_require__(7).INVALID_ALT_NUMBER;
+var INVALID_ALT_NUMBER = __webpack_require__(8).INVALID_ALT_NUMBER;
 
 function RuleContext(parent, invokingState) {
 	RuleNode.call(this);
@@ -4084,7 +4096,7 @@ RuleContext.prototype.accept = function(visitor) {
 
 //need to manage circular dependencies, so export now
 exports.RuleContext = RuleContext;
-var Trees = __webpack_require__(22).Trees;
+var Trees = __webpack_require__(23).Trees;
 
 
 // Print out a whole tree, not just a node, in LISP format
@@ -4123,7 +4135,7 @@ RuleContext.prototype.toString = function(ruleNames, stop) {
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -4137,8 +4149,8 @@ RuleContext.prototype.toString = function(ruleNames, stop) {
 //  uses simplified match() and error recovery mechanisms in the interest of speed.
 
 var Token = __webpack_require__(1).Token;
-var Recognizer = __webpack_require__(26).Recognizer;
-var CommonTokenFactory = __webpack_require__(38).CommonTokenFactory;
+var Recognizer = __webpack_require__(27).Recognizer;
+var CommonTokenFactory = __webpack_require__(42).CommonTokenFactory;
 var RecognitionException  = __webpack_require__(5).RecognitionException;
 var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
 
@@ -4500,7 +4512,7 @@ exports.Lexer = Lexer;
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports) {
 
 //
@@ -4593,7 +4605,7 @@ exports.ProxyErrorListener = ProxyErrorListener;
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -4678,13 +4690,7 @@ exports.LexerDFASerializer = LexerDFASerializer;
 
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-module.exports = require("fs");
-
-/***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -4715,7 +4721,7 @@ module.exports = require("fs");
 //  group values such as this aggregate.  The getters/setters are there to
 //  satisfy the superclass interface.
 
-var RuleContext = __webpack_require__(14).RuleContext;
+var RuleContext = __webpack_require__(16).RuleContext;
 var Tree = __webpack_require__(4);
 var INVALID_INTERVAL = Tree.INVALID_INTERVAL;
 var TerminalNode = Tree.TerminalNode;
@@ -4914,7 +4920,7 @@ InterpreterRuleContext.prototype.constructor = InterpreterRuleContext;
 exports.ParserRuleContext = ParserRuleContext;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -4925,8 +4931,8 @@ exports.ParserRuleContext = ParserRuleContext;
 //
 
 var Token = __webpack_require__(1).Token;
-__webpack_require__(29);
 __webpack_require__(30);
+__webpack_require__(31);
 
 // Vacuum all input from a string and then treat it like a buffer.
 
@@ -5055,7 +5061,7 @@ exports.InputStream = InputStream;
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5063,8 +5069,8 @@ exports.InputStream = InputStream;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(12);
-var SequenceListener = __webpack_require__(32).SequenceListener;
+var antlr4 = __webpack_require__(14);
+var SequenceListener = __webpack_require__(33).SequenceListener;
 var grammarFileName = "Sequence.g4";
 
 var serializedATN = ['\x03\u608B\uA72A\u8133\uB9ED\u417C\u3BE7\u7786\u5964', '\x03\x11l\x04\x02\t\x02\x04\x03\t\x03\x04\x04\t', '\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t\x07\x04', '\b\t\b\x04\t\t\t\x04\n\t\n\x04\x0B\t\x0B\x03\x02\x07', '\x02\x18\n\x02\f\x02\x0E\x02\x1B\x0B\x02\x03\x02', '\x03\x02\x03\x02\x03\x02\x03\x03\x03\x03\x03\x04', '\x03\x04\x03\x04\x05\x04&\n\x04\x03\x05\x03\x05', '\x03\x05\x03\x05\x07\x05,\n\x05\f\x05\x0E\x05/\x0B', '\x05\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x05', '\x066\n\x06\x03\x06\x03\x06\x03\x06\x05\x06;\n\x06', '\x05\x06=\n\x06\x03\x07\x03\x07\x03\x07\x03\x07', '\x03\x07\x05\x07D\n\x07\x03\x07\x03\x07\x03\x07', '\x05\x07I\n\x07\x05\x07K\n\x07\x03\b\x03\b\x03\b\x03', '\b\x03\t\x03\t\x03\t\x07\tT\n\t\f\t\x0E\tW\x0B\t\x03\t', '\x03\t\x03\n\x03\n\x03\n\x03\n\x03\n\x05\n`\n\n\x03', '\n\x03\n\x03\n\x03\n\x05\nf\n\n\x05\nh\n\n\x03\x0B\x03', '\x0B\x03\x0B\x02\x02\f\x02\x04\x06\b\n\f\x0E\x10', '\x12\x14\x02\x03\x03\x02\b\n\x02q\x02\x19\x03\x02', '\x02\x02\x04 \x03\x02\x02\x02\x06"\x03\x02\x02', '\x02\b-\x03\x02\x02\x02\n<\x03\x02\x02\x02\fJ\x03', '\x02\x02\x02\x0EL\x03\x02\x02\x02\x10P\x03\x02', '\x02\x02\x12g\x03\x02\x02\x02\x14i\x03\x02\x02', '\x02\x16\x18\x07\x0E\x02\x02\x17\x16\x03\x02\x02', '\x02\x18\x1B\x03\x02\x02\x02\x19\x17\x03\x02\x02', '\x02\x19\x1A\x03\x02\x02\x02\x1A\x1C\x03\x02\x02', '\x02\x1B\x19\x03\x02\x02\x02\x1C\x1D\x05\x04\x03', '\x02\x1D\x1E\x05\b\x05\x02\x1E\x1F\x07\x02\x02', '\x03\x1F\x03\x03\x02\x02\x02 !\x05\x06\x04\x02', '!\x05\x03\x02\x02\x02"#\x07\x03\x02\x02#%\x05\x14', '\x0B\x02$&\x07\x0E\x02\x02%$\x03\x02\x02\x02%&\x03', '\x02\x02\x02&\x07\x03\x02\x02\x02\',\x07\x0E\x02', '\x02(,\x05\n\x06\x02),\x05\f\x07\x02*,\x05\x0E\b\x02', '+\'\x03\x02\x02\x02+(\x03\x02\x02\x02+)\x03\x02', '\x02\x02+*\x03\x02\x02\x02,/\x03\x02\x02\x02-+\x03', '\x02\x02\x02-.\x03\x02\x02\x02.\t\x03\x02\x02\x02', '/-\x03\x02\x02\x0201\x07\x04\x02\x0212\x07\x0B\x02', '\x0223\x07\x06\x02\x0235\x05\x14\x0B\x0246\x07\x0E', '\x02\x0254\x03\x02\x02\x0256\x03\x02\x02\x026=\x03', '\x02\x02\x0278\x07\x04\x02\x028:\x07\x0B\x02\x02', '9;\x07\x0E\x02\x02:9\x03\x02\x02\x02:;\x03\x02\x02', '\x02;=\x03\x02\x02\x02<0\x03\x02\x02\x02<7\x03\x02', '\x02\x02=\x0B\x03\x02\x02\x02>?\x07\x05\x02\x02', '?@\x07\x0B\x02\x02@A\x07\x06\x02\x02AC\x05\x14\x0B', '\x02BD\x07\x0E\x02\x02CB\x03\x02\x02\x02CD\x03\x02', '\x02\x02DK\x03\x02\x02\x02EF\x07\x05\x02\x02FH\x07', '\x0B\x02\x02GI\x07\x0E\x02\x02HG\x03\x02\x02\x02', 'HI\x03\x02\x02\x02IK\x03\x02\x02\x02J>\x03\x02\x02', '\x02JE\x03\x02\x02\x02K\r\x03\x02\x02\x02LM\x07', '\x07\x02\x02MN\x07\x0B\x02\x02NO\x05\x10\t\x02O', '\x0F\x03\x02\x02\x02PQ\x07\x0E\x02\x02QU\x07\x10', '\x02\x02RT\x05\x12\n\x02SR\x03\x02\x02\x02TW\x03', '\x02\x02\x02US\x03\x02\x02\x02UV\x03\x02\x02\x02', 'VX\x03\x02\x02\x02WU\x03\x02\x02\x02XY\x07\x11\x02', '\x02Y\x11\x03\x02\x02\x02Z[\x07\x0B\x02\x02[\\\t', '\x02\x02\x02\\]\x07\x0B\x02\x02]_\x05\x14\x0B\x02', '^`\x07\x0E\x02\x02_^\x03\x02\x02\x02_`\x03\x02\x02', '\x02`h\x03\x02\x02\x02ab\x07\x0B\x02\x02bc\t\x02', '\x02\x02ce\x07\x0B\x02\x02df\x07\x0E\x02\x02ed\x03', '\x02\x02\x02ef\x03\x02\x02\x02fh\x03\x02\x02\x02', 'gZ\x03\x02\x02\x02ga\x03\x02\x02\x02h\x13\x03\x02', '\x02\x02ij\x07\r\x02\x02j\x15\x03\x02\x02\x02\x10', '\x19%+-5:<CHJU_eg'].join("");
@@ -6042,7 +6048,7 @@ SequenceParser.prototype.string = function () {
 exports.SequenceParser = SequenceParser;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -6055,9 +6061,9 @@ var Token = __webpack_require__(1).Token;
 var RuleNode = __webpack_require__(4).RuleNode;
 var ErrorNode = __webpack_require__(4).ErrorNode;
 var TerminalNode = __webpack_require__(4).TerminalNode;
-var ParserRuleContext = __webpack_require__(19).ParserRuleContext;
-var RuleContext = __webpack_require__(14).RuleContext;
-var INVALID_ALT_NUMBER = __webpack_require__(7).INVALID_ALT_NUMBER;
+var ParserRuleContext = __webpack_require__(20).ParserRuleContext;
+var RuleContext = __webpack_require__(16).RuleContext;
+var INVALID_ALT_NUMBER = __webpack_require__(8).INVALID_ALT_NUMBER;
 
 
 /** A set of utility routines useful for all kinds of ANTLR trees. */
@@ -6187,7 +6193,7 @@ Trees.descendants = function(t) {
 exports.Trees = Trees;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -6196,8 +6202,8 @@ exports.Trees = Trees;
  */
 
 var Token = __webpack_require__(1).Token;
-var ATN = __webpack_require__(7).ATN;
-var ATNType = __webpack_require__(36).ATNType;
+var ATN = __webpack_require__(8).ATN;
+var ATNType = __webpack_require__(40).ATNType;
 var ATNStates = __webpack_require__(3);
 var ATNState = ATNStates.ATNState;
 var BasicState = ATNStates.BasicState;
@@ -6214,7 +6220,7 @@ var StarLoopEntryState = ATNStates.StarLoopEntryState;
 var PlusBlockStartState = ATNStates.PlusBlockStartState;
 var StarBlockStartState = ATNStates.StarBlockStartState;
 var BasicBlockStartState = ATNStates.BasicBlockStartState;
-var Transitions = __webpack_require__(8);
+var Transitions = __webpack_require__(9);
 var Transition = Transitions.Transition;
 var AtomTransition = Transitions.AtomTransition;
 var SetTransition = Transitions.SetTransition;
@@ -6228,8 +6234,8 @@ var PredicateTransition = Transitions.PredicateTransition;
 var PrecedencePredicateTransition = Transitions.PrecedencePredicateTransition;
 var IntervalSet = __webpack_require__(2).IntervalSet;
 var Interval = __webpack_require__(2).Interval;
-var ATNDeserializationOptions = __webpack_require__(24).ATNDeserializationOptions;
-var LexerActions = __webpack_require__(25);
+var ATNDeserializationOptions = __webpack_require__(25).ATNDeserializationOptions;
+var LexerActions = __webpack_require__(26);
 var LexerActionType = LexerActions.LexerActionType;
 var LexerSkipAction = LexerActions.LexerSkipAction;
 var LexerChannelAction = LexerActions.LexerChannelAction;
@@ -6870,7 +6876,7 @@ ATNDeserializer.prototype.lexerActionFactory = function(type, data1, data2) {
 exports.ATNDeserializer = ATNDeserializer;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -6901,7 +6907,7 @@ exports.ATNDeserializationOptions = ATNDeserializationOptions;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 //
@@ -7272,7 +7278,7 @@ exports.LexerPopModeAction = LexerPopModeAction;
 exports.LexerModeAction = LexerModeAction;
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -7283,8 +7289,8 @@ exports.LexerModeAction = LexerModeAction;
 //
 
 var Token = __webpack_require__(1).Token;
-var ConsoleErrorListener = __webpack_require__(16).ConsoleErrorListener;
-var ProxyErrorListener = __webpack_require__(16).ProxyErrorListener;
+var ConsoleErrorListener = __webpack_require__(18).ConsoleErrorListener;
+var ProxyErrorListener = __webpack_require__(18).ProxyErrorListener;
 
 function Recognizer() {
     this._listeners = [ ConsoleErrorListener.INSTANCE ];
@@ -7425,7 +7431,7 @@ exports.Recognizer = Recognizer;
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -7435,9 +7441,9 @@ exports.Recognizer = Recognizer;
  */
 ///
 
-var DFAState = __webpack_require__(11).DFAState;
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
-var getCachedPredictionContext = __webpack_require__(6).getCachedPredictionContext;
+var DFAState = __webpack_require__(12).DFAState;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
+var getCachedPredictionContext = __webpack_require__(7).getCachedPredictionContext;
 
 function ATNSimulator(atn, sharedContextCache) {
 
@@ -7482,7 +7488,7 @@ exports.ATNSimulator = ATNSimulator;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -7500,11 +7506,11 @@ var Set = __webpack_require__(0).Set;
 var Map = __webpack_require__(0).Map;
 var BitSet = __webpack_require__(0).BitSet;
 var AltDict = __webpack_require__(0).AltDict;
-var ATN = __webpack_require__(7).ATN;
+var ATN = __webpack_require__(8).ATN;
 var RuleStopState = __webpack_require__(3).RuleStopState;
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
-var ATNConfig = __webpack_require__(13).ATNConfig;
-var SemanticContext = __webpack_require__(10).SemanticContext;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
+var ATNConfig = __webpack_require__(15).ATNConfig;
+var SemanticContext = __webpack_require__(11).SemanticContext;
 var Hash = __webpack_require__(0).Hash;
 var hashStuff = __webpack_require__(0).hashStuff;
 var equalArrays = __webpack_require__(0).equalArrays;
@@ -8047,7 +8053,7 @@ exports.PredictionMode = PredictionMode;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 /*! https://mths.be/codepointat v0.2.0 by @mathias */
@@ -8107,7 +8113,7 @@ if (!String.prototype.codePointAt) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 /*! https://mths.be/fromcodepoint v0.2.1 by @mathias */
@@ -8175,7 +8181,7 @@ if (!String.fromCodePoint) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -8937,7 +8943,7 @@ exports.DefaultErrorStrategy = DefaultErrorStrategy;
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8945,7 +8951,7 @@ exports.DefaultErrorStrategy = DefaultErrorStrategy;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(12);
+var antlr4 = __webpack_require__(14);
 
 // This class defines a complete listener for a parse tree produced by SequenceParser.
 function SequenceListener() {
@@ -9019,7 +9025,163 @@ SequenceListener.prototype.exitString = function (ctx) {};
 exports.SequenceListener = SequenceListener;
 
 /***/ }),
-/* 33 */
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var os = __webpack_require__(64);
+var fs = __webpack_require__(6);
+var parse = __webpack_require__(65);
+
+function homedir() {
+  // The following logic is from looking at logic used in the different platform
+  // versions of the uv_os_homedir function found in https://github.com/libuv/libuv
+  // This is the function used in modern versions of node.js
+
+  if (process.platform === 'win32') {
+    // check the USERPROFILE first
+    if (process.env.USERPROFILE) {
+      return process.env.USERPROFILE;
+    }
+
+    // check HOMEDRIVE and HOMEPATH
+    if (process.env.HOMEDRIVE && process.env.HOMEPATH) {
+      return process.env.HOMEDRIVE + process.env.HOMEPATH;
+    }
+
+    // fallback to HOME
+    if (process.env.HOME) {
+      return process.env.HOME;
+    }
+
+    return null;
+  }
+
+  // check HOME environment variable first
+  if (process.env.HOME) {
+    return process.env.HOME;
+  }
+
+  // on linux platforms (including OSX) find the current user and get their homedir from the /etc/passwd file
+  var passwd = tryReadFileSync('/etc/passwd');
+  var home = find(parse(passwd), getuid());
+  if (home) {
+    return home;
+  }
+
+  // fallback to using user environment variables
+  var user = process.env.LOGNAME || process.env.USER || process.env.LNAME || process.env.USERNAME;
+
+  if (!user) {
+    return null;
+  }
+
+  if (process.platform === 'darwin') {
+    return '/Users/' + user;
+  }
+
+  return '/home/' + user;
+}
+
+function find(arr, uid) {
+  var len = arr.length;
+  for (var i = 0; i < len; i++) {
+    if (+arr[i].uid === uid) {
+      return arr[i].homedir;
+    }
+  }
+}
+
+function getuid() {
+  if (typeof process.geteuid === 'function') {
+    return process.geteuid();
+  }
+  return process.getuid();
+}
+
+function tryReadFileSync(fp) {
+  try {
+    return fs.readFileSync(fp, 'utf8');
+  } catch (err) {
+    return '';
+  }
+}
+
+if (typeof os.homedir === 'undefined') {
+  module.exports = homedir;
+} else {
+  module.exports = os.homedir;
+}
+
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * is-windows <https://github.com/jonschlinkert/is-windows>
+ *
+ * Copyright © 2015-2018, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+(function(factory) {
+  if (exports && typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory();
+  } else if (true) {
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+  } else if (typeof window !== 'undefined') {
+    window.isWindows = factory();
+  } else if (typeof global !== 'undefined') {
+    global.isWindows = factory();
+  } else if (typeof self !== 'undefined') {
+    self.isWindows = factory();
+  } else {
+    this.isWindows = factory();
+  }
+})(function() {
+  'use strict';
+  return function isWindows() {
+    return process && (process.platform === 'win32' || /^(msys|cygwin)$/.test(process.env.OSTYPE));
+  };
+});
+
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9031,17 +9193,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.parse = parse;
 exports.compile = compile;
 
-var _antlr = __webpack_require__(12);
+var _antlr = __webpack_require__(14);
 
 var antlr4 = _interopRequireWildcard(_antlr);
 
-var _SequenceLexer = __webpack_require__(51);
+var _SequenceLexer = __webpack_require__(55);
 
-var _SequenceParser = __webpack_require__(21);
+var _SequenceParser = __webpack_require__(22);
 
-var _ast = __webpack_require__(52);
+var _ast = __webpack_require__(56);
 
-var _transformer = __webpack_require__(53);
+var _transformer = __webpack_require__(57);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -9101,7 +9263,7 @@ function compile(source) {
 }
 
 /***/ }),
-/* 34 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -9109,15 +9271,15 @@ function compile(source) {
  * can be found in the LICENSE.txt file in the project root.
  */
 
-exports.ATN = __webpack_require__(7).ATN;
-exports.ATNDeserializer = __webpack_require__(23).ATNDeserializer;
-exports.LexerATNSimulator = __webpack_require__(37).LexerATNSimulator;
-exports.ParserATNSimulator = __webpack_require__(40).ParserATNSimulator;
-exports.PredictionMode = __webpack_require__(28).PredictionMode;
+exports.ATN = __webpack_require__(8).ATN;
+exports.ATNDeserializer = __webpack_require__(24).ATNDeserializer;
+exports.LexerATNSimulator = __webpack_require__(41).LexerATNSimulator;
+exports.ParserATNSimulator = __webpack_require__(44).ParserATNSimulator;
+exports.PredictionMode = __webpack_require__(29).PredictionMode;
 
 
 /***/ }),
-/* 35 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -9130,16 +9292,16 @@ exports.PredictionMode = __webpack_require__(28).PredictionMode;
 var Set = __webpack_require__(0).Set;
 var BitSet = __webpack_require__(0).BitSet;
 var Token = __webpack_require__(1).Token;
-var ATNConfig = __webpack_require__(13).ATNConfig;
+var ATNConfig = __webpack_require__(15).ATNConfig;
 var Interval = __webpack_require__(2).Interval;
 var IntervalSet = __webpack_require__(2).IntervalSet;
 var RuleStopState = __webpack_require__(3).RuleStopState;
-var RuleTransition = __webpack_require__(8).RuleTransition;
-var NotSetTransition = __webpack_require__(8).NotSetTransition;
-var WildcardTransition = __webpack_require__(8).WildcardTransition;
-var AbstractPredicateTransition = __webpack_require__(8).AbstractPredicateTransition;
+var RuleTransition = __webpack_require__(9).RuleTransition;
+var NotSetTransition = __webpack_require__(9).NotSetTransition;
+var WildcardTransition = __webpack_require__(9).WildcardTransition;
+var AbstractPredicateTransition = __webpack_require__(9).AbstractPredicateTransition;
 
-var pc = __webpack_require__(6);
+var pc = __webpack_require__(7);
 var predictionContextFromRuleContext = pc.predictionContextFromRuleContext;
 var PredictionContext = pc.PredictionContext;
 var SingletonPredictionContext = pc.SingletonPredictionContext;
@@ -9322,7 +9484,7 @@ exports.LL1Analyzer = LL1Analyzer;
 
 
 /***/ }),
-/* 36 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -9345,7 +9507,7 @@ exports.ATNType = ATNType;
 
 
 /***/ }),
-/* 37 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -9372,18 +9534,18 @@ exports.ATNType = ATNType;
 ///
 
 var Token = __webpack_require__(1).Token;
-var Lexer = __webpack_require__(15).Lexer;
-var ATN = __webpack_require__(7).ATN;
-var ATNSimulator = __webpack_require__(27).ATNSimulator;
-var DFAState = __webpack_require__(11).DFAState;
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
-var OrderedATNConfigSet = __webpack_require__(9).OrderedATNConfigSet;
-var PredictionContext = __webpack_require__(6).PredictionContext;
-var SingletonPredictionContext = __webpack_require__(6).SingletonPredictionContext;
+var Lexer = __webpack_require__(17).Lexer;
+var ATN = __webpack_require__(8).ATN;
+var ATNSimulator = __webpack_require__(28).ATNSimulator;
+var DFAState = __webpack_require__(12).DFAState;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
+var OrderedATNConfigSet = __webpack_require__(10).OrderedATNConfigSet;
+var PredictionContext = __webpack_require__(7).PredictionContext;
+var SingletonPredictionContext = __webpack_require__(7).SingletonPredictionContext;
 var RuleStopState = __webpack_require__(3).RuleStopState;
-var LexerATNConfig = __webpack_require__(13).LexerATNConfig;
-var Transition = __webpack_require__(8).Transition;
-var LexerActionExecutor = __webpack_require__(39).LexerActionExecutor;
+var LexerATNConfig = __webpack_require__(15).LexerATNConfig;
+var Transition = __webpack_require__(9).Transition;
+var LexerActionExecutor = __webpack_require__(43).LexerActionExecutor;
 var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
 
 function resetSimState(sim) {
@@ -9987,7 +10149,7 @@ exports.LexerATNSimulator = LexerATNSimulator;
 
 
 /***/ }),
-/* 38 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -10062,7 +10224,7 @@ exports.CommonTokenFactory = CommonTokenFactory;
 
 
 /***/ }),
-/* 39 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -10080,7 +10242,7 @@ exports.CommonTokenFactory = CommonTokenFactory;
 // not cause bloating of the {@link DFA} created for the lexer.</p>
 
 var hashStuff = __webpack_require__(0).hashStuff;
-var LexerIndexedCustomAction = __webpack_require__(25).LexerIndexedCustomAction;
+var LexerIndexedCustomAction = __webpack_require__(26).LexerIndexedCustomAction;
 
 function LexerActionExecutor(lexerActions) {
 	this.lexerActions = lexerActions === null ? [] : lexerActions;
@@ -10234,7 +10396,7 @@ exports.LexerActionExecutor = LexerActionExecutor;
 
 
 /***/ }),
-/* 40 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -10476,23 +10638,23 @@ var Utils = __webpack_require__(0);
 var Set = Utils.Set;
 var BitSet = Utils.BitSet;
 var DoubleDict = Utils.DoubleDict;
-var ATN = __webpack_require__(7).ATN;
+var ATN = __webpack_require__(8).ATN;
 var ATNState = __webpack_require__(3).ATNState;
-var ATNConfig = __webpack_require__(13).ATNConfig;
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
+var ATNConfig = __webpack_require__(15).ATNConfig;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
 var Token = __webpack_require__(1).Token;
-var DFAState = __webpack_require__(11).DFAState;
-var PredPrediction = __webpack_require__(11).PredPrediction;
-var ATNSimulator = __webpack_require__(27).ATNSimulator;
-var PredictionMode = __webpack_require__(28).PredictionMode;
-var RuleContext = __webpack_require__(14).RuleContext;
-var ParserRuleContext = __webpack_require__(19).ParserRuleContext;
-var SemanticContext = __webpack_require__(10).SemanticContext;
+var DFAState = __webpack_require__(12).DFAState;
+var PredPrediction = __webpack_require__(12).PredPrediction;
+var ATNSimulator = __webpack_require__(28).ATNSimulator;
+var PredictionMode = __webpack_require__(29).PredictionMode;
+var RuleContext = __webpack_require__(16).RuleContext;
+var ParserRuleContext = __webpack_require__(20).ParserRuleContext;
+var SemanticContext = __webpack_require__(11).SemanticContext;
 var StarLoopEntryState = __webpack_require__(3).StarLoopEntryState;
 var RuleStopState = __webpack_require__(3).RuleStopState;
-var PredictionContext = __webpack_require__(6).PredictionContext;
+var PredictionContext = __webpack_require__(7).PredictionContext;
 var Interval = __webpack_require__(2).Interval;
-var Transitions = __webpack_require__(8);
+var Transitions = __webpack_require__(9);
 var Transition = Transitions.Transition;
 var SetTransition = Transitions.SetTransition;
 var NotSetTransition = Transitions.NotSetTransition;
@@ -10500,8 +10662,8 @@ var RuleTransition = Transitions.RuleTransition;
 var ActionTransition = Transitions.ActionTransition;
 var NoViableAltException = __webpack_require__(5).NoViableAltException;
 
-var SingletonPredictionContext = __webpack_require__(6).SingletonPredictionContext;
-var predictionContextFromRuleContext = __webpack_require__(6).predictionContextFromRuleContext;
+var SingletonPredictionContext = __webpack_require__(7).SingletonPredictionContext;
+var predictionContextFromRuleContext = __webpack_require__(7).predictionContextFromRuleContext;
 
 function ParserATNSimulator(parser, atn, decisionToDFA, sharedContextCache) {
 	ATNSimulator.call(this, atn, sharedContextCache);
@@ -11967,7 +12129,7 @@ ParserATNSimulator.prototype.reportAmbiguity = function(dfa, D, startIndex, stop
 exports.ParserATNSimulator = ParserATNSimulator;
 
 /***/ }),
-/* 41 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -11975,14 +12137,14 @@ exports.ParserATNSimulator = ParserATNSimulator;
  * can be found in the LICENSE.txt file in the project root.
  */
 
-exports.DFA = __webpack_require__(42).DFA;
-exports.DFASerializer = __webpack_require__(17).DFASerializer;
-exports.LexerDFASerializer = __webpack_require__(17).LexerDFASerializer;
-exports.PredPrediction = __webpack_require__(11).PredPrediction;
+exports.DFA = __webpack_require__(46).DFA;
+exports.DFASerializer = __webpack_require__(19).DFASerializer;
+exports.LexerDFASerializer = __webpack_require__(19).LexerDFASerializer;
+exports.PredPrediction = __webpack_require__(12).PredPrediction;
 
 
 /***/ }),
-/* 42 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -11992,11 +12154,11 @@ exports.PredPrediction = __webpack_require__(11).PredPrediction;
  */
 
 var Set = __webpack_require__(0).Set;
-var DFAState = __webpack_require__(11).DFAState;
+var DFAState = __webpack_require__(12).DFAState;
 var StarLoopEntryState = __webpack_require__(3).StarLoopEntryState;
-var ATNConfigSet = __webpack_require__(9).ATNConfigSet;
-var DFASerializer = __webpack_require__(17).DFASerializer;
-var LexerDFASerializer = __webpack_require__(17).LexerDFASerializer;
+var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
+var DFASerializer = __webpack_require__(19).DFASerializer;
+var LexerDFASerializer = __webpack_require__(19).LexerDFASerializer;
 
 
 
@@ -12141,7 +12303,7 @@ exports.DFA = DFA;
 
 
 /***/ }),
-/* 43 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -12150,7 +12312,7 @@ exports.DFA = DFA;
  */
 
 var Tree = __webpack_require__(4);
-exports.Trees = __webpack_require__(22).Trees;
+exports.Trees = __webpack_require__(23).Trees;
 exports.RuleNode = Tree.RuleNode;
 exports.ParseTreeListener = Tree.ParseTreeListener;
 exports.ParseTreeVisitor = Tree.ParseTreeVisitor;
@@ -12158,7 +12320,7 @@ exports.ParseTreeWalker = Tree.ParseTreeWalker;
 
 
 /***/ }),
-/* 44 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -12171,13 +12333,13 @@ exports.NoViableAltException = __webpack_require__(5).NoViableAltException;
 exports.LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
 exports.InputMismatchException = __webpack_require__(5).InputMismatchException;
 exports.FailedPredicateException = __webpack_require__(5).FailedPredicateException;
-exports.DiagnosticErrorListener = __webpack_require__(45).DiagnosticErrorListener;
-exports.BailErrorStrategy = __webpack_require__(31).BailErrorStrategy;
-exports.ErrorListener = __webpack_require__(16).ErrorListener;
+exports.DiagnosticErrorListener = __webpack_require__(49).DiagnosticErrorListener;
+exports.BailErrorStrategy = __webpack_require__(32).BailErrorStrategy;
+exports.ErrorListener = __webpack_require__(18).ErrorListener;
 
 
 /***/ }),
-/* 45 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -12207,7 +12369,7 @@ exports.ErrorListener = __webpack_require__(16).ErrorListener;
 // </ul>
 
 var BitSet = __webpack_require__(0).BitSet;
-var ErrorListener = __webpack_require__(16).ErrorListener;
+var ErrorListener = __webpack_require__(18).ErrorListener;
 var Interval = __webpack_require__(2).Interval;
 
 function DiagnosticErrorListener(exactOnly) {
@@ -12293,7 +12455,7 @@ DiagnosticErrorListener.prototype.getConflictingAlts = function(reportedAlts, co
 exports.DiagnosticErrorListener = DiagnosticErrorListener;
 
 /***/ }),
-/* 46 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -12303,10 +12465,10 @@ exports.DiagnosticErrorListener = DiagnosticErrorListener;
  */
 //
 
-var InputStream = __webpack_require__(20).InputStream;
+var InputStream = __webpack_require__(21).InputStream;
 
 var isNodeJs = typeof window === 'undefined' && typeof importScripts === 'undefined';
-var fs = isNodeJs ? __webpack_require__(18) : null;
+var fs = isNodeJs ? __webpack_require__(6) : null;
 
 // Utility functions to create InputStreams from various sources.
 //
@@ -12370,7 +12532,7 @@ exports.CharStreams = CharStreams;
 
 
 /***/ }),
-/* 47 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -12384,9 +12546,9 @@ exports.CharStreams = CharStreams;
 //  This is an InputStream that is loaded from a file all at once
 //  when you construct the object.
 //
-var InputStream = __webpack_require__(20).InputStream;
+var InputStream = __webpack_require__(21).InputStream;
 var isNodeJs = typeof window === 'undefined' && typeof importScripts === 'undefined';
-var fs = isNodeJs ? __webpack_require__(18) : null;
+var fs = isNodeJs ? __webpack_require__(6) : null;
 
 function FileStream(fileName, decodeToUnicodeCodePoints) {
 	var data = fs.readFileSync(fileName, "utf8");
@@ -12402,7 +12564,7 @@ exports.FileStream = FileStream;
 
 
 /***/ }),
-/* 48 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -12438,7 +12600,7 @@ exports.FileStream = FileStream;
 ///
 
 var Token = __webpack_require__(1).Token;
-var BufferedTokenStream = __webpack_require__(49).BufferedTokenStream;
+var BufferedTokenStream = __webpack_require__(53).BufferedTokenStream;
 
 function CommonTokenStream(lexer, channel) {
 	BufferedTokenStream.call(this, lexer);
@@ -12511,7 +12673,7 @@ CommonTokenStream.prototype.getNumberOfOnChannelTokens = function() {
 exports.CommonTokenStream = CommonTokenStream;
 
 /***/ }),
-/* 49 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -12532,7 +12694,7 @@ exports.CommonTokenStream = CommonTokenStream;
 // {@link CommonTokenStream}.</p>
 
 var Token = __webpack_require__(1).Token;
-var Lexer = __webpack_require__(15).Lexer;
+var Lexer = __webpack_require__(17).Lexer;
 var Interval = __webpack_require__(2).Interval;
 
 // this is just to keep meaningful parameter types to Parser
@@ -12892,7 +13054,7 @@ exports.BufferedTokenStream = BufferedTokenStream;
 
 
 /***/ }),
-/* 50 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -12902,10 +13064,10 @@ exports.BufferedTokenStream = BufferedTokenStream;
 
 var Token = __webpack_require__(1).Token;
 var ParseTreeListener = __webpack_require__(4).ParseTreeListener;
-var Recognizer = __webpack_require__(26).Recognizer;
-var DefaultErrorStrategy = __webpack_require__(31).DefaultErrorStrategy;
-var ATNDeserializer = __webpack_require__(23).ATNDeserializer;
-var ATNDeserializationOptions = __webpack_require__(24).ATNDeserializationOptions;
+var Recognizer = __webpack_require__(27).Recognizer;
+var DefaultErrorStrategy = __webpack_require__(32).DefaultErrorStrategy;
+var ATNDeserializer = __webpack_require__(24).ATNDeserializer;
+var ATNDeserializationOptions = __webpack_require__(25).ATNDeserializationOptions;
 var TerminalNode = __webpack_require__(4).TerminalNode;
 var ErrorNode = __webpack_require__(4).ErrorNode;
 
@@ -13191,7 +13353,7 @@ Parser.prototype.getATNWithBypassAlts = function() {
 // String id = m.get("ID");
 // </pre>
 
-var Lexer = __webpack_require__(15).Lexer;
+var Lexer = __webpack_require__(17).Lexer;
 
 Parser.prototype.compileParseTreePattern = function(pattern, patternRuleIndex, lexer) {
 	lexer = lexer || null;
@@ -13571,7 +13733,7 @@ Parser.prototype.setTrace = function(trace) {
 exports.Parser = Parser;
 
 /***/ }),
-/* 51 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13579,7 +13741,7 @@ exports.Parser = Parser;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(12);
+var antlr4 = __webpack_require__(14);
 
 var serializedATN = ["\x03\u608B\uA72A\u8133\uB9ED\u417C\u3BE7\u7786\u5964", "\x02\x0F\xC2\b\x01\x04\x02\t\x02\x04\x03\t\x03\x04", "\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t", "\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\x0B\t\x0B\x04", "\f\t\f\x04\r\t\r\x04\x0E\t\x0E\x04\x0F\t\x0F\x04\x10", "\t\x10\x04\x11\t\x11\x04\x12\t\x12\x04\x13\t\x13", "\x04\x14\t\x14\x03\x02\x03\x02\x03\x02\x03\x02", "\x03\x02\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03", "\x03\x03\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04", "\x03\x04\x03\x04\x03\x05\x03\x05\x03\x05\x03\x06", "\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06", "\x03\x06\x03\x06\x03\x07\x03\x07\x03\x07\x03\x07", "\x03\b\x03\b\x03\b\x03\b\x03\b\x03\t\x03\t\x03\t\x03", "\t\x03\t\x03\t\x03\t\x03\t\x03\n\x06\nZ\n\n\r\n\x0E\n", "[\x03\n\x07\n_\n\n\f\n\x0E\nb\x0B\n\x03\x0B\x03\x0B", "\x06\x0Bf\n\x0B\r\x0B\x0E\x0Bg\x03\x0B\x03\x0B\x05", "\x0Bl\n\x0B\x03\x0B\x03\x0B\x03\f\x03\f\x05\fr\n\f", "\x03\r\x03\r\x03\r\x05\rw\n\r\x03\r\x03\r\x05\r{\n\r\x03", "\r\x05\r~\n\r\x05\r\x80\n\r\x03\r\x03\r\x03\x0E\x03", "\x0E\x03\x0E\x03\x0E\x03\x0F\x06\x0F\x89\n\x0F", "\r\x0F\x0E\x0F\x8A\x03\x10\x03\x10\x03\x11\x03", "\x11\x03\x12\x03\x12\x03\x13\x03\x13\x03\x13\x07", "\x13\x96\n\x13\f\x13\x0E\x13\x99\x0B\x13\x03\x13", "\x03\x13\x03\x13\x03\x13\x07\x13\x9F\n\x13\f\x13", "\x0E\x13\xA2\x0B\x13\x03\x13\x05\x13\xA5\n\x13", "\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x07\x14", "\xAC\n\x14\f\x14\x0E\x14\xAF\x0B\x14\x03\x14\x03", "\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03", "\x14\x07\x14\xB9\n\x14\f\x14\x0E\x14\xBC\x0B\x14", "\x03\x14\x03\x14\x03\x14\x05\x14\xC1\n\x14\x07", "g\x97\xA0\xAD\xBA\x02\x15\x03\x03\x05\x04\x07", "\x05\t\x06\x0B\x07\r\b\x0F\t\x11\n\x13\x0B\x15\f\x17", "\r\x19\x0E\x1B\x0F\x1D\x02\x1F\x02!\x02#\x02%\x02", "'\x02\x03\x02\b\x04\x02\x0B\x0B\"\"\x04\x02C\\c|", "\x05\x022;C\\c|\x03\x022;\x05\x02\f\f\x0F\x0F$$\x05", "\x02\f\f\x0F\x0F))\x02\xCD\x02\x03\x03\x02\x02\x02", "\x02\x05\x03\x02\x02\x02\x02\x07\x03\x02\x02\x02", "\x02\t\x03\x02\x02\x02\x02\x0B\x03\x02\x02\x02", "\x02\r\x03\x02\x02\x02\x02\x0F\x03\x02\x02\x02", "\x02\x11\x03\x02\x02\x02\x02\x13\x03\x02\x02\x02", "\x02\x15\x03\x02\x02\x02\x02\x17\x03\x02\x02\x02", "\x02\x19\x03\x02\x02\x02\x02\x1B\x03\x02\x02\x02", "\x03)\x03\x02\x02\x02\x05.\x03\x02\x02\x02\x07", "4\x03\x02\x02\x02\t;\x03\x02\x02\x02\x0B>\x03\x02", "\x02\x02\rG\x03\x02\x02\x02\x0FK\x03\x02\x02\x02", "\x11P\x03\x02\x02\x02\x13Y\x03\x02\x02\x02\x15", "c\x03\x02\x02\x02\x17q\x03\x02\x02\x02\x19\x7F", "\x03\x02\x02\x02\x1B\x83\x03\x02\x02\x02\x1D\x88", "\x03\x02\x02\x02\x1F\x8C\x03\x02\x02\x02!\x8E", "\x03\x02\x02\x02#\x90\x03\x02\x02\x02%\xA4\x03", "\x02\x02\x02'\xC0\x03\x02\x02\x02)*\x07P\x02\x02", "*+\x07c\x02\x02+,\x07o\x02\x02,-\x07g\x02\x02-\x04", "\x03\x02\x02\x02./\x07C\x02\x02/0\x07e\x02\x020", "1\x07v\x02\x0212\x07q\x02\x0223\x07t\x02\x023\x06", "\x03\x02\x02\x0245\x07Q\x02\x0256\x07d\x02\x026", "7\x07l\x02\x0278\x07g\x02\x0289\x07e\x02\x029:\x07", "v\x02\x02:\b\x03\x02\x02\x02;<\x07k\x02\x02<=\x07", "u\x02\x02=\n\x03\x02\x02\x02>?\x07U\x02\x02?@\x07", "g\x02\x02@A\x07s\x02\x02AB\x07w\x02\x02BC\x07g\x02", "\x02CD\x07p\x02\x02DE\x07e\x02\x02EF\x07g\x02\x02", "F\f\x03\x02\x02\x02GH\x07c\x02\x02HI\x07u\x02\x02", "IJ\x07m\x02\x02J\x0E\x03\x02\x02\x02KL\x07v\x02", "\x02LM\x07g\x02\x02MN\x07n\x02\x02NO\x07n\x02\x02", "O\x10\x03\x02\x02\x02PQ\x07t\x02\x02QR\x07g\x02", "\x02RS\x07r\x02\x02ST\x07n\x02\x02TU\x07k\x02\x02", "UV\x07g\x02\x02VW\x07u\x02\x02W\x12\x03\x02\x02", "\x02XZ\x05\x1F\x10\x02YX\x03\x02\x02\x02Z[\x03\x02", "\x02\x02[Y\x03\x02\x02\x02[\\\x03\x02\x02\x02\\", "`\x03\x02\x02\x02]_\x05!\x11\x02^]\x03\x02\x02\x02", "_b\x03\x02\x02\x02`^\x03\x02\x02\x02`a\x03\x02\x02", "\x02a\x14\x03\x02\x02\x02b`\x03\x02\x02\x02ce\x07", "%\x02\x02df\x0B\x02\x02\x02ed\x03\x02\x02\x02fg", "\x03\x02\x02\x02gh\x03\x02\x02\x02ge\x03\x02\x02", "\x02hk\x03\x02\x02\x02il\x05\x19\r\x02jl\x07\x02", "\x02\x03ki\x03\x02\x02\x02kj\x03\x02\x02\x02lm\x03", "\x02\x02\x02mn\b\x0B\x02\x02n\x16\x03\x02\x02\x02", "or\x05%\x13\x02pr\x05'\x14\x02qo\x03\x02\x02\x02", "qp\x03\x02\x02\x02r\x18\x03\x02\x02\x02st\x06\r", "\x02\x02t\x80\x05\x1D\x0F\x02uw\x07\x0F\x02\x02", "vu\x03\x02\x02\x02vw\x03\x02\x02\x02wx\x03\x02\x02", "\x02x{\x07\f\x02\x02y{\x07\x0F\x02\x02zv\x03\x02", "\x02\x02zy\x03\x02\x02\x02{}\x03\x02\x02\x02|~\x05", "\x1D\x0F\x02}|\x03\x02\x02\x02}~\x03\x02\x02\x02", "~\x80\x03\x02\x02\x02\x7Fs\x03\x02\x02\x02\x7F", "z\x03\x02\x02\x02\x80\x81\x03\x02\x02\x02\x81", "\x82\b\r\x03\x02\x82\x1A\x03\x02\x02\x02\x83\x84", "\x05\x1D\x0F\x02\x84\x85\x03\x02\x02\x02\x85\x86", "\b\x0E\x02\x02\x86\x1C\x03\x02\x02\x02\x87\x89", "\t\x02\x02\x02\x88\x87\x03\x02\x02\x02\x89\x8A", "\x03\x02\x02\x02\x8A\x88\x03\x02\x02\x02\x8A\x8B", "\x03\x02\x02\x02\x8B\x1E\x03\x02\x02\x02\x8C\x8D", "\t\x03\x02\x02\x8D \x03\x02\x02\x02\x8E\x8F\t\x04", "\x02\x02\x8F\"\x03\x02\x02\x02\x90\x91\t\x05\x02", "\x02\x91$\x03\x02\x02\x02\x92\x97\x07$\x02\x02", "\x93\x96\x0B\x02\x02\x02\x94\x96\n\x06\x02\x02", "\x95\x93\x03\x02\x02\x02\x95\x94\x03\x02\x02\x02", "\x96\x99\x03\x02\x02\x02\x97\x98\x03\x02\x02\x02", "\x97\x95\x03\x02\x02\x02\x98\x9A\x03\x02\x02\x02", "\x99\x97\x03\x02\x02\x02\x9A\xA5\x07$\x02\x02", "\x9B\xA0\x07)\x02\x02\x9C\x9F\x0B\x02\x02\x02", "\x9D\x9F\n\x07\x02\x02\x9E\x9C\x03\x02\x02\x02", "\x9E\x9D\x03\x02\x02\x02\x9F\xA2\x03\x02\x02\x02", "\xA0\xA1\x03\x02\x02\x02\xA0\x9E\x03\x02\x02\x02", "\xA1\xA3\x03\x02\x02\x02\xA2\xA0\x03\x02\x02\x02", "\xA3\xA5\x07)\x02\x02\xA4\x92\x03\x02\x02\x02", "\xA4\x9B\x03\x02\x02\x02\xA5&\x03\x02\x02\x02", "\xA6\xA7\x07$\x02\x02\xA7\xA8\x07$\x02\x02\xA8", "\xA9\x07$\x02\x02\xA9\xAD\x03\x02\x02\x02\xAA", "\xAC\x0B\x02\x02\x02\xAB\xAA\x03\x02\x02\x02\xAC", "\xAF\x03\x02\x02\x02\xAD\xAE\x03\x02\x02\x02\xAD", "\xAB\x03\x02\x02\x02\xAE\xB0\x03\x02\x02\x02\xAF", "\xAD\x03\x02\x02\x02\xB0\xB1\x07$\x02\x02\xB1", "\xB2\x07$\x02\x02\xB2\xC1\x07$\x02\x02\xB3\xB4", "\x07)\x02\x02\xB4\xB5\x07)\x02\x02\xB5\xB6\x07", ")\x02\x02\xB6\xBA\x03\x02\x02\x02\xB7\xB9\x0B", "\x02\x02\x02\xB8\xB7\x03\x02\x02\x02\xB9\xBC\x03", "\x02\x02\x02\xBA\xBB\x03\x02\x02\x02\xBA\xB8\x03", "\x02\x02\x02\xBB\xBD\x03\x02\x02\x02\xBC\xBA\x03", "\x02\x02\x02\xBD\xBE\x07)\x02\x02\xBE\xBF\x07", ")\x02\x02\xBF\xC1\x07)\x02\x02\xC0\xA6\x03\x02", "\x02\x02\xC0\xB3\x03\x02\x02\x02\xC1(\x03\x02", "\x02\x02\x15\x02[`gkqvz}\x7F\x8A\x95\x97\x9E\xA0", "\xA4\xAD\xBA\xC0\x04\b\x02\x02\x03\r\x02"].join("");
 
@@ -13626,7 +13788,7 @@ SequenceLexer.prototype.ruleNames = ["DOCUMENT_NAME", "ACTOR", "OBJECT", "IS", "
 SequenceLexer.prototype.grammarFileName = "Sequence.g4";
 
 var CommonToken = __webpack_require__(1).CommonToken;
-var SequenceParser = __webpack_require__(21).SequenceParser;
+var SequenceParser = __webpack_require__(22).SequenceParser;
 var old_lexer = SequenceLexer;
 SequenceLexer = function SequenceLexer() {
   old_lexer.apply(this, arguments);
@@ -13783,7 +13945,7 @@ SequenceLexer.prototype.NEWLINE_sempred = function (localctx, predIndex) {
 exports.SequenceLexer = SequenceLexer;
 
 /***/ }),
-/* 52 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -13801,9 +13963,9 @@ var _createClass = function () { function defineProperties(target, props) { for 
 //
 
 
-var _SequenceParser = __webpack_require__(21);
+var _SequenceParser = __webpack_require__(22);
 
-var _SequenceListener2 = __webpack_require__(32);
+var _SequenceListener2 = __webpack_require__(33);
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -14363,7 +14525,7 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
 }(_SequenceListener2.SequenceListener);
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -14381,17 +14543,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 //
 
 
-var _fs = __webpack_require__(18);
+var _fs = __webpack_require__(6);
 
 var fs = _interopRequireWildcard(_fs);
 
-var _path = __webpack_require__(54);
+var _path = __webpack_require__(13);
 
 var path = _interopRequireWildcard(_path);
 
-var _dot = __webpack_require__(55);
+var _dot = __webpack_require__(58);
 
 var doT = _interopRequireWildcard(_dot);
+
+var _getInstalledPath = __webpack_require__(60);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14404,6 +14568,30 @@ var DEFAULT_SIZES = exports.DEFAULT_SIZES = {
     messageLaneHeight: 80,
     sequenceMargin: 160
 };
+
+/**
+ * Resolve the absolute path to the SVG template file. Prioritize a local
+ * template over an installed package version to allow for development.
+ *
+ * It is needed since the template will be read from various locations when
+ * sequence is used as a CLI program.
+ *
+ * @param {string} template The template file to resolve path to
+ * @returns The absolute path to the template file
+ */
+function resolveTemplate(template) {
+    // Favour a local file if existing
+    var templatePath = path.join('./templates/', template);
+    if (fs.existsSync(templatePath)) return templatePath;
+
+    try {
+        var packagePath = (0, _getInstalledPath.getInstalledPathSync)('@eliasson/sequence');
+        templatePath = path.join(packagePath, path.join('templates/', template));
+    } catch (e) {
+        throw new Error('No template file found either in installed package or locally (templates/' + template + ')');
+    }
+    return templatePath;
+}
 
 /**
  * Transform the Sequence AST into SVG and return as a string. Calculate positions and sizes
@@ -14512,7 +14700,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
         value: function transform() {
             var template = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default.svg';
 
-            var sourceXML = fs.readFileSync(path.join('./templates/', template), 'utf-8');
+            var sourceXML = fs.readFileSync(resolveTemplate(template), 'utf-8');
             var templateFn = doT.template(sourceXML);
             return templateFn(this.generateContext());
         }
@@ -14522,13 +14710,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
 }();
 
 /***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-module.exports = require("path");
-
-/***/ }),
-/* 55 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* doT + auto-compilation of doT templates
@@ -14560,8 +14742,8 @@ module.exports = require("path");
  * 4. Render mytemplate template.
  */
 
-var fs = __webpack_require__(18),
-	doT = module.exports = __webpack_require__(56);
+var fs = __webpack_require__(6),
+	doT = module.exports = __webpack_require__(59);
 
 doT.process = function(options) {
 	//path, destination, global, rendermodule, templateSettings
@@ -14678,7 +14860,7 @@ InstallDots.prototype.compileAll = function() {
 
 
 /***/ }),
-/* 56 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;// doT.js
@@ -14826,6 +15008,942 @@ var __WEBPACK_AMD_DEFINE_RESULT__;// doT.js
 		return doT.template(tmpl, null, def);
 	};
 }());
+
+
+/***/ }),
+/* 60 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getInstalledPath", function() { return getInstalledPath; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getInstalledPathSync", function() { return getInstalledPathSync; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fs__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_path__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_global_modules__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_global_modules___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_global_modules__);
+/**
+ * @author Charlike Mike Reagent <open.source.charlike@gmail.com>
+ * @copyright 2016-present @tunnckoCore/team and contributors
+ * @license MIT
+ */
+
+
+
+
+/**
+ * > Get installed path of globally or locally `name` package.
+ * By default it checks if `name` exists as directory in [global-modules][]
+ * directory of the system. Pass `opts.local` to get path of `name`
+ * package from local directory or from `opts.cwd`. Returns rejected
+ * promise if module not found in global/local `node_modules` folder or
+ * if it exist but is not a directory.
+ *
+ * @example
+ * const { getInstalledPath } = require('get-installed-path')
+ *
+ * getInstalledPath('npm').then((path) => {
+ *   console.log(path)
+ *   // => '/home/charlike/.nvm/path/to/lib/node_modules/npm'
+ * })
+ *
+ * getInstalledPath('foo-bar-barwerwlekrjw').catch((err) => {
+ *   console.log(err.message)
+ *   // => 'module not found "foo-bar-barwerwlekrjw" in path ...'
+ * })
+ *
+ * getInstalledPath('npm', {
+ *   local: true
+ * }).catch((err) => {
+ *   console.log(err.message)
+ *   // => 'module not found "foo-bar-barwerwlekrjw" in path ...'
+ * })
+ *
+ * getInstalledPath('global-modules', {
+ *   local: true
+ * }).then((path) => {
+ *   console.log(path)
+ *   // => '~/code/get-installed-path/node_modules/global-modules'
+ * })
+ *
+ * // If you are using it for some sub-directory
+ * // pass `opts.cwd` to be where the `node_modules`
+ * // folder is.
+ * process.chidr('foo-bar-baz')
+ * getInstalledPath('global-modules', {
+ *   local: true,
+ *   cwd: '../'
+ * }).then((path) => {
+ *   console.log(path)
+ *   // => '~/code/get-installed-path/node_modules/global-modules'
+ * })
+ *
+ * // When searching for the path of a package that is required
+ * // by several other packages, its path may not be in the
+ * // closest node_modules. In this case, to search recursively,
+ * // you can use the following:
+ * getInstalledPath('npm', {
+ *  paths: process.mainModule.paths
+ * }).then((path) => {
+ *  // ...
+ * })
+ * // `process.mainModule` refers to the location of the current
+ * // entry script.
+ *
+ * @param  {string} name package name
+ * @param  {Object} opts pass `opts.local` to check locally
+ * @return {Promise} rejected promise if `name` not a string or is empty string
+ * @name   getInstalledPath
+ * @public
+ */
+
+function getInstalledPath(name, opts) {
+  return new Promise((resolve, reject) => {
+    if (!isValidString(name)) {
+      const message = 'get-installed-path: expect `name` to be string';
+      return reject(new TypeError(message));
+    }
+
+    const targetPaths = defaults(name, opts);
+
+    const statPath = filepath => __WEBPACK_IMPORTED_MODULE_0_fs___default.a.stat(filepath, (e, stats) => {
+      if (e && targetPaths.length > 0) {
+        statPath(targetPaths.shift());
+        return;
+      } else if (e) {
+        const label = 'get-installed-path:';
+        const msg = `${label} module not found "${name}" in path ${filepath}`;
+        return reject(new Error(msg));
+      }
+
+      if (stats.isDirectory()) {
+        return resolve(filepath);
+      }
+
+      const msg = `Possibly "${name}" is not a directory: ${filepath}`;
+      let err = new Error('get-installed-path: some error occured! ' + msg);
+      reject(err);
+    });
+
+    statPath(targetPaths.shift());
+  });
+}
+/**
+ * > Get installed path of a `name` package synchronous.
+ * Returns `boolean` when `paths` option is used and filepath is directory,
+ * otherwise returns a full filepath OR throws error.
+ *
+ * @example
+ * const { getInstalledPathSync } = require('get-installed-path')
+ *
+ * const npmPath = getInstalledPathSync('npm')
+ * console.log(npmPath)
+ * // => '/home/charlike/.nvm/path/to/lib/node_modules/npm'
+ *
+ * const gmPath = getInstalledPathSync('global-modules', { local: true })
+ * console.log(gmPath)
+ * // => '~/code/get-installed-path/node_modules/global-modules'
+ *
+ * @param  {string} name package name
+ * @param  {Object} opts pass `opts.local` to check locally
+ * @return {string} The full filepath or throw `TypeError` if `name` not a string or is empty string
+ * @name   getInstalledPathSync
+ * @public
+ */
+
+
+function getInstalledPathSync(name, opts) {
+  if (!isValidString(name)) {
+    throw new TypeError('get-installed-path: expect `name` to be string');
+  }
+
+  const filePaths = defaults(name, opts);
+  const firstPath = filePaths[0];
+  const modulePath = filePaths.find(filePath => {
+    let stat = null;
+
+    try {
+      stat = __WEBPACK_IMPORTED_MODULE_0_fs___default.a.statSync(filePath);
+    } catch (e) {
+      return false;
+    }
+
+    if (stat.isDirectory()) {
+      return true;
+    }
+
+    const msg = `Possibly "${name}" is not a directory: ${filePath}`;
+    throw new Error('get-installed-path: some error occured! ' + msg);
+  });
+
+  if (!modulePath) {
+    const label = 'get-installed-path:';
+    const msg = `${label} module not found "${name}" in path ${firstPath}`;
+    throw new Error(msg);
+  }
+
+  return modulePath;
+}
+
+function isValidString(val) {
+  return typeof val === 'string' ? val.length > 0 : false;
+}
+
+function defaults(name, opts) {
+  opts = opts && typeof opts === 'object' ? opts : {};
+  opts.cwd = typeof opts.cwd === 'string' ? opts.cwd : process.cwd();
+
+  if (opts.paths) {
+    return opts.paths.map(modulePath => __WEBPACK_IMPORTED_MODULE_1_path___default.a.join(modulePath, name));
+  } else if (opts.local) {
+    return [__WEBPACK_IMPORTED_MODULE_1_path___default.a.join(opts.cwd, 'node_modules', name)];
+  }
+
+  return [__WEBPACK_IMPORTED_MODULE_1_path___default.a.join(__WEBPACK_IMPORTED_MODULE_2_global_modules___default.a, name)];
+}
+
+
+
+
+/***/ }),
+/* 61 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/*!
+ * global-modules <https://github.com/jonschlinkert/global-modules>
+ *
+ * Copyright (c) 2015-2017 Jon Schlinkert.
+ * Licensed under the MIT license.
+ */
+
+
+
+var path = __webpack_require__(13);
+var prefix = __webpack_require__(62);
+var isWindows = __webpack_require__(36);
+var gm;
+
+function getPath() {
+  if (isWindows()) {
+    return path.resolve(prefix, 'node_modules');
+  }
+  return path.resolve(prefix, 'lib/node_modules');
+}
+
+/**
+ * Expose `global-modules` path
+ */
+
+Object.defineProperty(module, 'exports', {
+  enumerable: true,
+  get: function() {
+    return gm || (gm = getPath());
+  }
+});
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {/*!
+ * global-prefix <https://github.com/jonschlinkert/global-prefix>
+ *
+ * Copyright (c) 2015-2017 Jon Schlinkert.
+ * Licensed under the MIT license.
+ */
+
+
+
+var fs = __webpack_require__(6);
+var path = __webpack_require__(13);
+var expand = __webpack_require__(63);
+var homedir = __webpack_require__(35);
+var ini = __webpack_require__(66);
+var prefix;
+
+function getPrefix() {
+  if (process.env.PREFIX) {
+    prefix = process.env.PREFIX;
+  } else {
+    // Start by checking if the global prefix is set by the user
+    var home = homedir();
+    if (home) {
+      // homedir() returns undefined if $HOME not set; path.resolve requires strings
+      var userConfig = path.resolve(home, '.npmrc');
+      prefix = tryConfigPath(userConfig);
+    }
+
+    if (!prefix) {
+      // Otherwise find the path of npm
+      var npm = tryNpmPath();
+      if (npm) {
+        // Check the built-in npm config file
+        var builtinConfig = path.resolve(npm, '..', '..', 'npmrc');
+        prefix = tryConfigPath(builtinConfig);
+
+        if (prefix) {
+          // Now the global npm config can also be checked.
+          var globalConfig = path.resolve(prefix, 'etc', 'npmrc');
+          prefix = tryConfigPath(globalConfig) || prefix;
+        }
+      }
+
+      if (!prefix) fallback();
+    }
+  }
+
+  if (prefix) {
+    return expand(prefix);
+  }
+}
+
+function fallback() {
+  var isWindows = __webpack_require__(36);
+  if (isWindows()) {
+    // c:\node\node.exe --> prefix=c:\node\
+    prefix = process.env.APPDATA
+      ? path.join(process.env.APPDATA, 'npm')
+      : path.dirname(process.execPath);
+  } else {
+    // /usr/local/bin/node --> prefix=/usr/local
+    prefix = path.dirname(path.dirname(process.execPath));
+
+    // destdir only is respected on Unix
+    if (process.env.DESTDIR) {
+      prefix = path.join(process.env.DESTDIR, prefix);
+    }
+  }
+}
+
+function tryNpmPath() {
+  try {
+    return fs.realpathSync(__webpack_require__(67).sync('npm'));
+  } catch (err) {}
+  return null;
+}
+
+function tryConfigPath(configPath) {
+  try {
+    var data = fs.readFileSync(configPath, 'utf-8');
+    var config = ini.parse(data);
+    if (config.prefix) return config.prefix;
+  } catch (err) {}
+  return null;
+}
+
+/**
+ * Expose `prefix`
+ */
+
+Object.defineProperty(module, 'exports', {
+  enumerable: true,
+  get: function() {
+    return prefix || (prefix = getPrefix());
+  }
+});
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(34)(module)))
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * expand-tilde <https://github.com/jonschlinkert/expand-tilde>
+ *
+ * Copyright (c) 2015 Jon Schlinkert.
+ * Licensed under the MIT license.
+ */
+
+var homedir = __webpack_require__(35);
+var path = __webpack_require__(13);
+
+module.exports = function expandTilde(filepath) {
+  var home = homedir();
+
+  if (filepath.charCodeAt(0) === 126 /* ~ */) {
+    if (filepath.charCodeAt(1) === 43 /* + */) {
+      return path.join(process.cwd(), filepath.slice(2));
+    }
+    return home ? path.join(home, filepath.slice(1)) : filepath;
+  }
+
+  return filepath;
+};
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports) {
+
+module.exports = require("os");
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Parse the content of a passwd file into a list of user objects.
+ * This function ignores blank lines and comments.
+ *
+ * ```js
+ * // assuming '/etc/passwd' contains:
+ * // doowb:*:123:123:Brian Woodward:/Users/doowb:/bin/bash
+ * console.log(parse(fs.readFileSync('/etc/passwd', 'utf8')));
+ *
+ * //=> [
+ * //=>   {
+ * //=>     username: 'doowb',
+ * //=>     password: '*',
+ * //=>     uid: '123',
+ * //=>     gid: '123',
+ * //=>     gecos: 'Brian Woodward',
+ * //=>     homedir: '/Users/doowb',
+ * //=>     shell: '/bin/bash'
+ * //=>   }
+ * //=> ]
+ * ```
+ * @param  {String} `content` Content of a passwd file to parse.
+ * @return {Array} Array of user objects parsed from the content.
+ * @api public
+ */
+
+module.exports = function(content) {
+  if (typeof content !== 'string') {
+    throw new Error('expected a string');
+  }
+  return content
+    .split('\n')
+    .map(user)
+    .filter(Boolean);
+};
+
+function user(line, i) {
+  if (!line || !line.length || line.charAt(0) === '#') {
+    return null;
+  }
+
+  // see https://en.wikipedia.org/wiki/Passwd for field descriptions
+  var fields = line.split(':');
+  return {
+    username: fields[0],
+    password: fields[1],
+    uid: fields[2],
+    gid: fields[3],
+    // see https://en.wikipedia.org/wiki/Gecos_field for GECOS field descriptions
+    gecos: fields[4],
+    homedir: fields[5],
+    shell: fields[6]
+  };
+}
+
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports) {
+
+exports.parse = exports.decode = decode
+
+exports.stringify = exports.encode = encode
+
+exports.safe = safe
+exports.unsafe = unsafe
+
+var eol = typeof process !== 'undefined' &&
+  process.platform === 'win32' ? '\r\n' : '\n'
+
+function encode (obj, opt) {
+  var children = []
+  var out = ''
+
+  if (typeof opt === 'string') {
+    opt = {
+      section: opt,
+      whitespace: false
+    }
+  } else {
+    opt = opt || {}
+    opt.whitespace = opt.whitespace === true
+  }
+
+  var separator = opt.whitespace ? ' = ' : '='
+
+  Object.keys(obj).forEach(function (k, _, __) {
+    var val = obj[k]
+    if (val && Array.isArray(val)) {
+      val.forEach(function (item) {
+        out += safe(k + '[]') + separator + safe(item) + '\n'
+      })
+    } else if (val && typeof val === 'object') {
+      children.push(k)
+    } else {
+      out += safe(k) + separator + safe(val) + eol
+    }
+  })
+
+  if (opt.section && out.length) {
+    out = '[' + safe(opt.section) + ']' + eol + out
+  }
+
+  children.forEach(function (k, _, __) {
+    var nk = dotSplit(k).join('\\.')
+    var section = (opt.section ? opt.section + '.' : '') + nk
+    var child = encode(obj[k], {
+      section: section,
+      whitespace: opt.whitespace
+    })
+    if (out.length && child.length) {
+      out += eol
+    }
+    out += child
+  })
+
+  return out
+}
+
+function dotSplit (str) {
+  return str.replace(/\1/g, '\u0002LITERAL\\1LITERAL\u0002')
+    .replace(/\\\./g, '\u0001')
+    .split(/\./).map(function (part) {
+      return part.replace(/\1/g, '\\.')
+      .replace(/\2LITERAL\\1LITERAL\2/g, '\u0001')
+    })
+}
+
+function decode (str) {
+  var out = {}
+  var p = out
+  var section = null
+  //          section     |key      = value
+  var re = /^\[([^\]]*)\]$|^([^=]+)(=(.*))?$/i
+  var lines = str.split(/[\r\n]+/g)
+
+  lines.forEach(function (line, _, __) {
+    if (!line || line.match(/^\s*[;#]/)) return
+    var match = line.match(re)
+    if (!match) return
+    if (match[1] !== undefined) {
+      section = unsafe(match[1])
+      p = out[section] = out[section] || {}
+      return
+    }
+    var key = unsafe(match[2])
+    var value = match[3] ? unsafe(match[4]) : true
+    switch (value) {
+      case 'true':
+      case 'false':
+      case 'null': value = JSON.parse(value)
+    }
+
+    // Convert keys with '[]' suffix to an array
+    if (key.length > 2 && key.slice(-2) === '[]') {
+      key = key.substring(0, key.length - 2)
+      if (!p[key]) {
+        p[key] = []
+      } else if (!Array.isArray(p[key])) {
+        p[key] = [p[key]]
+      }
+    }
+
+    // safeguard against resetting a previously defined
+    // array by accidentally forgetting the brackets
+    if (Array.isArray(p[key])) {
+      p[key].push(value)
+    } else {
+      p[key] = value
+    }
+  })
+
+  // {a:{y:1},"a.b":{x:2}} --> {a:{y:1,b:{x:2}}}
+  // use a filter to return the keys that have to be deleted.
+  Object.keys(out).filter(function (k, _, __) {
+    if (!out[k] ||
+      typeof out[k] !== 'object' ||
+      Array.isArray(out[k])) {
+      return false
+    }
+    // see if the parent section is also an object.
+    // if so, add it to that, and mark this one for deletion
+    var parts = dotSplit(k)
+    var p = out
+    var l = parts.pop()
+    var nl = l.replace(/\\\./g, '.')
+    parts.forEach(function (part, _, __) {
+      if (!p[part] || typeof p[part] !== 'object') p[part] = {}
+      p = p[part]
+    })
+    if (p === out && nl === l) {
+      return false
+    }
+    p[nl] = out[k]
+    return true
+  }).forEach(function (del, _, __) {
+    delete out[del]
+  })
+
+  return out
+}
+
+function isQuoted (val) {
+  return (val.charAt(0) === '"' && val.slice(-1) === '"') ||
+    (val.charAt(0) === "'" && val.slice(-1) === "'")
+}
+
+function safe (val) {
+  return (typeof val !== 'string' ||
+    val.match(/[=\r\n]/) ||
+    val.match(/^\[/) ||
+    (val.length > 1 &&
+     isQuoted(val)) ||
+    val !== val.trim())
+      ? JSON.stringify(val)
+      : val.replace(/;/g, '\\;').replace(/#/g, '\\#')
+}
+
+function unsafe (val, doUnesc) {
+  val = (val || '').trim()
+  if (isQuoted(val)) {
+    // remove the single quotes before calling JSON.parse
+    if (val.charAt(0) === "'") {
+      val = val.substr(1, val.length - 2)
+    }
+    try { val = JSON.parse(val) } catch (_) {}
+  } else {
+    // walk the val to find the first not-escaped ; character
+    var esc = false
+    var unesc = ''
+    for (var i = 0, l = val.length; i < l; i++) {
+      var c = val.charAt(i)
+      if (esc) {
+        if ('\\;#'.indexOf(c) !== -1) {
+          unesc += c
+        } else {
+          unesc += '\\' + c
+        }
+        esc = false
+      } else if (';#'.indexOf(c) !== -1) {
+        break
+      } else if (c === '\\') {
+        esc = true
+      } else {
+        unesc += c
+      }
+    }
+    if (esc) {
+      unesc += '\\'
+    }
+    return unesc.trim()
+  }
+  return val
+}
+
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = which
+which.sync = whichSync
+
+var isWindows = process.platform === 'win32' ||
+    process.env.OSTYPE === 'cygwin' ||
+    process.env.OSTYPE === 'msys'
+
+var path = __webpack_require__(13)
+var COLON = isWindows ? ';' : ':'
+var isexe = __webpack_require__(68)
+
+function getNotFoundError (cmd) {
+  var er = new Error('not found: ' + cmd)
+  er.code = 'ENOENT'
+
+  return er
+}
+
+function getPathInfo (cmd, opt) {
+  var colon = opt.colon || COLON
+  var pathEnv = opt.path || process.env.PATH || ''
+  var pathExt = ['']
+
+  pathEnv = pathEnv.split(colon)
+
+  var pathExtExe = ''
+  if (isWindows) {
+    pathEnv.unshift(process.cwd())
+    pathExtExe = (opt.pathExt || process.env.PATHEXT || '.EXE;.CMD;.BAT;.COM')
+    pathExt = pathExtExe.split(colon)
+
+
+    // Always test the cmd itself first.  isexe will check to make sure
+    // it's found in the pathExt set.
+    if (cmd.indexOf('.') !== -1 && pathExt[0] !== '')
+      pathExt.unshift('')
+  }
+
+  // If it has a slash, then we don't bother searching the pathenv.
+  // just check the file itself, and that's it.
+  if (cmd.match(/\//) || isWindows && cmd.match(/\\/))
+    pathEnv = ['']
+
+  return {
+    env: pathEnv,
+    ext: pathExt,
+    extExe: pathExtExe
+  }
+}
+
+function which (cmd, opt, cb) {
+  if (typeof opt === 'function') {
+    cb = opt
+    opt = {}
+  }
+
+  var info = getPathInfo(cmd, opt)
+  var pathEnv = info.env
+  var pathExt = info.ext
+  var pathExtExe = info.extExe
+  var found = []
+
+  ;(function F (i, l) {
+    if (i === l) {
+      if (opt.all && found.length)
+        return cb(null, found)
+      else
+        return cb(getNotFoundError(cmd))
+    }
+
+    var pathPart = pathEnv[i]
+    if (pathPart.charAt(0) === '"' && pathPart.slice(-1) === '"')
+      pathPart = pathPart.slice(1, -1)
+
+    var p = path.join(pathPart, cmd)
+    if (!pathPart && (/^\.[\\\/]/).test(cmd)) {
+      p = cmd.slice(0, 2) + p
+    }
+    ;(function E (ii, ll) {
+      if (ii === ll) return F(i + 1, l)
+      var ext = pathExt[ii]
+      isexe(p + ext, { pathExt: pathExtExe }, function (er, is) {
+        if (!er && is) {
+          if (opt.all)
+            found.push(p + ext)
+          else
+            return cb(null, p + ext)
+        }
+        return E(ii + 1, ll)
+      })
+    })(0, pathExt.length)
+  })(0, pathEnv.length)
+}
+
+function whichSync (cmd, opt) {
+  opt = opt || {}
+
+  var info = getPathInfo(cmd, opt)
+  var pathEnv = info.env
+  var pathExt = info.ext
+  var pathExtExe = info.extExe
+  var found = []
+
+  for (var i = 0, l = pathEnv.length; i < l; i ++) {
+    var pathPart = pathEnv[i]
+    if (pathPart.charAt(0) === '"' && pathPart.slice(-1) === '"')
+      pathPart = pathPart.slice(1, -1)
+
+    var p = path.join(pathPart, cmd)
+    if (!pathPart && /^\.[\\\/]/.test(cmd)) {
+      p = cmd.slice(0, 2) + p
+    }
+    for (var j = 0, ll = pathExt.length; j < ll; j ++) {
+      var cur = p + pathExt[j]
+      var is
+      try {
+        is = isexe.sync(cur, { pathExt: pathExtExe })
+        if (is) {
+          if (opt.all)
+            found.push(cur)
+          else
+            return cur
+        }
+      } catch (ex) {}
+    }
+  }
+
+  if (opt.all && found.length)
+    return found
+
+  if (opt.nothrow)
+    return null
+
+  throw getNotFoundError(cmd)
+}
+
+
+/***/ }),
+/* 68 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var fs = __webpack_require__(6)
+var core
+if (process.platform === 'win32' || global.TESTING_WINDOWS) {
+  core = __webpack_require__(69)
+} else {
+  core = __webpack_require__(70)
+}
+
+module.exports = isexe
+isexe.sync = sync
+
+function isexe (path, options, cb) {
+  if (typeof options === 'function') {
+    cb = options
+    options = {}
+  }
+
+  if (!cb) {
+    if (typeof Promise !== 'function') {
+      throw new TypeError('callback not provided')
+    }
+
+    return new Promise(function (resolve, reject) {
+      isexe(path, options || {}, function (er, is) {
+        if (er) {
+          reject(er)
+        } else {
+          resolve(is)
+        }
+      })
+    })
+  }
+
+  core(path, options || {}, function (er, is) {
+    // ignore EACCES because that just means we aren't allowed to run it
+    if (er) {
+      if (er.code === 'EACCES' || options && options.ignoreErrors) {
+        er = null
+        is = false
+      }
+    }
+    cb(er, is)
+  })
+}
+
+function sync (path, options) {
+  // my kingdom for a filtered catch
+  try {
+    return core.sync(path, options || {})
+  } catch (er) {
+    if (options && options.ignoreErrors || er.code === 'EACCES') {
+      return false
+    } else {
+      throw er
+    }
+  }
+}
+
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = isexe
+isexe.sync = sync
+
+var fs = __webpack_require__(6)
+
+function checkPathExt (path, options) {
+  var pathext = options.pathExt !== undefined ?
+    options.pathExt : process.env.PATHEXT
+
+  if (!pathext) {
+    return true
+  }
+
+  pathext = pathext.split(';')
+  if (pathext.indexOf('') !== -1) {
+    return true
+  }
+  for (var i = 0; i < pathext.length; i++) {
+    var p = pathext[i].toLowerCase()
+    if (p && path.substr(-p.length).toLowerCase() === p) {
+      return true
+    }
+  }
+  return false
+}
+
+function checkStat (stat, path, options) {
+  if (!stat.isSymbolicLink() && !stat.isFile()) {
+    return false
+  }
+  return checkPathExt(path, options)
+}
+
+function isexe (path, options, cb) {
+  fs.stat(path, function (er, stat) {
+    cb(er, er ? false : checkStat(stat, path, options))
+  })
+}
+
+function sync (path, options) {
+  return checkStat(fs.statSync(path), path, options)
+}
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = isexe
+isexe.sync = sync
+
+var fs = __webpack_require__(6)
+
+function isexe (path, options, cb) {
+  fs.stat(path, function (er, stat) {
+    cb(er, er ? false : checkStat(stat, options))
+  })
+}
+
+function sync (path, options) {
+  return checkStat(fs.statSync(path), options)
+}
+
+function checkStat (stat, options) {
+  return stat.isFile() && checkMode(stat, options)
+}
+
+function checkMode (stat, options) {
+  var mod = stat.mode
+  var uid = stat.uid
+  var gid = stat.gid
+
+  var myUid = options.uid !== undefined ?
+    options.uid : process.getuid && process.getuid()
+  var myGid = options.gid !== undefined ?
+    options.gid : process.getgid && process.getgid()
+
+  var u = parseInt('100', 8)
+  var g = parseInt('010', 8)
+  var o = parseInt('001', 8)
+  var ug = u | g
+
+  var ret = (mod & o) ||
+    (mod & g) && gid === myGid ||
+    (mod & u) && uid === myUid ||
+    (mod & ug) && myUid === 0
+
+  return ret
+}
 
 
 /***/ })
