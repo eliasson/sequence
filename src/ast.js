@@ -24,6 +24,11 @@ export class Node {
     addChild(node) {
         this.children.push(node);
     }
+
+    accept(visitor) {
+        visitor.visit(this);
+        this.children.forEach(c => c.accept(visitor));
+    }
 }
 
 /**
@@ -196,6 +201,18 @@ export class MessageNode extends Node {
         if (nodes && nodes.length > 0) return nodes[0];
         return undefined;
     }
+}
+
+/**
+ * A visitor that is used to traverse the generated Sequence AST. This visitor
+ * should be used prior to use any ANTLR visitor, since the ANTÖR visitor is a
+ * visitor for the Parser Tree, not the AST.
+ * 
+ * The visitor is used by calling `node.accept(visitor)` for the AST branch
+ * that should be visited.
+ */
+export class AstVisitor {
+    visit(node) {}
 }
 
 /**

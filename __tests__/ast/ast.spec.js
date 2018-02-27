@@ -5,7 +5,7 @@
 //
 
 import { parse } from '../../src/index';
-import { IdentifierNode, StringNode } from '../../src/ast';
+import { IdentifierNode, StringNode, AstVisitor } from '../../src/ast';
 
 describe('AST', () => {
     describe('with meta-information', () => {
@@ -239,6 +239,70 @@ describe('AST', () => {
 
         it('should have "Hello there" as message destination', () => {
             expect(message.getString().getUnquoted()).toEqual('Messages support line breaks\nfor maintaining a multi-line\nstring');
+        });
+    });
+
+    describe('node visitor ', () => {
+        let result, visitor;
+
+        class TestVisitor extends AstVisitor {
+            constructor() {
+                super();
+                // Keep a list of visits done (and their order)
+                this.visits = [];
+            }
+
+            visit(node) {
+                this.visits.push(node.constructor.name);
+            }
+        }
+
+        describe('for empty source', () => {
+            beforeEach(() => {
+                result = parse(
+                    '');
+                visitor = new TestVisitor();
+                result.ast.accept(visitor);
+            });
+
+            it('should only have visited root node', () => {
+                expect(visitor.visits).toEqual([
+                    'RootNode'
+                ]);
+            });
+        });
+
+        describe('for a full sequence', () => {
+            beforeEach(() => {
+                result = parse(
+                    'Name "Test"\n' +
+                    'Actor Alice\n' +
+                    'Object Bob\n' +
+                    'Sequence Hello\n' +
+                    '  Alice tell Bob "One"\n' +
+                    '  Alice ask Bob "Two"\n' +
+                    '  Bob replies Alice "Three"\n' +
+                    '');
+                visitor = new TestVisitor();
+                result.ast.accept(visitor);
+            });
+
+            it('should have visited all nodes in order', () => {
+                expect(visitor.visits).toEqual([
+                    'RootNode',
+                    'NameNode',
+                    'StringNode',
+                    'ActorNode',
+                    'ObjectNode',
+                    'SequenceNode',
+                    'MessageNode',
+                    'StringNode',
+                    'MessageNode',
+                    'StringNode',
+                    'MessageNode',
+                    'StringNode'
+                ]);
+            });
         });
     });
 });

@@ -13954,7 +13954,7 @@ exports.SequenceLexer = SequenceLexer;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.IntSequenceListener = exports.MessageNode = exports.ReplyMessageType = exports.AsynchronousMessageType = exports.SynchronousMessageType = exports.SequenceNode = exports.ObjectNode = exports.ActorNode = exports.NameNode = exports.StringNode = exports.IdentifierNode = exports.RootNode = exports.Node = undefined;
+exports.IntSequenceListener = exports.AstVisitor = exports.MessageNode = exports.ReplyMessageType = exports.AsynchronousMessageType = exports.SynchronousMessageType = exports.SequenceNode = exports.ObjectNode = exports.ActorNode = exports.NameNode = exports.StringNode = exports.IdentifierNode = exports.RootNode = exports.Node = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //
 // Sequence - A simple sequence diagram tool
@@ -13994,6 +13994,14 @@ var Node = exports.Node = function () {
         key: 'addChild',
         value: function addChild(node) {
             this.children.push(node);
+        }
+    }, {
+        key: 'accept',
+        value: function accept(visitor) {
+            visitor.visit(this);
+            this.children.forEach(function (c) {
+                return c.accept(visitor);
+            });
         }
     }]);
 
@@ -14324,6 +14332,29 @@ var MessageNode = exports.MessageNode = function (_Node6) {
 
     return MessageNode;
 }(Node);
+
+/**
+ * A visitor that is used to traverse the generated Sequence AST. This visitor
+ * should be used prior to use any ANTLR visitor, since the ANTÖR visitor is a
+ * visitor for the Parser Tree, not the AST.
+ * 
+ * The visitor is used by calling `node.accept(visitor)` for the AST branch
+ * that should be visited.
+ */
+
+
+var AstVisitor = exports.AstVisitor = function () {
+    function AstVisitor() {
+        _classCallCheck(this, AstVisitor);
+    }
+
+    _createClass(AstVisitor, [{
+        key: 'visit',
+        value: function visit(node) {}
+    }]);
+
+    return AstVisitor;
+}();
 
 /**
  * The Sequence listener is a parser listener that gets called by the ANTLR
