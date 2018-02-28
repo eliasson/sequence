@@ -33,7 +33,7 @@ Currently sequence is only a command line tool that prints the generated
 SVG to standard out.
 
     # Install sequence locally
-    $ npm install @eliasson/sequence
+    $ npm install -g @eliasson/sequence
     
     # Generate a SVG to standard out
     $ sequence example.seq
