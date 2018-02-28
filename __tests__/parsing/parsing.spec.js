@@ -31,3 +31,34 @@ describe('Integration', () => {
         });
     });
 });
+
+describe('Compilation result of a valid sequence file', () => {
+    let result;
+    beforeEach(() => {
+        result = compile(
+            'Name "Test"\n' +
+            'Actor Alice\n' +
+            'Object Bob\n' +
+            '\n' +
+            'Sequence Hello\n' +
+            '  Alice tell Bob "Hello"\n' +
+            '\n' +
+            'Sequence Goodbye\n' +
+            '  Bob tell Alice "Goodbye"\n' +
+            '');
+    });
+
+    it('should be valid', () => {
+        expect(result.isValid).toBeTruthy();
+    });
+
+    it('should contain the symbol table', () => {
+        // Make sure at least one of the symbol is included
+        expect(result.symbols.resolve('Alice')).toBeDefined();
+    });
+
+    it('should contain generated output', () => {
+        // Just validate that is looks like an SVG
+        expect(result.output).toContain('<svg');
+    });
+});

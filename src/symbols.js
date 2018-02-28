@@ -4,23 +4,20 @@
 // Copyright (C) - markus.eliasson@gmail.com
 //
 
-export class ObjectDeclaration {
-    constructor(name) {
+import { AstVisitor, ActorNode, ObjectNode, SequenceNode } from "./ast";
+
+export class Symbol {
+    constructor(name, node) {
+        if(!name) throw new Error('Name is required for symbol');
+
         this.name = name;
+        this.node = node;
     }
 }
 
-export class ActorDeclaration {
-    constructor(name) {
-        this.name = name;
-    }
-}
-
-export class SequenceDeclaration {
-    constructor(name) {
-        this.name = name;
-    }
-}
+export class ObjectDeclaration extends Symbol {}
+export class ActorDeclaration extends Symbol {}
+export class SequenceDeclaration extends Symbol {}
 
 /**
  * Sequence use a global scope. That is all symbols (declarations of
@@ -45,5 +42,39 @@ export class SymbolTable {
 
     resolve(name) {
         return this.table.get(name);
+    }
+}
+
+/**
+ * Traverse the full AST and define symbols for all definitions of:
+ *
+ * - Actor
+ * - Object
+ * - Sequence
+ */
+export class SymbolTableVisitor extends AstVisitor {
+    constructor() {
+        super();
+        this.symbols = new SymbolTable();
+    }
+
+    withAst(ast) {
+        this.ast = ast;
+        return this;
+    }
+
+    generate() {
+        this.ast.accept(this);
+        return this.symbols;
+    }
+
+    visit(node) {
+        if(node instanceof ActorNode) {
+            this.symbols.define(new ActorDeclaration(node.identifier.value, node));
+        } else if(node instanceof ObjectNode) {
+            this.symbols.define(new ObjectDeclaration(node.identifier.value, node));
+        } else if(node instanceof SequenceNode) {
+            this.symbols.define(new SequenceDeclaration(node.identifier.value, node));
+        }
     }
 }

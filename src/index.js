@@ -8,6 +8,7 @@ import * as antlr4 from 'antlr4';
 import { SequenceLexer } from '../parser/SequenceLexer';
 import { SequenceParser } from '../parser/SequenceParser';
 import { IntSequenceListener } from './ast';
+import { SymbolTable, SymbolTableVisitor } from './symbols';
 import { SVGTransformer } from './transformer';
 
 /**
@@ -49,12 +50,17 @@ export function compile(source) {
     const result = parse(source);
 
     // 2. Analyse the AST to find semantic errors
+    // Generate a symbol table that can be used in later analysis
+    const symbols = new SymbolTableVisitor()
+        .withAst(result.ast)
+        .generate();
 
-    // 3. Transform the AST into image data
+    // 3. Transform the AST into SVG data
     const output = result.isValid() ? new SVGTransformer(result.ast).transform() : '';
 
     return {
         isValid: result.isValid,
+        symbols: symbols,
         output: output
     }
 }
