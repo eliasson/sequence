@@ -40,6 +40,10 @@ export class SymbolTable {
         return true;
     }
 
+    contains(name) {
+        return this.table.has(name);
+    }
+
     resolve(name) {
         return this.table.get(name);
     }

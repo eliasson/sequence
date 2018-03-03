@@ -3,6 +3,7 @@
 //
 // Copyright (C) - markus.eliasson@gmail.com
 //
+
 import { parse } from '../../src/index';
 import { SymbolTable, Symbol, ObjectDeclaration, ActorDeclaration, SequenceDeclaration, SymbolTableVisitor } from '../../src/symbols';
 import { ActorNode } from '../../src/ast';
@@ -98,10 +99,17 @@ describe('Symbol table', () => {
     });
 
     describe('when resolving an existing symbol', () => {
-        it('should return the symbol', () => {
-            const symbol = new ActorDeclaration("jane");
+        let symbol;
+        beforeEach(() => {
+            symbol = new ActorDeclaration("jane");
             table.define(symbol);
+        });
+        it('should return the symbol', () => {
             expect(table.resolve("jane")).toEqual(symbol);
+        });
+
+        it('should contain the symbol', () => {
+            expect(table.contains("jane")).toBeTruthy();
         });
     });
 });

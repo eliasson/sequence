@@ -9,6 +9,7 @@ import { SequenceLexer } from '../parser/SequenceLexer';
 import { SequenceParser } from '../parser/SequenceParser';
 import { IntSequenceListener } from './ast';
 import { SymbolTable, SymbolTableVisitor } from './symbols';
+import { RedeclarationAnalyser } from './analysis';
 import { SVGTransformer } from './transformer';
 
 /**
@@ -54,6 +55,10 @@ export function compile(source) {
     const symbols = new SymbolTableVisitor()
         .withAst(result.ast)
         .generate();
+    
+    // Analyse for redeclaring an identifier
+    const analysisResult = new RedeclarationAnalyser(result.ast, symbols).analyse();
+    const diagnostics = analysisResult;
 
     // 3. Transform the AST into SVG data
     const output = result.isValid() ? new SVGTransformer(result.ast).transform() : '';
@@ -61,6 +66,7 @@ export function compile(source) {
     return {
         isValid: result.isValid,
         symbols: symbols,
+        diagnostics: diagnostics,
         output: output
     }
 }
