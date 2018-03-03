@@ -3770,9 +3770,9 @@ module.exports = require("path");
  * can be found in the LICENSE.txt file in the project root.
  */
 exports.atn = __webpack_require__(39);
-exports.codepointat = __webpack_require__(30);
+exports.codepointat = __webpack_require__(31);
 exports.dfa = __webpack_require__(46);
-exports.fromcodepoint = __webpack_require__(31);
+exports.fromcodepoint = __webpack_require__(32);
 exports.tree = __webpack_require__(48);
 exports.error = __webpack_require__(49);
 exports.Token = __webpack_require__(1).Token;
@@ -4096,7 +4096,7 @@ RuleContext.prototype.accept = function(visitor) {
 
 //need to manage circular dependencies, so export now
 exports.RuleContext = RuleContext;
-var Trees = __webpack_require__(23).Trees;
+var Trees = __webpack_require__(24).Trees;
 
 
 // Print out a whole tree, not just a node, in LISP format
@@ -4149,7 +4149,7 @@ RuleContext.prototype.toString = function(ruleNames, stop) {
 //  uses simplified match() and error recovery mechanisms in the interest of speed.
 
 var Token = __webpack_require__(1).Token;
-var Recognizer = __webpack_require__(27).Recognizer;
+var Recognizer = __webpack_require__(28).Recognizer;
 var CommonTokenFactory = __webpack_require__(43).CommonTokenFactory;
 var RecognitionException  = __webpack_require__(5).RecognitionException;
 var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
@@ -4931,8 +4931,8 @@ exports.ParserRuleContext = ParserRuleContext;
 //
 
 var Token = __webpack_require__(1).Token;
-__webpack_require__(30);
 __webpack_require__(31);
+__webpack_require__(32);
 
 // Vacuum all input from a string and then treat it like a buffer.
 
@@ -5070,7 +5070,7 @@ exports.InputStream = InputStream;
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
 var antlr4 = __webpack_require__(14);
-var SequenceListener = __webpack_require__(33).SequenceListener;
+var SequenceListener = __webpack_require__(34).SequenceListener;
 var grammarFileName = "Sequence.g4";
 
 var serializedATN = ['\x03\u608B\uA72A\u8133\uB9ED\u417C\u3BE7\u7786\u5964', '\x03\x11l\x04\x02\t\x02\x04\x03\t\x03\x04\x04\t', '\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t\x07\x04', '\b\t\b\x04\t\t\t\x04\n\t\n\x04\x0B\t\x0B\x03\x02\x07', '\x02\x18\n\x02\f\x02\x0E\x02\x1B\x0B\x02\x03\x02', '\x03\x02\x03\x02\x03\x02\x03\x03\x03\x03\x03\x04', '\x03\x04\x03\x04\x05\x04&\n\x04\x03\x05\x03\x05', '\x03\x05\x03\x05\x07\x05,\n\x05\f\x05\x0E\x05/\x0B', '\x05\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x05', '\x066\n\x06\x03\x06\x03\x06\x03\x06\x05\x06;\n\x06', '\x05\x06=\n\x06\x03\x07\x03\x07\x03\x07\x03\x07', '\x03\x07\x05\x07D\n\x07\x03\x07\x03\x07\x03\x07', '\x05\x07I\n\x07\x05\x07K\n\x07\x03\b\x03\b\x03\b\x03', '\b\x03\t\x03\t\x03\t\x07\tT\n\t\f\t\x0E\tW\x0B\t\x03\t', '\x03\t\x03\n\x03\n\x03\n\x03\n\x03\n\x05\n`\n\n\x03', '\n\x03\n\x03\n\x03\n\x05\nf\n\n\x05\nh\n\n\x03\x0B\x03', '\x0B\x03\x0B\x02\x02\f\x02\x04\x06\b\n\f\x0E\x10', '\x12\x14\x02\x03\x03\x02\b\n\x02q\x02\x19\x03\x02', '\x02\x02\x04 \x03\x02\x02\x02\x06"\x03\x02\x02', '\x02\b-\x03\x02\x02\x02\n<\x03\x02\x02\x02\fJ\x03', '\x02\x02\x02\x0EL\x03\x02\x02\x02\x10P\x03\x02', '\x02\x02\x12g\x03\x02\x02\x02\x14i\x03\x02\x02', '\x02\x16\x18\x07\x0E\x02\x02\x17\x16\x03\x02\x02', '\x02\x18\x1B\x03\x02\x02\x02\x19\x17\x03\x02\x02', '\x02\x19\x1A\x03\x02\x02\x02\x1A\x1C\x03\x02\x02', '\x02\x1B\x19\x03\x02\x02\x02\x1C\x1D\x05\x04\x03', '\x02\x1D\x1E\x05\b\x05\x02\x1E\x1F\x07\x02\x02', '\x03\x1F\x03\x03\x02\x02\x02 !\x05\x06\x04\x02', '!\x05\x03\x02\x02\x02"#\x07\x03\x02\x02#%\x05\x14', '\x0B\x02$&\x07\x0E\x02\x02%$\x03\x02\x02\x02%&\x03', '\x02\x02\x02&\x07\x03\x02\x02\x02\',\x07\x0E\x02', '\x02(,\x05\n\x06\x02),\x05\f\x07\x02*,\x05\x0E\b\x02', '+\'\x03\x02\x02\x02+(\x03\x02\x02\x02+)\x03\x02', '\x02\x02+*\x03\x02\x02\x02,/\x03\x02\x02\x02-+\x03', '\x02\x02\x02-.\x03\x02\x02\x02.\t\x03\x02\x02\x02', '/-\x03\x02\x02\x0201\x07\x04\x02\x0212\x07\x0B\x02', '\x0223\x07\x06\x02\x0235\x05\x14\x0B\x0246\x07\x0E', '\x02\x0254\x03\x02\x02\x0256\x03\x02\x02\x026=\x03', '\x02\x02\x0278\x07\x04\x02\x028:\x07\x0B\x02\x02', '9;\x07\x0E\x02\x02:9\x03\x02\x02\x02:;\x03\x02\x02', '\x02;=\x03\x02\x02\x02<0\x03\x02\x02\x02<7\x03\x02', '\x02\x02=\x0B\x03\x02\x02\x02>?\x07\x05\x02\x02', '?@\x07\x0B\x02\x02@A\x07\x06\x02\x02AC\x05\x14\x0B', '\x02BD\x07\x0E\x02\x02CB\x03\x02\x02\x02CD\x03\x02', '\x02\x02DK\x03\x02\x02\x02EF\x07\x05\x02\x02FH\x07', '\x0B\x02\x02GI\x07\x0E\x02\x02HG\x03\x02\x02\x02', 'HI\x03\x02\x02\x02IK\x03\x02\x02\x02J>\x03\x02\x02', '\x02JE\x03\x02\x02\x02K\r\x03\x02\x02\x02LM\x07', '\x07\x02\x02MN\x07\x0B\x02\x02NO\x05\x10\t\x02O', '\x0F\x03\x02\x02\x02PQ\x07\x0E\x02\x02QU\x07\x10', '\x02\x02RT\x05\x12\n\x02SR\x03\x02\x02\x02TW\x03', '\x02\x02\x02US\x03\x02\x02\x02UV\x03\x02\x02\x02', 'VX\x03\x02\x02\x02WU\x03\x02\x02\x02XY\x07\x11\x02', '\x02Y\x11\x03\x02\x02\x02Z[\x07\x0B\x02\x02[\\\t', '\x02\x02\x02\\]\x07\x0B\x02\x02]_\x05\x14\x0B\x02', '^`\x07\x0E\x02\x02_^\x03\x02\x02\x02_`\x03\x02\x02', '\x02`h\x03\x02\x02\x02ab\x07\x0B\x02\x02bc\t\x02', '\x02\x02ce\x07\x0B\x02\x02df\x07\x0E\x02\x02ed\x03', '\x02\x02\x02ef\x03\x02\x02\x02fh\x03\x02\x02\x02', 'gZ\x03\x02\x02\x02ga\x03\x02\x02\x02h\x13\x03\x02', '\x02\x02ij\x07\r\x02\x02j\x15\x03\x02\x02\x02\x10', '\x19%+-5:<CHJU_eg'].join("");
@@ -6051,6 +6051,617 @@ exports.SequenceParser = SequenceParser;
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.IntSequenceListener = exports.AstVisitor = exports.MessageNode = exports.ReplyMessageType = exports.AsynchronousMessageType = exports.SynchronousMessageType = exports.SequenceNode = exports.ObjectNode = exports.ActorNode = exports.NameNode = exports.StringNode = exports.IdentifierNode = exports.RootNode = exports.Node = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //
+// Sequence - A simple sequence diagram tool
+//
+// Copyright (C) - markus.eliasson@gmail.com
+//
+
+
+var _SequenceParser = __webpack_require__(22);
+
+var _SequenceListener2 = __webpack_require__(34);
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// This is the Abstract Syntax Tree constructed as a result of parsing, and
+// while walking the parser tree. It is a more abstract version of what is
+// parsed. Closer to a domain model, but still with attributes refering to
+// the parsed text (in order to provide error details or goto defintion).
+
+var Node = exports.Node = function () {
+    function Node() {
+        _classCallCheck(this, Node);
+
+        this.children = [];
+        this.value = undefined;
+        // The first line read by the parser will be 1
+        this.line = 0;
+        // In contrast with the line value, the column is zero based
+        this.column = 0;
+    }
+
+    _createClass(Node, [{
+        key: 'addChild',
+        value: function addChild(node) {
+            this.children.push(node);
+        }
+    }, {
+        key: 'accept',
+        value: function accept(visitor) {
+            visitor.visit(this);
+            this.children.forEach(function (c) {
+                return c.accept(visitor);
+            });
+        }
+    }]);
+
+    return Node;
+}();
+
+/**
+ * Not a real node, just a base class for other Nodes (aka. abstract)
+ */
+
+
+var NodeWithIdentifier = function (_Node) {
+    _inherits(NodeWithIdentifier, _Node);
+
+    function NodeWithIdentifier() {
+        _classCallCheck(this, NodeWithIdentifier);
+
+        var _this = _possibleConstructorReturn(this, (NodeWithIdentifier.__proto__ || Object.getPrototypeOf(NodeWithIdentifier)).call(this));
+
+        _this.identifier = undefined;
+        return _this;
+    }
+
+    _createClass(NodeWithIdentifier, [{
+        key: 'getIdentifier',
+        value: function getIdentifier() {
+            return this.identifier;
+        }
+    }]);
+
+    return NodeWithIdentifier;
+}(Node);
+
+/**
+ * The root node represents the sequence document, containing the meta-
+ * data information, actors and the defined sequence flows.
+ */
+
+
+var RootNode = exports.RootNode = function (_Node2) {
+    _inherits(RootNode, _Node2);
+
+    function RootNode() {
+        _classCallCheck(this, RootNode);
+
+        return _possibleConstructorReturn(this, (RootNode.__proto__ || Object.getPrototypeOf(RootNode)).apply(this, arguments));
+    }
+
+    _createClass(RootNode, [{
+        key: 'getNameNode',
+
+        /**
+         * Get the NameNode if it exists on this root, else undefined is
+         * returned.
+         */
+        value: function getNameNode() {
+            return this.children.find(function (n) {
+                return n instanceof NameNode;
+            });
+        }
+    }, {
+        key: 'getActors',
+        value: function getActors() {
+            return this.children.filter(function (n) {
+                return n instanceof ActorNode;
+            });
+        }
+    }, {
+        key: 'getObjects',
+        value: function getObjects() {
+            return this.children.filter(function (n) {
+                return n instanceof ObjectNode;
+            });
+        }
+    }, {
+        key: 'getSequences',
+        value: function getSequences() {
+            return this.children.filter(function (n) {
+                return n instanceof SequenceNode;
+            });
+        }
+    }]);
+
+    return RootNode;
+}(Node);
+
+/**
+ * Represents an identifier of something (such as a sequence or a
+ * participant).
+ *
+ * E.g. the name of the actor is an identifier
+ *
+ *   Actor Alice
+ */
+
+
+var IdentifierNode = exports.IdentifierNode = function (_Node3) {
+    _inherits(IdentifierNode, _Node3);
+
+    function IdentifierNode() {
+        _classCallCheck(this, IdentifierNode);
+
+        return _possibleConstructorReturn(this, (IdentifierNode.__proto__ || Object.getPrototypeOf(IdentifierNode)).apply(this, arguments));
+    }
+
+    return IdentifierNode;
+}(Node);
+
+/**
+ * Represents a string value, that can either be from a single line
+ * or a multi-line string.
+ *
+ * The `value` attribute is the string with whatever quotes used in the source
+ * while the `getUnquoted` method returns the string without quotes.
+ */
+
+
+var StringNode = exports.StringNode = function (_Node4) {
+    _inherits(StringNode, _Node4);
+
+    function StringNode() {
+        _classCallCheck(this, StringNode);
+
+        return _possibleConstructorReturn(this, (StringNode.__proto__ || Object.getPrototypeOf(StringNode)).apply(this, arguments));
+    }
+
+    _createClass(StringNode, [{
+        key: 'getUnquoted',
+        value: function getUnquoted() {
+            var v = this.value;
+            if (v.startsWith('\'')) {
+                v = v.replace(/^\'\'\'((.|\n|\r)*)\'\'\'$/, '$1');
+                v = v.replace(/^\'(.+)\'$/, '$1');
+            } else if (v.startsWith('"')) {
+                v = v.replace(/^"""((.|\n|\r)*)"""$/, '$1');
+                v = v.replace(/^"(.+)"$/, '$1');
+            }
+            // Remove any leading whitespace on line within the string
+            v = v.replace(/\n(\s)+/g, '\n');
+            return v.trim();
+        }
+    }]);
+
+    return StringNode;
+}(Node);
+
+/**
+ * The declaration of the document name.
+ */
+
+
+var NameNode = exports.NameNode = function (_Node5) {
+    _inherits(NameNode, _Node5);
+
+    function NameNode() {
+        _classCallCheck(this, NameNode);
+
+        return _possibleConstructorReturn(this, (NameNode.__proto__ || Object.getPrototypeOf(NameNode)).apply(this, arguments));
+    }
+
+    _createClass(NameNode, [{
+        key: 'getString',
+        value: function getString() {
+            var nodes = this.children.filter(function (n) {
+                return n instanceof StringNode;
+            });
+            if (nodes && nodes.length > 0) return nodes[0];
+            return undefined;
+        }
+    }]);
+
+    return NameNode;
+}(Node);
+
+/**
+ * The definition of an actor, where the string at the end is the
+ * description.
+ * 
+ *   Actor Alice is "A user"
+ */
+
+
+var ActorNode = exports.ActorNode = function (_NodeWithIdentifier) {
+    _inherits(ActorNode, _NodeWithIdentifier);
+
+    function ActorNode() {
+        _classCallCheck(this, ActorNode);
+
+        return _possibleConstructorReturn(this, (ActorNode.__proto__ || Object.getPrototypeOf(ActorNode)).apply(this, arguments));
+    }
+
+    _createClass(ActorNode, [{
+        key: 'getDescription',
+        value: function getDescription() {
+            var nodes = this.children.filter(function (n) {
+                return n instanceof StringNode;
+            });
+            if (nodes && nodes.length > 0) return nodes[0];
+            return undefined;
+        }
+    }]);
+
+    return ActorNode;
+}(NodeWithIdentifier);
+
+/**
+ * The definition of an object, where the string at the end is the
+ * description.
+ * 
+ *   Object Bob is "A fake system"
+ */
+
+
+var ObjectNode = exports.ObjectNode = function (_NodeWithIdentifier2) {
+    _inherits(ObjectNode, _NodeWithIdentifier2);
+
+    function ObjectNode() {
+        _classCallCheck(this, ObjectNode);
+
+        return _possibleConstructorReturn(this, (ObjectNode.__proto__ || Object.getPrototypeOf(ObjectNode)).apply(this, arguments));
+    }
+
+    _createClass(ObjectNode, [{
+        key: 'getDescription',
+        value: function getDescription() {
+            var nodes = this.children.filter(function (n) {
+                return n instanceof StringNode;
+            });
+            if (nodes && nodes.length > 0) return nodes[0];
+            return undefined;
+        }
+    }]);
+
+    return ObjectNode;
+}(NodeWithIdentifier);
+
+/**
+ * A Sequence of messages between one or more participants. This is what makes
+ * a sequence diagram. Looks like this in the DSL:
+ * 
+ *      Sequence Hello
+ *          Alice tell Bob "Sudo, make me a sandwich"
+ *          Alice tell Charlie "Hello"
+ */
+
+
+var SequenceNode = exports.SequenceNode = function (_NodeWithIdentifier3) {
+    _inherits(SequenceNode, _NodeWithIdentifier3);
+
+    function SequenceNode() {
+        _classCallCheck(this, SequenceNode);
+
+        return _possibleConstructorReturn(this, (SequenceNode.__proto__ || Object.getPrototypeOf(SequenceNode)).apply(this, arguments));
+    }
+
+    _createClass(SequenceNode, [{
+        key: 'getMessages',
+        value: function getMessages() {
+            return this.children.filter(function (n) {
+                return n instanceof MessageNode;
+            });
+        }
+    }]);
+
+    return SequenceNode;
+}(NodeWithIdentifier);
+
+// Defines the different types of messages a `MessageNode` can
+// represent.
+
+
+var SynchronousMessageType = exports.SynchronousMessageType = 'synchronous';
+var AsynchronousMessageType = exports.AsynchronousMessageType = 'asynchronous';
+var ReplyMessageType = exports.ReplyMessageType = 'reply';
+
+/**
+ * The message that is exchanged by two participants, both of
+ * which are refered to by their identifiers (names)
+ * 
+ * Looks like this in the DSL:
+ * 
+ *      Alice tell Bob "Sudo, make me a sandwich"
+ * 
+ * Three types of messages exists:
+ * 
+ * - synchronous (default)
+ * - asynchronous
+ * - reply
+ */
+
+var MessageNode = exports.MessageNode = function (_Node6) {
+    _inherits(MessageNode, _Node6);
+
+    function MessageNode() {
+        _classCallCheck(this, MessageNode);
+
+        var _this9 = _possibleConstructorReturn(this, (MessageNode.__proto__ || Object.getPrototypeOf(MessageNode)).call(this));
+
+        _this9.messageType = SynchronousMessageType;
+        return _this9;
+    }
+
+    _createClass(MessageNode, [{
+        key: 'getMessageType',
+        value: function getMessageType() {
+            return this.messageType;
+        }
+    }, {
+        key: 'getSourceIdentifier',
+        value: function getSourceIdentifier() {
+            return this.source;
+        }
+    }, {
+        key: 'getDestinationIdentifier',
+        value: function getDestinationIdentifier() {
+            return this.destination;
+        }
+    }, {
+        key: 'getString',
+        value: function getString() {
+            var nodes = this.children.filter(function (n) {
+                return n instanceof StringNode;
+            });
+            if (nodes && nodes.length > 0) return nodes[0];
+            return undefined;
+        }
+    }]);
+
+    return MessageNode;
+}(Node);
+
+/**
+ * A visitor that is used to traverse the generated Sequence AST. This visitor
+ * should be used prior to use any ANTLR visitor, since the ANTÖR visitor is a
+ * visitor for the Parser Tree, not the AST.
+ * 
+ * The visitor is used by calling `node.accept(visitor)` for the AST branch
+ * that should be visited.
+ */
+
+
+var AstVisitor = exports.AstVisitor = function () {
+    function AstVisitor() {
+        _classCallCheck(this, AstVisitor);
+    }
+
+    _createClass(AstVisitor, [{
+        key: 'visit',
+        value: function visit(node) {}
+    }]);
+
+    return AstVisitor;
+}();
+
+/**
+ * The Sequence listener is a parser listener that gets called by the ANTLR
+ * parser for the entering and exiting of each parser rule (not the lexer
+ * rules).
+ * 
+ * This is used to build an AST representation of the sequence flow, using
+ * the implementing Node classes.
+ * 
+ * The AST is later used for semantic analysis and finally for the
+ * transformation to an image representation of the sequence flow.
+ */
+
+
+var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListener) {
+    _inherits(IntSequenceListener, _SequenceListener);
+
+    function IntSequenceListener() {
+        _classCallCheck(this, IntSequenceListener);
+
+        // This stack contains the parent hiearchy of the Node currently
+        // being parsed. I.e. as new ndes are parsed they gets pushed and
+        // later poped from this stack.
+        var _this10 = _possibleConstructorReturn(this, (IntSequenceListener.__proto__ || Object.getPrototypeOf(IntSequenceListener)).call(this));
+
+        _this10.stack = [];
+        return _this10;
+    }
+
+    _createClass(IntSequenceListener, [{
+        key: 'pushNode',
+        value: function pushNode(node) {
+            this.stack.push(node);
+        }
+    }, {
+        key: 'popNode',
+        value: function popNode() {
+            return this.stack.pop();
+        }
+    }, {
+        key: 'addChild',
+        value: function addChild(node) {
+            this.stack[this.stack.length - 1].addChild(node);
+        }
+    }, {
+        key: 'parent',
+        value: function parent() {
+            if (this.stack.length > 0) {
+                return this.stack[this.stack.length - 1];
+            } else {
+                return undefined;
+            }
+        }
+
+        /**
+         * Creates an IdentifierNode from a parser context child of the
+         * given position (index)
+         */
+
+    }, {
+        key: 'toIdentifier',
+        value: function toIdentifier(index, ctx) {
+            var node = new IdentifierNode();
+            node.line = ctx.children[index].symbol.line;
+            node.column = ctx.children[index].symbol.column;
+            node.value = ctx.children[index].symbol.text;
+            return node;
+        }
+
+        /**
+         * Adds a new node of type T with the common attributes setup
+         * to the current stack of nodes
+         */
+
+    }, {
+        key: 'enter',
+        value: function enter(T, ctx) {
+            var n = new T();
+            n.line = ctx.start.line;
+            n.column = ctx.start.column;
+            n.value = ctx.start.text;
+            this.pushNode(n);
+            return n;
+        }
+    }, {
+        key: 'getRoot',
+        value: function getRoot() {
+            return this.root;
+        }
+    }, {
+        key: 'enterRoot',
+        value: function enterRoot(ctx) {
+            this.root = this.enter(RootNode, ctx);
+        }
+    }, {
+        key: 'enterDocumentName',
+        value: function enterDocumentName(ctx) {
+            this.enter(NameNode, ctx);
+        }
+    }, {
+        key: 'exitDocumentName',
+        value: function exitDocumentName(ctx) {
+            var me = this.popNode();
+            this.addChild(me);
+        }
+    }, {
+        key: 'enterActorDefinition',
+        value: function enterActorDefinition(ctx) {
+            this.enter(ActorNode, ctx);
+        }
+    }, {
+        key: 'exitActorDefinition',
+        value: function exitActorDefinition(ctx) {
+            var me = this.popNode();
+
+            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
+                me.identifier = this.toIdentifier(1, ctx);
+            }
+            this.addChild(me);
+        }
+    }, {
+        key: 'enterObjectDefinition',
+        value: function enterObjectDefinition(ctx) {
+            this.enter(ObjectNode, ctx);
+        }
+    }, {
+        key: 'exitObjectDefinition',
+        value: function exitObjectDefinition(ctx) {
+            var me = this.popNode();
+
+            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
+                me.identifier = this.toIdentifier(1, ctx);
+            }
+            this.addChild(me);
+        }
+    }, {
+        key: 'enterSequenceDefinition',
+        value: function enterSequenceDefinition(ctx) {
+            this.enter(SequenceNode, ctx);
+        }
+    }, {
+        key: 'exitSequenceDefinition',
+        value: function exitSequenceDefinition(ctx) {
+            var me = this.popNode();
+            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
+                me.identifier = this.toIdentifier(1, ctx);
+            }
+            this.addChild(me);
+        }
+    }, {
+        key: 'enterSequenceMessage',
+        value: function enterSequenceMessage(ctx) {
+            this.enter(MessageNode, ctx);
+        }
+    }, {
+        key: 'exitSequenceMessage',
+        value: function exitSequenceMessage(ctx) {
+            var me = this.popNode();
+
+            if (ctx.children.length > 0 && ctx.children[0].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
+                me.source = this.toIdentifier(0, ctx);
+            }
+
+            if (ctx.children.length > 1) {
+                var type = ctx.children[1].symbol.type || _SequenceParser.SequenceParser.TELL;
+                switch (type) {
+                    case _SequenceParser.SequenceParser.ASK:
+                        me.messageType = AsynchronousMessageType;
+                        break;
+                    case _SequenceParser.SequenceParser.REPLIES:
+                        me.messageType = ReplyMessageType;
+                        break;
+                    case _SequenceParser.SequenceParser.TELL:
+                    default:
+                        me.messageType = SynchronousMessageType;
+                        break;
+                }
+            }
+
+            if (ctx.children.length > 2 && ctx.children[2].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
+                me.destination = this.toIdentifier(2, ctx);
+            }
+            this.addChild(me);
+        }
+    }, {
+        key: 'enterString',
+        value: function enterString(ctx) {
+            this.enter(StringNode, ctx);
+        }
+    }, {
+        key: 'exitString',
+        value: function exitString(ctx) {
+            var me = this.popNode();
+            this.addChild(me);
+        }
+    }]);
+
+    return IntSequenceListener;
+}(_SequenceListener2.SequenceListener);
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
  * Use of this file is governed by the BSD 3-clause license that
  * can be found in the LICENSE.txt file in the project root.
@@ -6193,7 +6804,7 @@ Trees.descendants = function(t) {
 exports.Trees = Trees;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -6234,8 +6845,8 @@ var PredicateTransition = Transitions.PredicateTransition;
 var PrecedencePredicateTransition = Transitions.PrecedencePredicateTransition;
 var IntervalSet = __webpack_require__(2).IntervalSet;
 var Interval = __webpack_require__(2).Interval;
-var ATNDeserializationOptions = __webpack_require__(25).ATNDeserializationOptions;
-var LexerActions = __webpack_require__(26);
+var ATNDeserializationOptions = __webpack_require__(26).ATNDeserializationOptions;
+var LexerActions = __webpack_require__(27);
 var LexerActionType = LexerActions.LexerActionType;
 var LexerSkipAction = LexerActions.LexerSkipAction;
 var LexerChannelAction = LexerActions.LexerChannelAction;
@@ -6876,7 +7487,7 @@ ATNDeserializer.prototype.lexerActionFactory = function(type, data1, data2) {
 exports.ATNDeserializer = ATNDeserializer;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -6907,7 +7518,7 @@ exports.ATNDeserializationOptions = ATNDeserializationOptions;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports) {
 
 //
@@ -7278,7 +7889,7 @@ exports.LexerPopModeAction = LexerPopModeAction;
 exports.LexerModeAction = LexerModeAction;
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -7431,7 +8042,7 @@ exports.Recognizer = Recognizer;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -7488,7 +8099,7 @@ exports.ATNSimulator = ATNSimulator;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -8053,7 +8664,7 @@ exports.PredictionMode = PredictionMode;
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports) {
 
 /*! https://mths.be/codepointat v0.2.0 by @mathias */
@@ -8113,7 +8724,7 @@ if (!String.prototype.codePointAt) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports) {
 
 /*! https://mths.be/fromcodepoint v0.2.1 by @mathias */
@@ -8181,7 +8792,7 @@ if (!String.fromCodePoint) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -8943,7 +9554,7 @@ exports.DefaultErrorStrategy = DefaultErrorStrategy;
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9025,617 +9636,6 @@ SequenceListener.prototype.exitString = function (ctx) {};
 exports.SequenceListener = SequenceListener;
 
 /***/ }),
-/* 34 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.IntSequenceListener = exports.AstVisitor = exports.MessageNode = exports.ReplyMessageType = exports.AsynchronousMessageType = exports.SynchronousMessageType = exports.SequenceNode = exports.ObjectNode = exports.ActorNode = exports.NameNode = exports.StringNode = exports.IdentifierNode = exports.RootNode = exports.Node = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //
-// Sequence - A simple sequence diagram tool
-//
-// Copyright (C) - markus.eliasson@gmail.com
-//
-
-
-var _SequenceParser = __webpack_require__(22);
-
-var _SequenceListener2 = __webpack_require__(33);
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-// This is the Abstract Syntax Tree constructed as a result of parsing, and
-// while walking the parser tree. It is a more abstract version of what is
-// parsed. Closer to a domain model, but still with attributes refering to
-// the parsed text (in order to provide error details or goto defintion).
-
-var Node = exports.Node = function () {
-    function Node() {
-        _classCallCheck(this, Node);
-
-        this.children = [];
-        this.value = undefined;
-        // The first line read by the parser will be 1
-        this.line = 0;
-        // In contrast with the line value, the column is zero based
-        this.column = 0;
-    }
-
-    _createClass(Node, [{
-        key: 'addChild',
-        value: function addChild(node) {
-            this.children.push(node);
-        }
-    }, {
-        key: 'accept',
-        value: function accept(visitor) {
-            visitor.visit(this);
-            this.children.forEach(function (c) {
-                return c.accept(visitor);
-            });
-        }
-    }]);
-
-    return Node;
-}();
-
-/**
- * Not a real node, just a base class for other Nodes (aka. abstract)
- */
-
-
-var NodeWithIdentifier = function (_Node) {
-    _inherits(NodeWithIdentifier, _Node);
-
-    function NodeWithIdentifier() {
-        _classCallCheck(this, NodeWithIdentifier);
-
-        var _this = _possibleConstructorReturn(this, (NodeWithIdentifier.__proto__ || Object.getPrototypeOf(NodeWithIdentifier)).call(this));
-
-        _this.identifier = undefined;
-        return _this;
-    }
-
-    _createClass(NodeWithIdentifier, [{
-        key: 'getIdentifier',
-        value: function getIdentifier() {
-            return this.identifier;
-        }
-    }]);
-
-    return NodeWithIdentifier;
-}(Node);
-
-/**
- * The root node represents the sequence document, containing the meta-
- * data information, actors and the defined sequence flows.
- */
-
-
-var RootNode = exports.RootNode = function (_Node2) {
-    _inherits(RootNode, _Node2);
-
-    function RootNode() {
-        _classCallCheck(this, RootNode);
-
-        return _possibleConstructorReturn(this, (RootNode.__proto__ || Object.getPrototypeOf(RootNode)).apply(this, arguments));
-    }
-
-    _createClass(RootNode, [{
-        key: 'getNameNode',
-
-        /**
-         * Get the NameNode if it exists on this root, else undefined is
-         * returned.
-         */
-        value: function getNameNode() {
-            return this.children.find(function (n) {
-                return n instanceof NameNode;
-            });
-        }
-    }, {
-        key: 'getActors',
-        value: function getActors() {
-            return this.children.filter(function (n) {
-                return n instanceof ActorNode;
-            });
-        }
-    }, {
-        key: 'getObjects',
-        value: function getObjects() {
-            return this.children.filter(function (n) {
-                return n instanceof ObjectNode;
-            });
-        }
-    }, {
-        key: 'getSequences',
-        value: function getSequences() {
-            return this.children.filter(function (n) {
-                return n instanceof SequenceNode;
-            });
-        }
-    }]);
-
-    return RootNode;
-}(Node);
-
-/**
- * Represents an identifier of something (such as a sequence or a
- * participant).
- *
- * E.g. the name of the actor is an identifier
- *
- *   Actor Alice
- */
-
-
-var IdentifierNode = exports.IdentifierNode = function (_Node3) {
-    _inherits(IdentifierNode, _Node3);
-
-    function IdentifierNode() {
-        _classCallCheck(this, IdentifierNode);
-
-        return _possibleConstructorReturn(this, (IdentifierNode.__proto__ || Object.getPrototypeOf(IdentifierNode)).apply(this, arguments));
-    }
-
-    return IdentifierNode;
-}(Node);
-
-/**
- * Represents a string value, that can either be from a single line
- * or a multi-line string.
- *
- * The `value` attribute is the string with whatever quotes used in the source
- * while the `getUnquoted` method returns the string without quotes.
- */
-
-
-var StringNode = exports.StringNode = function (_Node4) {
-    _inherits(StringNode, _Node4);
-
-    function StringNode() {
-        _classCallCheck(this, StringNode);
-
-        return _possibleConstructorReturn(this, (StringNode.__proto__ || Object.getPrototypeOf(StringNode)).apply(this, arguments));
-    }
-
-    _createClass(StringNode, [{
-        key: 'getUnquoted',
-        value: function getUnquoted() {
-            var v = this.value;
-            if (v.startsWith('\'')) {
-                v = v.replace(/^\'\'\'((.|\n|\r)*)\'\'\'$/, '$1');
-                v = v.replace(/^\'(.+)\'$/, '$1');
-            } else if (v.startsWith('"')) {
-                v = v.replace(/^"""((.|\n|\r)*)"""$/, '$1');
-                v = v.replace(/^"(.+)"$/, '$1');
-            }
-            // Remove any leading whitespace on line within the string
-            v = v.replace(/\n(\s)+/g, '\n');
-            return v.trim();
-        }
-    }]);
-
-    return StringNode;
-}(Node);
-
-/**
- * The declaration of the document name.
- */
-
-
-var NameNode = exports.NameNode = function (_Node5) {
-    _inherits(NameNode, _Node5);
-
-    function NameNode() {
-        _classCallCheck(this, NameNode);
-
-        return _possibleConstructorReturn(this, (NameNode.__proto__ || Object.getPrototypeOf(NameNode)).apply(this, arguments));
-    }
-
-    _createClass(NameNode, [{
-        key: 'getString',
-        value: function getString() {
-            var nodes = this.children.filter(function (n) {
-                return n instanceof StringNode;
-            });
-            if (nodes && nodes.length > 0) return nodes[0];
-            return undefined;
-        }
-    }]);
-
-    return NameNode;
-}(Node);
-
-/**
- * The definition of an actor, where the string at the end is the
- * description.
- * 
- *   Actor Alice is "A user"
- */
-
-
-var ActorNode = exports.ActorNode = function (_NodeWithIdentifier) {
-    _inherits(ActorNode, _NodeWithIdentifier);
-
-    function ActorNode() {
-        _classCallCheck(this, ActorNode);
-
-        return _possibleConstructorReturn(this, (ActorNode.__proto__ || Object.getPrototypeOf(ActorNode)).apply(this, arguments));
-    }
-
-    _createClass(ActorNode, [{
-        key: 'getDescription',
-        value: function getDescription() {
-            var nodes = this.children.filter(function (n) {
-                return n instanceof StringNode;
-            });
-            if (nodes && nodes.length > 0) return nodes[0];
-            return undefined;
-        }
-    }]);
-
-    return ActorNode;
-}(NodeWithIdentifier);
-
-/**
- * The definition of an object, where the string at the end is the
- * description.
- * 
- *   Object Bob is "A fake system"
- */
-
-
-var ObjectNode = exports.ObjectNode = function (_NodeWithIdentifier2) {
-    _inherits(ObjectNode, _NodeWithIdentifier2);
-
-    function ObjectNode() {
-        _classCallCheck(this, ObjectNode);
-
-        return _possibleConstructorReturn(this, (ObjectNode.__proto__ || Object.getPrototypeOf(ObjectNode)).apply(this, arguments));
-    }
-
-    _createClass(ObjectNode, [{
-        key: 'getDescription',
-        value: function getDescription() {
-            var nodes = this.children.filter(function (n) {
-                return n instanceof StringNode;
-            });
-            if (nodes && nodes.length > 0) return nodes[0];
-            return undefined;
-        }
-    }]);
-
-    return ObjectNode;
-}(NodeWithIdentifier);
-
-/**
- * A Sequence of messages between one or more participants. This is what makes
- * a sequence diagram. Looks like this in the DSL:
- * 
- *      Sequence Hello
- *          Alice tell Bob "Sudo, make me a sandwich"
- *          Alice tell Charlie "Hello"
- */
-
-
-var SequenceNode = exports.SequenceNode = function (_NodeWithIdentifier3) {
-    _inherits(SequenceNode, _NodeWithIdentifier3);
-
-    function SequenceNode() {
-        _classCallCheck(this, SequenceNode);
-
-        return _possibleConstructorReturn(this, (SequenceNode.__proto__ || Object.getPrototypeOf(SequenceNode)).apply(this, arguments));
-    }
-
-    _createClass(SequenceNode, [{
-        key: 'getMessages',
-        value: function getMessages() {
-            return this.children.filter(function (n) {
-                return n instanceof MessageNode;
-            });
-        }
-    }]);
-
-    return SequenceNode;
-}(NodeWithIdentifier);
-
-// Defines the different types of messages a `MessageNode` can
-// represent.
-
-
-var SynchronousMessageType = exports.SynchronousMessageType = 'synchronous';
-var AsynchronousMessageType = exports.AsynchronousMessageType = 'asynchronous';
-var ReplyMessageType = exports.ReplyMessageType = 'reply';
-
-/**
- * The message that is exchanged by two participants, both of
- * which are refered to by their identifiers (names)
- * 
- * Looks like this in the DSL:
- * 
- *      Alice tell Bob "Sudo, make me a sandwich"
- * 
- * Three types of messages exists:
- * 
- * - synchronous (default)
- * - asynchronous
- * - reply
- */
-
-var MessageNode = exports.MessageNode = function (_Node6) {
-    _inherits(MessageNode, _Node6);
-
-    function MessageNode() {
-        _classCallCheck(this, MessageNode);
-
-        var _this9 = _possibleConstructorReturn(this, (MessageNode.__proto__ || Object.getPrototypeOf(MessageNode)).call(this));
-
-        _this9.messageType = SynchronousMessageType;
-        return _this9;
-    }
-
-    _createClass(MessageNode, [{
-        key: 'getMessageType',
-        value: function getMessageType() {
-            return this.messageType;
-        }
-    }, {
-        key: 'getSourceIdentifier',
-        value: function getSourceIdentifier() {
-            return this.source;
-        }
-    }, {
-        key: 'getDestinationIdentifier',
-        value: function getDestinationIdentifier() {
-            return this.destination;
-        }
-    }, {
-        key: 'getString',
-        value: function getString() {
-            var nodes = this.children.filter(function (n) {
-                return n instanceof StringNode;
-            });
-            if (nodes && nodes.length > 0) return nodes[0];
-            return undefined;
-        }
-    }]);
-
-    return MessageNode;
-}(Node);
-
-/**
- * A visitor that is used to traverse the generated Sequence AST. This visitor
- * should be used prior to use any ANTLR visitor, since the ANTÖR visitor is a
- * visitor for the Parser Tree, not the AST.
- * 
- * The visitor is used by calling `node.accept(visitor)` for the AST branch
- * that should be visited.
- */
-
-
-var AstVisitor = exports.AstVisitor = function () {
-    function AstVisitor() {
-        _classCallCheck(this, AstVisitor);
-    }
-
-    _createClass(AstVisitor, [{
-        key: 'visit',
-        value: function visit(node) {}
-    }]);
-
-    return AstVisitor;
-}();
-
-/**
- * The Sequence listener is a parser listener that gets called by the ANTLR
- * parser for the entering and exiting of each parser rule (not the lexer
- * rules).
- * 
- * This is used to build an AST representation of the sequence flow, using
- * the implementing Node classes.
- * 
- * The AST is later used for semantic analysis and finally for the
- * transformation to an image representation of the sequence flow.
- */
-
-
-var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListener) {
-    _inherits(IntSequenceListener, _SequenceListener);
-
-    function IntSequenceListener() {
-        _classCallCheck(this, IntSequenceListener);
-
-        // This stack contains the parent hiearchy of the Node currently
-        // being parsed. I.e. as new ndes are parsed they gets pushed and
-        // later poped from this stack.
-        var _this10 = _possibleConstructorReturn(this, (IntSequenceListener.__proto__ || Object.getPrototypeOf(IntSequenceListener)).call(this));
-
-        _this10.stack = [];
-        return _this10;
-    }
-
-    _createClass(IntSequenceListener, [{
-        key: 'pushNode',
-        value: function pushNode(node) {
-            this.stack.push(node);
-        }
-    }, {
-        key: 'popNode',
-        value: function popNode() {
-            return this.stack.pop();
-        }
-    }, {
-        key: 'addChild',
-        value: function addChild(node) {
-            this.stack[this.stack.length - 1].addChild(node);
-        }
-    }, {
-        key: 'parent',
-        value: function parent() {
-            if (this.stack.length > 0) {
-                return this.stack[this.stack.length - 1];
-            } else {
-                return undefined;
-            }
-        }
-
-        /**
-         * Creates an IdentifierNode from a parser context child of the
-         * given position (index)
-         */
-
-    }, {
-        key: 'toIdentifier',
-        value: function toIdentifier(index, ctx) {
-            var node = new IdentifierNode();
-            node.line = ctx.children[index].symbol.line;
-            node.column = ctx.children[index].symbol.column;
-            node.value = ctx.children[index].symbol.text;
-            return node;
-        }
-
-        /**
-         * Adds a new node of type T with the common attributes setup
-         * to the current stack of nodes
-         */
-
-    }, {
-        key: 'enter',
-        value: function enter(T, ctx) {
-            var n = new T();
-            n.line = ctx.start.line;
-            n.column = ctx.start.column;
-            n.value = ctx.start.text;
-            this.pushNode(n);
-            return n;
-        }
-    }, {
-        key: 'getRoot',
-        value: function getRoot() {
-            return this.root;
-        }
-    }, {
-        key: 'enterRoot',
-        value: function enterRoot(ctx) {
-            this.root = this.enter(RootNode, ctx);
-        }
-    }, {
-        key: 'enterDocumentName',
-        value: function enterDocumentName(ctx) {
-            this.enter(NameNode, ctx);
-        }
-    }, {
-        key: 'exitDocumentName',
-        value: function exitDocumentName(ctx) {
-            var me = this.popNode();
-            this.addChild(me);
-        }
-    }, {
-        key: 'enterActorDefinition',
-        value: function enterActorDefinition(ctx) {
-            this.enter(ActorNode, ctx);
-        }
-    }, {
-        key: 'exitActorDefinition',
-        value: function exitActorDefinition(ctx) {
-            var me = this.popNode();
-
-            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
-                me.identifier = this.toIdentifier(1, ctx);
-            }
-            this.addChild(me);
-        }
-    }, {
-        key: 'enterObjectDefinition',
-        value: function enterObjectDefinition(ctx) {
-            this.enter(ObjectNode, ctx);
-        }
-    }, {
-        key: 'exitObjectDefinition',
-        value: function exitObjectDefinition(ctx) {
-            var me = this.popNode();
-
-            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
-                me.identifier = this.toIdentifier(1, ctx);
-            }
-            this.addChild(me);
-        }
-    }, {
-        key: 'enterSequenceDefinition',
-        value: function enterSequenceDefinition(ctx) {
-            this.enter(SequenceNode, ctx);
-        }
-    }, {
-        key: 'exitSequenceDefinition',
-        value: function exitSequenceDefinition(ctx) {
-            var me = this.popNode();
-            if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
-                me.identifier = this.toIdentifier(1, ctx);
-            }
-            this.addChild(me);
-        }
-    }, {
-        key: 'enterSequenceMessage',
-        value: function enterSequenceMessage(ctx) {
-            this.enter(MessageNode, ctx);
-        }
-    }, {
-        key: 'exitSequenceMessage',
-        value: function exitSequenceMessage(ctx) {
-            var me = this.popNode();
-
-            if (ctx.children.length > 0 && ctx.children[0].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
-                me.source = this.toIdentifier(0, ctx);
-            }
-
-            if (ctx.children.length > 1) {
-                var type = ctx.children[1].symbol.type || _SequenceParser.SequenceParser.TELL;
-                switch (type) {
-                    case _SequenceParser.SequenceParser.ASK:
-                        me.messageType = AsynchronousMessageType;
-                        break;
-                    case _SequenceParser.SequenceParser.REPLIES:
-                        me.messageType = ReplyMessageType;
-                        break;
-                    case _SequenceParser.SequenceParser.TELL:
-                    default:
-                        me.messageType = SynchronousMessageType;
-                        break;
-                }
-            }
-
-            if (ctx.children.length > 2 && ctx.children[2].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
-                me.destination = this.toIdentifier(2, ctx);
-            }
-            this.addChild(me);
-        }
-    }, {
-        key: 'enterString',
-        value: function enterString(ctx) {
-            this.enter(StringNode, ctx);
-        }
-    }, {
-        key: 'exitString',
-        value: function exitString(ctx) {
-            var me = this.popNode();
-            this.addChild(me);
-        }
-    }]);
-
-    return IntSequenceListener;
-}(_SequenceListener2.SequenceListener);
-
-/***/ }),
 /* 35 */
 /***/ (function(module, exports) {
 
@@ -9670,9 +9670,9 @@ module.exports = function(module) {
 "use strict";
 
 
-var os = __webpack_require__(65);
+var os = __webpack_require__(66);
 var fs = __webpack_require__(6);
-var parse = __webpack_require__(66);
+var parse = __webpack_require__(67);
 
 function homedir() {
   // The following logic is from looking at logic used in the different platform
@@ -9812,11 +9812,13 @@ var _SequenceLexer = __webpack_require__(56);
 
 var _SequenceParser = __webpack_require__(22);
 
-var _ast = __webpack_require__(34);
+var _ast = __webpack_require__(23);
 
 var _symbols = __webpack_require__(57);
 
-var _transformer = __webpack_require__(58);
+var _analysis = __webpack_require__(58);
+
+var _transformer = __webpack_require__(59);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -9827,12 +9829,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  * @param {*string} source The squence input
  * @return {object} The parser result
  */
-//
-// Sequence - A simple sequence diagram tool
-//
-// Copyright (C) - markus.eliasson@gmail.com
-//
-
 function parse(source) {
     var chars = new antlr4.InputStream(source);
     var lexer = new _SequenceLexer.SequenceLexer(chars);
@@ -9860,7 +9856,11 @@ function parse(source) {
         parserResult: parserResult,
         ast: listener.getRoot()
     };
-}
+} //
+// Sequence - A simple sequence diagram tool
+//
+// Copyright (C) - markus.eliasson@gmail.com
+//
 
 function compile(source) {
     // 1. Parse the source file to produce an AST
@@ -9870,12 +9870,17 @@ function compile(source) {
     // Generate a symbol table that can be used in later analysis
     var symbols = new _symbols.SymbolTableVisitor().withAst(result.ast).generate();
 
+    // Analyse for redeclaring an identifier
+    var analysisResult = new _analysis.RedeclarationAnalyser(result.ast, symbols).analyse();
+    var diagnostics = analysisResult;
+
     // 3. Transform the AST into SVG data
     var output = result.isValid() ? new _transformer.SVGTransformer(result.ast).transform() : '';
 
     return {
         isValid: result.isValid,
         symbols: symbols,
+        diagnostics: diagnostics,
         output: output
     };
 }
@@ -9890,10 +9895,10 @@ function compile(source) {
  */
 
 exports.ATN = __webpack_require__(8).ATN;
-exports.ATNDeserializer = __webpack_require__(24).ATNDeserializer;
+exports.ATNDeserializer = __webpack_require__(25).ATNDeserializer;
 exports.LexerATNSimulator = __webpack_require__(42).LexerATNSimulator;
 exports.ParserATNSimulator = __webpack_require__(45).ParserATNSimulator;
-exports.PredictionMode = __webpack_require__(29).PredictionMode;
+exports.PredictionMode = __webpack_require__(30).PredictionMode;
 
 
 /***/ }),
@@ -10154,7 +10159,7 @@ exports.ATNType = ATNType;
 var Token = __webpack_require__(1).Token;
 var Lexer = __webpack_require__(17).Lexer;
 var ATN = __webpack_require__(8).ATN;
-var ATNSimulator = __webpack_require__(28).ATNSimulator;
+var ATNSimulator = __webpack_require__(29).ATNSimulator;
 var DFAState = __webpack_require__(12).DFAState;
 var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
 var OrderedATNConfigSet = __webpack_require__(10).OrderedATNConfigSet;
@@ -10860,7 +10865,7 @@ exports.CommonTokenFactory = CommonTokenFactory;
 // not cause bloating of the {@link DFA} created for the lexer.</p>
 
 var hashStuff = __webpack_require__(0).hashStuff;
-var LexerIndexedCustomAction = __webpack_require__(26).LexerIndexedCustomAction;
+var LexerIndexedCustomAction = __webpack_require__(27).LexerIndexedCustomAction;
 
 function LexerActionExecutor(lexerActions) {
 	this.lexerActions = lexerActions === null ? [] : lexerActions;
@@ -11263,8 +11268,8 @@ var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
 var Token = __webpack_require__(1).Token;
 var DFAState = __webpack_require__(12).DFAState;
 var PredPrediction = __webpack_require__(12).PredPrediction;
-var ATNSimulator = __webpack_require__(28).ATNSimulator;
-var PredictionMode = __webpack_require__(29).PredictionMode;
+var ATNSimulator = __webpack_require__(29).ATNSimulator;
+var PredictionMode = __webpack_require__(30).PredictionMode;
 var RuleContext = __webpack_require__(16).RuleContext;
 var ParserRuleContext = __webpack_require__(20).ParserRuleContext;
 var SemanticContext = __webpack_require__(11).SemanticContext;
@@ -12930,7 +12935,7 @@ exports.DFA = DFA;
  */
 
 var Tree = __webpack_require__(4);
-exports.Trees = __webpack_require__(23).Trees;
+exports.Trees = __webpack_require__(24).Trees;
 exports.RuleNode = Tree.RuleNode;
 exports.ParseTreeListener = Tree.ParseTreeListener;
 exports.ParseTreeVisitor = Tree.ParseTreeVisitor;
@@ -12952,7 +12957,7 @@ exports.LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltExcep
 exports.InputMismatchException = __webpack_require__(5).InputMismatchException;
 exports.FailedPredicateException = __webpack_require__(5).FailedPredicateException;
 exports.DiagnosticErrorListener = __webpack_require__(50).DiagnosticErrorListener;
-exports.BailErrorStrategy = __webpack_require__(32).BailErrorStrategy;
+exports.BailErrorStrategy = __webpack_require__(33).BailErrorStrategy;
 exports.ErrorListener = __webpack_require__(18).ErrorListener;
 
 
@@ -13682,10 +13687,10 @@ exports.BufferedTokenStream = BufferedTokenStream;
 
 var Token = __webpack_require__(1).Token;
 var ParseTreeListener = __webpack_require__(4).ParseTreeListener;
-var Recognizer = __webpack_require__(27).Recognizer;
-var DefaultErrorStrategy = __webpack_require__(32).DefaultErrorStrategy;
-var ATNDeserializer = __webpack_require__(24).ATNDeserializer;
-var ATNDeserializationOptions = __webpack_require__(25).ATNDeserializationOptions;
+var Recognizer = __webpack_require__(28).Recognizer;
+var DefaultErrorStrategy = __webpack_require__(33).DefaultErrorStrategy;
+var ATNDeserializer = __webpack_require__(25).ATNDeserializer;
+var ATNDeserializationOptions = __webpack_require__(26).ATNDeserializationOptions;
 var TerminalNode = __webpack_require__(4).TerminalNode;
 var ErrorNode = __webpack_require__(4).ErrorNode;
 
@@ -14576,7 +14581,7 @@ exports.SymbolTableVisitor = exports.SymbolTable = exports.SequenceDeclaration =
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _ast = __webpack_require__(34);
+var _ast = __webpack_require__(23);
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
@@ -14663,6 +14668,11 @@ var SymbolTable = exports.SymbolTable = function () {
             return true;
         }
     }, {
+        key: "contains",
+        value: function contains(name) {
+            return this.table.has(name);
+        }
+    }, {
         key: "resolve",
         value: function resolve(name) {
             return this.table.get(name);
@@ -14731,6 +14741,106 @@ var SymbolTableVisitor = exports.SymbolTableVisitor = function (_AstVisitor) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.RedeclarationAnalyser = exports.Diagnostic = exports.ErrorCodes = exports.DiagnosticError = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ast = __webpack_require__(23);
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } //
+// Sequence - A simple sequence diagram tool
+//
+// Copyright (C) - markus.eliasson@gmail.com
+//
+
+var DiagnosticError = exports.DiagnosticError = 1;
+
+var ErrorCodes = exports.ErrorCodes = {
+    RedeclareIdentifier: 'SEQ-001'
+};
+
+var Diagnostic = exports.Diagnostic = function Diagnostic(type, code) {
+    _classCallCheck(this, Diagnostic);
+
+    this.type = type;
+    this.code = code;
+    this.line = 0;
+    this.column = 0;
+    this.offendingSymbol = undefined;
+};
+
+/**
+ * Analyse an AST for declaration errors such asreusing an already used
+ * identifier for declaring / defining an Actor, Object or Sequence.
+ */
+
+
+var RedeclarationAnalyser = exports.RedeclarationAnalyser = function (_AstVisitor) {
+    _inherits(RedeclarationAnalyser, _AstVisitor);
+
+    function RedeclarationAnalyser(ast, symbols) {
+        _classCallCheck(this, RedeclarationAnalyser);
+
+        var _this = _possibleConstructorReturn(this, (RedeclarationAnalyser.__proto__ || Object.getPrototypeOf(RedeclarationAnalyser)).call(this));
+
+        _this.ast = ast;
+        _this.symbols = symbols;
+        _this.result = [];
+        return _this;
+    }
+
+    /**
+     * Analyse the AST and return the resulting list of `Diagnostic` messages
+     * if any.
+    */
+
+
+    _createClass(RedeclarationAnalyser, [{
+        key: "analyse",
+        value: function analyse() {
+            this.result = [];
+            this.ast.accept(this);
+            return this.result;
+        }
+    }, {
+        key: "visit",
+        value: function visit(node) {
+            if (node instanceof _ast.ActorNode || node instanceof _ast.ObjectNode || node instanceof _ast.SequenceNode) {
+
+                var existingSymbol = this.symbols.resolve(node.getIdentifier().value);
+
+                if (existingSymbol && existingSymbol.node !== node) {
+                    var existingType = existingSymbol.node.value;
+                    var existingLine = existingSymbol.node.getIdentifier().line;
+                    var existingColumn = existingSymbol.node.getIdentifier().column;
+                    var diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.RedeclareIdentifier);
+                    diagnostic.line = node.getIdentifier().line;
+                    diagnostic.column = node.getIdentifier().column;
+                    diagnostic.offendingSymbol = node.getIdentifier().value;
+                    diagnostic.message = "A existing " + existingType + " is declared using this name at line: " + existingLine + " column: " + existingColumn;
+                    this.result.push(diagnostic);
+                }
+            }
+        }
+    }]);
+
+    return RedeclarationAnalyser;
+}(_ast.AstVisitor);
+
+/***/ }),
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.SVGTransformer = exports.DEFAULT_SIZES = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }(); //
@@ -14748,11 +14858,11 @@ var _path = __webpack_require__(13);
 
 var path = _interopRequireWildcard(_path);
 
-var _dot = __webpack_require__(59);
+var _dot = __webpack_require__(60);
 
 var doT = _interopRequireWildcard(_dot);
 
-var _getInstalledPath = __webpack_require__(61);
+var _getInstalledPath = __webpack_require__(62);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -14907,7 +15017,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
 }();
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* doT + auto-compilation of doT templates
@@ -14940,7 +15050,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
  */
 
 var fs = __webpack_require__(6),
-	doT = module.exports = __webpack_require__(60);
+	doT = module.exports = __webpack_require__(61);
 
 doT.process = function(options) {
 	//path, destination, global, rendermodule, templateSettings
@@ -15057,7 +15167,7 @@ InstallDots.prototype.compileAll = function() {
 
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;// doT.js
@@ -15208,7 +15318,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;// doT.js
 
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -15219,7 +15329,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_path___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_path__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_global_modules__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_global_modules__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_global_modules___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_global_modules__);
 /**
  * @author Charlike Mike Reagent <open.source.charlike@gmail.com>
@@ -15405,7 +15515,7 @@ function defaults(name, opts) {
 
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15419,7 +15529,7 @@ function defaults(name, opts) {
 
 
 var path = __webpack_require__(13);
-var prefix = __webpack_require__(63);
+var prefix = __webpack_require__(64);
 var isWindows = __webpack_require__(37);
 var gm;
 
@@ -15444,7 +15554,7 @@ Object.defineProperty(module, 'exports', {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)(module)))
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15459,9 +15569,9 @@ Object.defineProperty(module, 'exports', {
 
 var fs = __webpack_require__(6);
 var path = __webpack_require__(13);
-var expand = __webpack_require__(64);
+var expand = __webpack_require__(65);
 var homedir = __webpack_require__(36);
-var ini = __webpack_require__(67);
+var ini = __webpack_require__(68);
 var prefix;
 
 function getPrefix() {
@@ -15520,7 +15630,7 @@ function fallback() {
 
 function tryNpmPath() {
   try {
-    return fs.realpathSync(__webpack_require__(68).sync('npm'));
+    return fs.realpathSync(__webpack_require__(69).sync('npm'));
   } catch (err) {}
   return null;
 }
@@ -15548,7 +15658,7 @@ Object.defineProperty(module, 'exports', {
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(35)(module)))
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -15576,13 +15686,13 @@ module.exports = function expandTilde(filepath) {
 
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports) {
 
 module.exports = require("os");
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -15645,7 +15755,7 @@ function user(line, i) {
 
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports) {
 
 exports.parse = exports.decode = decode
@@ -15845,7 +15955,7 @@ function unsafe (val, doUnesc) {
 
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = which
@@ -15857,7 +15967,7 @@ var isWindows = process.platform === 'win32' ||
 
 var path = __webpack_require__(13)
 var COLON = isWindows ? ';' : ':'
-var isexe = __webpack_require__(69)
+var isexe = __webpack_require__(70)
 
 function getNotFoundError (cmd) {
   var er = new Error('not found: ' + cmd)
@@ -15986,15 +16096,15 @@ function whichSync (cmd, opt) {
 
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var fs = __webpack_require__(6)
 var core
 if (process.platform === 'win32' || global.TESTING_WINDOWS) {
-  core = __webpack_require__(70)
-} else {
   core = __webpack_require__(71)
+} else {
+  core = __webpack_require__(72)
 }
 
 module.exports = isexe
@@ -16049,7 +16159,7 @@ function sync (path, options) {
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = isexe
@@ -16097,7 +16207,7 @@ function sync (path, options) {
 
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = isexe
