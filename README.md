@@ -1,5 +1,7 @@
 # Sequence
 
+[![Build Status](https://travis-ci.org/eliasson/sequence.svg?branch=master)](https://travis-ci.org/eliasson/sequence)
+
 A custom languange for expressing sequence diagram as text and transform those
 into SVG files.
 
