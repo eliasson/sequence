@@ -1,0 +1,7 @@
+Name "Test"
+
+Actor Alice
+Object Foo
+
+Sequence Test
+    Foo tell Bar "Hello"    # Error! Invalid destination

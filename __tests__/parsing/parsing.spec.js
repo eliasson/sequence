@@ -20,14 +20,40 @@ const FILES = [
     'valid-multi-sequence',
 ];
 
+const INVALID_FILES = [
+    { source: 'invalid-redeclaring-actor', expectedDiagnostics: 1 },
+    { source: 'invalid-redeclaring-object', expectedDiagnostics: 1 },
+    { source: 'invalid-redeclaring-sequence', expectedDiagnostics: 1 },
+    { source: 'invalid-redeclaring-foo', expectedDiagnostics: 1 },
+    { source: 'invalid-missing-source-identifier', expectedDiagnostics: 1 },
+    { source: 'invalid-multiple-errors', expectedDiagnostics: 3 }
+]
+
 const readSource = (file) => fs.readFileSync(path.join('./__tests__/parsing/source/', file + '.seq'), 'utf-8');
 
 describe('Integration', () => {
+
     FILES.forEach(f => {
         it(`should compile ${f}.seq with no expected errors`, () => {
             const source = readSource(f);
             const result = compile(source);
-            expect(result.isValid).toBeTruthy();
+            expect(result.isValid()).toBeTruthy();
+        });
+    });
+
+    INVALID_FILES.forEach(t => {
+        describe(`compiling ${t.source}.seq`, () => {
+            let result;
+            beforeEach(() => {
+                const source = readSource(t.source);
+                result = compile(source);
+            });
+            it('should be invalid', () => {
+                expect(result.isValid()).toBeFalsy();
+            });
+            it(`should have ${t.expectedDiagnostics} diagnostic messages`, () => {
+                expect(result.diagnostics.length).toEqual(t.expectedDiagnostics);
+            });
         });
     });
 });

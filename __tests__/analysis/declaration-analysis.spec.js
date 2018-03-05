@@ -180,7 +180,45 @@ describe('Declaration analysis', () => {
         });
     });
 
-    describe('for mulitple usages with already existing identiifer', () => {
+    describe('for a Sequence with same identiifer as Actor', () => {
+        let result;
+        beforeEach(() => {
+            result = compile(
+                'Name "Test"\n' +
+                'Actor Alice\n' +
+                'Object Bob\n' +
+                '\n' +
+                'Sequence Alice\n' +
+                '    Alice tell Bob "Hello"\n' +
+                '');
+        });
+
+        it('should be classified as an error', () => {
+            expect( errorTypes(result) ).toEqual([
+                DiagnosticError
+            ]);
+        });
+
+        it('should report error with code SEQ-001', () => {
+            expect( errorCodes(result) ).toEqual([
+                'SEQ-001'
+            ]);
+        });
+
+        it('should contain the position of the offending node', () => {
+            expect( errorPos(result) ).toEqual([
+                { line: 5, column: 9 }
+            ]);
+        });
+
+        it('should contain the offending symbol name', () => {
+            expect( errorOffendingSymbols(result) ).toEqual([
+                { offendingSymbol: 'Alice' }
+            ]);
+        });
+    });
+
+    describe('for multiple usages with already existing identiifer', () => {
         let result;
         beforeEach(() => {
             result = compile(
@@ -189,10 +227,10 @@ describe('Declaration analysis', () => {
                 'Object Test\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Alice tell Bob "Hello"\n' +
+                '    Test tell Test "Hello"\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Alice tell Bob "Something else"\n' +
+                '    Test tell Test "Something else"\n' +
                 '');
         });
 
@@ -225,6 +263,143 @@ describe('Declaration analysis', () => {
                 { message: 'A existing Actor is declared using this name at line: 2 column: 6' },
                 { message: 'A existing Actor is declared using this name at line: 2 column: 6' },
                 { message: 'A existing Actor is declared using this name at line: 2 column: 6' }
+            ]);
+        });
+    });
+
+    describe("for a Message with missing source participant", () => {
+        let result;
+        beforeEach(() => {
+            result = compile(
+                'Name "Test"\n' +
+                'Object One\n' +
+                'Object Two\n' +
+                '\n' +
+                'Sequence Test\n' +
+                '    Zero tell One "Plus one"\n' +
+                '');
+        });
+
+        it('should be classified as an error', () => {
+            expect( errorTypes(result) ).toEqual([
+                DiagnosticError
+            ]);
+        });
+
+        it('should report error with code SEQ-001', () => {
+            expect( errorCodes(result) ).toEqual([
+                'SEQ-002'
+            ]);
+        });
+
+        it('should contain the position of the offending node', () => {
+            expect( errorPos(result) ).toEqual([
+                { line: 6, column: 4 }
+            ]);
+        });
+
+        it('should contain the offending symbol name', () => {
+            expect( errorOffendingSymbols(result) ).toEqual([
+                { offendingSymbol: 'Zero' }
+            ]);
+        });
+
+        it('should use correct error message', () => {
+            expect( errorMessages(result) ).toEqual([
+                { message: 'No participant defined Zero could be found' }
+            ]);
+        });
+    });
+
+    describe("for a Message with missing destination participant", () => {
+        let result;
+        beforeEach(() => {
+            result = compile(
+                'Name "Test"\n' +
+                'Object One\n' +
+                'Object Two\n' +
+                '\n' +
+                'Sequence Test\n' +
+                '    Two tell Three "Plus one"\n' +
+                '');
+        });
+
+        it('should be classified as an error', () => {
+            expect( errorTypes(result) ).toEqual([
+                DiagnosticError
+            ]);
+        });
+
+        it('should report error with code SEQ-001', () => {
+            expect( errorCodes(result) ).toEqual([
+                'SEQ-002'
+            ]);
+        });
+
+        it('should contain the position of the offending node', () => {
+            expect( errorPos(result) ).toEqual([
+                { line: 6, column: 13 }
+            ]);
+        });
+
+        it('should contain the offending symbol name', () => {
+            expect( errorOffendingSymbols(result) ).toEqual([
+                { offendingSymbol: 'Three' }
+            ]);
+        });
+
+        it('should use correct error message', () => {
+            expect( errorMessages(result) ).toEqual([
+                { message: 'No participant defined Three could be found' }
+            ]);
+        });
+    });
+
+    describe("for a Message with missing both participants", () => {
+        let result;
+        beforeEach(() => {
+            result = compile(
+                'Name "Test"\n' +
+                'Object One\n' +
+                'Object Two\n' +
+                '\n' +
+                'Sequence Test\n' +
+                '    Zero tell Three "Failure"\n' +
+                '');
+        });
+
+        it('should be classified as an error', () => {
+            expect( errorTypes(result) ).toEqual([
+                DiagnosticError,
+                DiagnosticError
+            ]);
+        });
+
+        it('should report error with code SEQ-001', () => {
+            expect( errorCodes(result) ).toEqual([
+                'SEQ-002',
+                'SEQ-002'
+            ]);
+        });
+
+        it('should contain the position of the offending node', () => {
+            expect( errorPos(result) ).toEqual([
+                { line: 6, column: 4 },
+                { line: 6, column: 14 }
+            ]);
+        });
+
+        it('should contain the offending symbol name', () => {
+            expect( errorOffendingSymbols(result) ).toEqual([
+                { offendingSymbol: 'Zero' },
+                { offendingSymbol: 'Three' }
+            ]);
+        });
+
+        it('should use correct error message', () => {
+            expect( errorMessages(result) ).toEqual([
+                { message: 'No participant defined Zero could be found' },
+                { message: 'No participant defined Three could be found' }
             ]);
         });
     });

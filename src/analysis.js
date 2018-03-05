@@ -4,12 +4,13 @@
 // Copyright (C) - markus.eliasson@gmail.com
 //
 
-import { AstVisitor, ActorNode, ObjectNode, SequenceNode } from "./ast";
+import { AstVisitor, ActorNode, ObjectNode, SequenceNode, MessageNode } from "./ast";
 
 export const DiagnosticError = 1;
 
 export const ErrorCodes = {
-    RedeclareIdentifier:  'SEQ-001'
+    RedeclareIdentifier:  'SEQ-001',
+    MissingIdentifier:  'SEQ-002',
 }
 
 export class Diagnostic {
@@ -34,10 +35,6 @@ export class RedeclarationAnalyser extends AstVisitor {
         this.result = [];
     }
 
-    /**
-     * Analyse the AST and return the resulting list of `Diagnostic` messages
-     * if any.
-    */
     analyse() {
         this.result = [];
         this.ast.accept(this);
@@ -62,6 +59,42 @@ export class RedeclarationAnalyser extends AstVisitor {
                 diagnostic.message = `A existing ${existingType} is declared using this name at line: ${existingLine} column: ${existingColumn}`;
                 this.result.push(diagnostic);
             }
+        }
+    }
+}
+
+/**
+ * Analyse the AST's MessageNodes to find any message using an undefined
+ * participant.
+ */
+export class MissingDeclarationAnalyser  extends AstVisitor {
+    constructor(ast, symbols) {
+        super();
+        this.ast = ast;
+        this.symbols = symbols;
+        this.result = [];
+    }
+
+    analyse() {
+        this.result = [];
+        this.ast.accept(this);
+        return this.result;
+    }
+
+    visit(node) {
+        if(node instanceof MessageNode) {
+            [node.getSourceIdentifier(), node.getDestinationIdentifier()]
+                .filter(n => n !== undefined)
+                .map(participantNode => {
+                    if(!this.symbols.contains(participantNode.value)) {
+                        const diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.MissingIdentifier);
+                        diagnostic.line = participantNode.line;
+                        diagnostic.column = participantNode.column;
+                        diagnostic.offendingSymbol = participantNode.value;
+                        diagnostic.message = `No participant defined ${participantNode.value} could be found`;
+                        this.result.push(diagnostic);
+                    }
+                });
         }
     }
 }

@@ -18,12 +18,14 @@ function usage() {
 function main() {
     if(process.argv.length < 3) usage();
 
-    const source = readSource(process.argv[2]);
+    const file = process.argv[2];
+    const source = readSource(file);
     const result = sequence.compile(source);
 
     if(!result.isValid()) {
-        console.error(`Failed to generate output:`);
-        console.error(`${result.parserResult.parser._syntaxErrors}`)
+        result.diagnostics.forEach(diag => {
+            console.error(`Error: ${diag.message}`)
+        });
     } else {
         console.log(result.output);
     }

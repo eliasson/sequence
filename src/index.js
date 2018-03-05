@@ -9,7 +9,7 @@ import { SequenceLexer } from '../parser/SequenceLexer';
 import { SequenceParser } from '../parser/SequenceParser';
 import { IntSequenceListener } from './ast';
 import { SymbolTable, SymbolTableVisitor } from './symbols';
-import { RedeclarationAnalyser } from './analysis';
+import { DiagnosticError, RedeclarationAnalyser, MissingDeclarationAnalyser } from './analysis';
 import { SVGTransformer } from './transformer';
 
 /**
@@ -56,15 +56,19 @@ export function compile(source) {
         .withAst(result.ast)
         .generate();
     
-    // Analyse for redeclaring an identifier
-    const analysisResult = new RedeclarationAnalyser(result.ast, symbols).analyse();
-    const diagnostics = analysisResult;
+    // Perform the actual analysis
+    const diagnostics = []
+        .concat(new RedeclarationAnalyser(result.ast, symbols).analyse())
+        .concat(new MissingDeclarationAnalyser(result.ast, symbols).analyse());
+
+    // TODO: Add syntax / parser errors as diagnostics!
 
     // 3. Transform the AST into SVG data
     const output = result.isValid() ? new SVGTransformer(result.ast).transform() : '';
 
+    const errors = diagnostics.filter(d => d.type === DiagnosticError);
     return {
-        isValid: result.isValid,
+        isValid: () => { return result.isValid() && errors.length === 0 },
         symbols: symbols,
         diagnostics: diagnostics,
         output: output

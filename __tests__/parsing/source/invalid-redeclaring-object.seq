@@ -1,0 +1,4 @@
+Name "Test"
+
+Object Foo
+Object Foo # Invalid redeclaration of Foo

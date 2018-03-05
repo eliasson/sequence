@@ -1,0 +1,7 @@
+Name "Test"
+
+Actor Alice
+Object Foo
+
+Sequence Alice
+    Alice tell Foo "Hello again"

@@ -9870,15 +9870,19 @@ function compile(source) {
     // Generate a symbol table that can be used in later analysis
     var symbols = new _symbols.SymbolTableVisitor().withAst(result.ast).generate();
 
-    // Analyse for redeclaring an identifier
-    var analysisResult = new _analysis.RedeclarationAnalyser(result.ast, symbols).analyse();
-    var diagnostics = analysisResult;
+    // Perform the actual analysis
+    var diagnostics = [].concat(new _analysis.RedeclarationAnalyser(result.ast, symbols).analyse()).concat(new _analysis.MissingDeclarationAnalyser(result.ast, symbols).analyse());
 
     // 3. Transform the AST into SVG data
     var output = result.isValid() ? new _transformer.SVGTransformer(result.ast).transform() : '';
 
+    var errors = diagnostics.filter(function (d) {
+        return d.type === _analysis.DiagnosticError;
+    });
     return {
-        isValid: result.isValid,
+        isValid: function isValid() {
+            return result.isValid() && errors.length === 0;
+        },
         symbols: symbols,
         diagnostics: diagnostics,
         output: output
@@ -14741,7 +14745,7 @@ var SymbolTableVisitor = exports.SymbolTableVisitor = function (_AstVisitor) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.RedeclarationAnalyser = exports.Diagnostic = exports.ErrorCodes = exports.DiagnosticError = undefined;
+exports.MissingDeclarationAnalyser = exports.RedeclarationAnalyser = exports.Diagnostic = exports.ErrorCodes = exports.DiagnosticError = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -14760,7 +14764,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var DiagnosticError = exports.DiagnosticError = 1;
 
 var ErrorCodes = exports.ErrorCodes = {
-    RedeclareIdentifier: 'SEQ-001'
+    RedeclareIdentifier: 'SEQ-001',
+    MissingIdentifier: 'SEQ-002'
 };
 
 var Diagnostic = exports.Diagnostic = function Diagnostic(type, code) {
@@ -14793,21 +14798,15 @@ var RedeclarationAnalyser = exports.RedeclarationAnalyser = function (_AstVisito
         return _this;
     }
 
-    /**
-     * Analyse the AST and return the resulting list of `Diagnostic` messages
-     * if any.
-    */
-
-
     _createClass(RedeclarationAnalyser, [{
-        key: "analyse",
+        key: 'analyse',
         value: function analyse() {
             this.result = [];
             this.ast.accept(this);
             return this.result;
         }
     }, {
-        key: "visit",
+        key: 'visit',
         value: function visit(node) {
             if (node instanceof _ast.ActorNode || node instanceof _ast.ObjectNode || node instanceof _ast.SequenceNode) {
 
@@ -14821,7 +14820,7 @@ var RedeclarationAnalyser = exports.RedeclarationAnalyser = function (_AstVisito
                     diagnostic.line = node.getIdentifier().line;
                     diagnostic.column = node.getIdentifier().column;
                     diagnostic.offendingSymbol = node.getIdentifier().value;
-                    diagnostic.message = "A existing " + existingType + " is declared using this name at line: " + existingLine + " column: " + existingColumn;
+                    diagnostic.message = 'A existing ' + existingType + ' is declared using this name at line: ' + existingLine + ' column: ' + existingColumn;
                     this.result.push(diagnostic);
                 }
             }
@@ -14829,6 +14828,58 @@ var RedeclarationAnalyser = exports.RedeclarationAnalyser = function (_AstVisito
     }]);
 
     return RedeclarationAnalyser;
+}(_ast.AstVisitor);
+
+/**
+ * Analyse the AST's MessageNodes to find any message using an undefined
+ * participant.
+ */
+
+
+var MissingDeclarationAnalyser = exports.MissingDeclarationAnalyser = function (_AstVisitor2) {
+    _inherits(MissingDeclarationAnalyser, _AstVisitor2);
+
+    function MissingDeclarationAnalyser(ast, symbols) {
+        _classCallCheck(this, MissingDeclarationAnalyser);
+
+        var _this2 = _possibleConstructorReturn(this, (MissingDeclarationAnalyser.__proto__ || Object.getPrototypeOf(MissingDeclarationAnalyser)).call(this));
+
+        _this2.ast = ast;
+        _this2.symbols = symbols;
+        _this2.result = [];
+        return _this2;
+    }
+
+    _createClass(MissingDeclarationAnalyser, [{
+        key: 'analyse',
+        value: function analyse() {
+            this.result = [];
+            this.ast.accept(this);
+            return this.result;
+        }
+    }, {
+        key: 'visit',
+        value: function visit(node) {
+            var _this3 = this;
+
+            if (node instanceof _ast.MessageNode) {
+                [node.getSourceIdentifier(), node.getDestinationIdentifier()].filter(function (n) {
+                    return n !== undefined;
+                }).map(function (participantNode) {
+                    if (!_this3.symbols.contains(participantNode.value)) {
+                        var diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.MissingIdentifier);
+                        diagnostic.line = participantNode.line;
+                        diagnostic.column = participantNode.column;
+                        diagnostic.offendingSymbol = participantNode.value;
+                        diagnostic.message = 'No participant defined ' + participantNode.value + ' could be found';
+                        _this3.result.push(diagnostic);
+                    }
+                });
+            }
+        }
+    }]);
+
+    return MissingDeclarationAnalyser;
 }(_ast.AstVisitor);
 
 /***/ }),

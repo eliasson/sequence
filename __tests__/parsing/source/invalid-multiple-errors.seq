@@ -1,0 +1,10 @@
+Name "Multiple errors"
+
+Actor Alice
+Object Foo
+Object Bar
+Object Bar      # Error, redeclaring Bar
+
+Sequence First
+    Alice tell foo "oops"   # Error, foo should be Foo
+    Baz tell Foo "nope"     # Error, Baz is missing

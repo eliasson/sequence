@@ -1,0 +1,4 @@
+Name "Test"
+
+Actor Foo
+Actor Foo # Invalid redeclaration of Foo

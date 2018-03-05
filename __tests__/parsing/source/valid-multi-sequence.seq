@@ -6,7 +6,7 @@ Object IdP is "OpenID Connect Identity Provider"
 
 Sequence Login
     User tell TodoApp "Loading page"
-    Todo replies User "Go and authenticate"
+    TodoApp replies User "Go and authenticate"
     User tell IdP "Authenticating"
     IdP replies User "Ok, return to TodoApp"
     User tell TodoApp "Load page"

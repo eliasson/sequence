@@ -1,0 +1,7 @@
+Name "Test"
+
+Actor Alice
+Object Foo
+
+Sequence Test
+    Bar tell Foo "Hello"    # Error! Invalid source
