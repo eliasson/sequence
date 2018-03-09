@@ -9,7 +9,7 @@ import { SequenceLexer } from '../parser/SequenceLexer';
 import { SequenceParser } from '../parser/SequenceParser';
 import { IntSequenceListener } from './ast';
 import { SymbolTable, SymbolTableVisitor } from './symbols';
-import { DiagnosticError, RedeclarationAnalyser, MissingDeclarationAnalyser } from './analysis';
+import { DiagnosticError, AntlrErrorListener, RedeclarationAnalyser, MissingDeclarationAnalyser } from './analysis';
 import { SVGTransformer } from './transformer';
 
 /**
@@ -30,10 +30,13 @@ export function parse(source) {
     // print to stdout, but to capture the errors ourself to present
     // a nice and tidy error message for the end-user.
     parser.removeErrorListeners();
+    lexer.removeErrorListeners();
 
     // Register our listener used to build the AST while the parsing
     // is being done.
+    const errorListener = new AntlrErrorListener();
     const listener = new IntSequenceListener();
+    parser.addErrorListener(errorListener);
     parser.addParseListener(listener);
 
     // Initiate the parsing, and begin with the root rule.
@@ -42,29 +45,36 @@ export function parse(source) {
     return {
         isValid: () => parserResult.parser._syntaxErrors === 0,
         parserResult:  parserResult,
-        ast: listener.getRoot()
+        ast: listener.getRoot(),
+        diagnostics: errorListener.result
     };
 }
 
 export function compile(source) {
-    // 1. Parse the source file to produce an AST
+    // Generate a default empty symbol table
+    let symbols = new SymbolTable();
+    let diagnostics = [];
+    let output = '';
+
+    // Parse the source file to produce an AST
     const result = parse(source);
+    diagnostics = diagnostics.concat(result.diagnostics);
 
-    // 2. Analyse the AST to find semantic errors
-    // Generate a symbol table that can be used in later analysis
-    const symbols = new SymbolTableVisitor()
-        .withAst(result.ast)
-        .generate();
-    
-    // Perform the actual analysis
-    const diagnostics = []
-        .concat(new RedeclarationAnalyser(result.ast, symbols).analyse())
-        .concat(new MissingDeclarationAnalyser(result.ast, symbols).analyse());
+    if(result.isValid()) {
+        // Generate a new Symbol table by visiting each node in the AST
+        symbols = new SymbolTableVisitor()
+            .withAst(result.ast)
+            .generate();
 
-    // TODO: Add syntax / parser errors as diagnostics!
+        // Perform the actual analysis
+        diagnostics = []
+            .concat(new RedeclarationAnalyser(result.ast, symbols).analyse())
+            .concat(new MissingDeclarationAnalyser(result.ast, symbols).analyse());
+    }
 
-    // 3. Transform the AST into SVG data
-    const output = result.isValid() ? new SVGTransformer(result.ast).transform() : '';
+    if(result.isValid()) {
+        output = new SVGTransformer(result.ast).transform();
+    }
 
     const errors = diagnostics.filter(d => d.type === DiagnosticError);
     return {

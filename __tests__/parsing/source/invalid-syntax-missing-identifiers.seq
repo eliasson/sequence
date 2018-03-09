@@ -1,0 +1,7 @@
+Name "Unit test"
+
+Actor
+Object
+
+Sequence
+    Alice tell Bob "Hallo"

@@ -1732,7 +1732,7 @@ module.exports = require("fs");
  */
 ///
 
-var RuleContext = __webpack_require__(16).RuleContext;
+var RuleContext = __webpack_require__(17).RuleContext;
 var Hash = __webpack_require__(0).Hash;
 
 function PredictionContext(cachedHashCode) {
@@ -3763,6 +3763,99 @@ module.exports = require("path");
 
 /***/ }),
 /* 14 */
+/***/ (function(module, exports) {
+
+//
+/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
+ * Use of this file is governed by the BSD 3-clause license that
+ * can be found in the LICENSE.txt file in the project root.
+ */
+
+// Provides an empty default implementation of {@link ANTLRErrorListener}. The
+// default implementation of each method does nothing, but can be overridden as
+// necessary.
+
+function ErrorListener() {
+	return this;
+}
+
+ErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+};
+
+ErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+};
+
+ErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+};
+
+ErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+};
+
+function ConsoleErrorListener() {
+	ErrorListener.call(this);
+	return this;
+}
+
+ConsoleErrorListener.prototype = Object.create(ErrorListener.prototype);
+ConsoleErrorListener.prototype.constructor = ConsoleErrorListener;
+
+//
+// Provides a default instance of {@link ConsoleErrorListener}.
+//
+ConsoleErrorListener.INSTANCE = new ConsoleErrorListener();
+
+//
+// {@inheritDoc}
+//
+// <p>
+// This implementation prints messages to {@link System//err} containing the
+// values of {@code line}, {@code charPositionInLine}, and {@code msg} using
+// the following format.</p>
+//
+// <pre>
+// line <em>line</em>:<em>charPositionInLine</em> <em>msg</em>
+// </pre>
+//
+ConsoleErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+    console.error("line " + line + ":" + column + " " + msg);
+};
+
+function ProxyErrorListener(delegates) {
+	ErrorListener.call(this);
+    if (delegates===null) {
+        throw "delegates";
+    }
+    this.delegates = delegates;
+	return this;
+}
+
+ProxyErrorListener.prototype = Object.create(ErrorListener.prototype);
+ProxyErrorListener.prototype.constructor = ProxyErrorListener;
+
+ProxyErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
+    this.delegates.map(function(d) { d.syntaxError(recognizer, offendingSymbol, line, column, msg, e); });
+};
+
+ProxyErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+    this.delegates.map(function(d) { d.reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs); });
+};
+
+ProxyErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+	this.delegates.map(function(d) { d.reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs); });
+};
+
+ProxyErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+	this.delegates.map(function(d) { d.reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs); });
+};
+
+exports.ErrorListener = ErrorListener;
+exports.ConsoleErrorListener = ConsoleErrorListener;
+exports.ProxyErrorListener = ProxyErrorListener;
+
+
+
+/***/ }),
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -3781,7 +3874,7 @@ exports.CommonToken = __webpack_require__(1).CommonToken;
 exports.InputStream = __webpack_require__(21).InputStream;
 exports.FileStream = __webpack_require__(52).FileStream;
 exports.CommonTokenStream = __webpack_require__(53).CommonTokenStream;
-exports.Lexer = __webpack_require__(17).Lexer;
+exports.Lexer = __webpack_require__(18).Lexer;
 exports.Parser = __webpack_require__(55).Parser;
 var pc = __webpack_require__(7);
 exports.PredictionContextCache = pc.PredictionContextCache;
@@ -3791,7 +3884,7 @@ exports.Utils = __webpack_require__(0);
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 //
@@ -3972,7 +4065,7 @@ exports.ATNConfig = ATNConfig;
 exports.LexerATNConfig = LexerATNConfig;
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -4135,7 +4228,7 @@ RuleContext.prototype.toString = function(ruleNames, stop) {
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
@@ -4512,99 +4605,6 @@ exports.Lexer = Lexer;
 
 
 /***/ }),
-/* 18 */
-/***/ (function(module, exports) {
-
-//
-/* Copyright (c) 2012-2017 The ANTLR Project. All rights reserved.
- * Use of this file is governed by the BSD 3-clause license that
- * can be found in the LICENSE.txt file in the project root.
- */
-
-// Provides an empty default implementation of {@link ANTLRErrorListener}. The
-// default implementation of each method does nothing, but can be overridden as
-// necessary.
-
-function ErrorListener() {
-	return this;
-}
-
-ErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
-};
-
-ErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
-};
-
-ErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
-};
-
-ErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
-};
-
-function ConsoleErrorListener() {
-	ErrorListener.call(this);
-	return this;
-}
-
-ConsoleErrorListener.prototype = Object.create(ErrorListener.prototype);
-ConsoleErrorListener.prototype.constructor = ConsoleErrorListener;
-
-//
-// Provides a default instance of {@link ConsoleErrorListener}.
-//
-ConsoleErrorListener.INSTANCE = new ConsoleErrorListener();
-
-//
-// {@inheritDoc}
-//
-// <p>
-// This implementation prints messages to {@link System//err} containing the
-// values of {@code line}, {@code charPositionInLine}, and {@code msg} using
-// the following format.</p>
-//
-// <pre>
-// line <em>line</em>:<em>charPositionInLine</em> <em>msg</em>
-// </pre>
-//
-ConsoleErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
-    console.error("line " + line + ":" + column + " " + msg);
-};
-
-function ProxyErrorListener(delegates) {
-	ErrorListener.call(this);
-    if (delegates===null) {
-        throw "delegates";
-    }
-    this.delegates = delegates;
-	return this;
-}
-
-ProxyErrorListener.prototype = Object.create(ErrorListener.prototype);
-ProxyErrorListener.prototype.constructor = ProxyErrorListener;
-
-ProxyErrorListener.prototype.syntaxError = function(recognizer, offendingSymbol, line, column, msg, e) {
-    this.delegates.map(function(d) { d.syntaxError(recognizer, offendingSymbol, line, column, msg, e); });
-};
-
-ProxyErrorListener.prototype.reportAmbiguity = function(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
-    this.delegates.map(function(d) { d.reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs); });
-};
-
-ProxyErrorListener.prototype.reportAttemptingFullContext = function(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
-	this.delegates.map(function(d) { d.reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs); });
-};
-
-ProxyErrorListener.prototype.reportContextSensitivity = function(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
-	this.delegates.map(function(d) { d.reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs); });
-};
-
-exports.ErrorListener = ErrorListener;
-exports.ConsoleErrorListener = ConsoleErrorListener;
-exports.ProxyErrorListener = ProxyErrorListener;
-
-
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports) {
 
@@ -4721,7 +4721,7 @@ exports.LexerDFASerializer = LexerDFASerializer;
 //  group values such as this aggregate.  The getters/setters are there to
 //  satisfy the superclass interface.
 
-var RuleContext = __webpack_require__(16).RuleContext;
+var RuleContext = __webpack_require__(17).RuleContext;
 var Tree = __webpack_require__(4);
 var INVALID_INTERVAL = Tree.INVALID_INTERVAL;
 var TerminalNode = Tree.TerminalNode;
@@ -5069,7 +5069,7 @@ exports.InputStream = InputStream;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(14);
+var antlr4 = __webpack_require__(15);
 var SequenceListener = __webpack_require__(34).SequenceListener;
 var grammarFileName = "Sequence.g4";
 
@@ -6573,6 +6573,8 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
         value: function exitActorDefinition(ctx) {
             var me = this.popNode();
 
+            if (!ctx.children) return;
+
             if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
                 me.identifier = this.toIdentifier(1, ctx);
             }
@@ -6588,6 +6590,8 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
         value: function exitObjectDefinition(ctx) {
             var me = this.popNode();
 
+            if (!ctx.children) return;
+
             if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
                 me.identifier = this.toIdentifier(1, ctx);
             }
@@ -6602,6 +6606,9 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
         key: 'exitSequenceDefinition',
         value: function exitSequenceDefinition(ctx) {
             var me = this.popNode();
+
+            if (!ctx.children) return;
+
             if (ctx.children.length > 1 && ctx.children[1].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
                 me.identifier = this.toIdentifier(1, ctx);
             }
@@ -6616,6 +6623,8 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
         key: 'exitSequenceMessage',
         value: function exitSequenceMessage(ctx) {
             var me = this.popNode();
+
+            if (!ctx.children) return;
 
             if (ctx.children.length > 0 && ctx.children[0].symbol.type === _SequenceParser.SequenceParser.IDENTIFIER) {
                 me.source = this.toIdentifier(0, ctx);
@@ -6673,7 +6682,7 @@ var RuleNode = __webpack_require__(4).RuleNode;
 var ErrorNode = __webpack_require__(4).ErrorNode;
 var TerminalNode = __webpack_require__(4).TerminalNode;
 var ParserRuleContext = __webpack_require__(20).ParserRuleContext;
-var RuleContext = __webpack_require__(16).RuleContext;
+var RuleContext = __webpack_require__(17).RuleContext;
 var INVALID_ALT_NUMBER = __webpack_require__(8).INVALID_ALT_NUMBER;
 
 
@@ -7900,8 +7909,8 @@ exports.LexerModeAction = LexerModeAction;
 //
 
 var Token = __webpack_require__(1).Token;
-var ConsoleErrorListener = __webpack_require__(18).ConsoleErrorListener;
-var ProxyErrorListener = __webpack_require__(18).ProxyErrorListener;
+var ConsoleErrorListener = __webpack_require__(14).ConsoleErrorListener;
+var ProxyErrorListener = __webpack_require__(14).ProxyErrorListener;
 
 function Recognizer() {
     this._listeners = [ ConsoleErrorListener.INSTANCE ];
@@ -8120,7 +8129,7 @@ var AltDict = __webpack_require__(0).AltDict;
 var ATN = __webpack_require__(8).ATN;
 var RuleStopState = __webpack_require__(3).RuleStopState;
 var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
-var ATNConfig = __webpack_require__(15).ATNConfig;
+var ATNConfig = __webpack_require__(16).ATNConfig;
 var SemanticContext = __webpack_require__(11).SemanticContext;
 var Hash = __webpack_require__(0).Hash;
 var hashStuff = __webpack_require__(0).hashStuff;
@@ -9562,7 +9571,7 @@ exports.DefaultErrorStrategy = DefaultErrorStrategy;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(14);
+var antlr4 = __webpack_require__(15);
 
 // This class defines a complete listener for a parse tree produced by SequenceParser.
 function SequenceListener() {
@@ -9804,7 +9813,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.parse = parse;
 exports.compile = compile;
 
-var _antlr = __webpack_require__(14);
+var _antlr = __webpack_require__(15);
 
 var antlr4 = _interopRequireWildcard(_antlr);
 
@@ -9840,10 +9849,13 @@ function parse(source) {
     // print to stdout, but to capture the errors ourself to present
     // a nice and tidy error message for the end-user.
     parser.removeErrorListeners();
+    lexer.removeErrorListeners();
 
     // Register our listener used to build the AST while the parsing
     // is being done.
+    var errorListener = new _analysis.AntlrErrorListener();
     var listener = new _ast.IntSequenceListener();
+    parser.addErrorListener(errorListener);
     parser.addParseListener(listener);
 
     // Initiate the parsing, and begin with the root rule.
@@ -9854,7 +9866,8 @@ function parse(source) {
             return parserResult.parser._syntaxErrors === 0;
         },
         parserResult: parserResult,
-        ast: listener.getRoot()
+        ast: listener.getRoot(),
+        diagnostics: errorListener.result
     };
 } //
 // Sequence - A simple sequence diagram tool
@@ -9863,18 +9876,26 @@ function parse(source) {
 //
 
 function compile(source) {
-    // 1. Parse the source file to produce an AST
+    // Generate a default empty symbol table
+    var symbols = new _symbols.SymbolTable();
+    var diagnostics = [];
+    var output = '';
+
+    // Parse the source file to produce an AST
     var result = parse(source);
+    diagnostics = diagnostics.concat(result.diagnostics);
 
-    // 2. Analyse the AST to find semantic errors
-    // Generate a symbol table that can be used in later analysis
-    var symbols = new _symbols.SymbolTableVisitor().withAst(result.ast).generate();
+    if (result.isValid()) {
+        // Generate a new Symbol table by visiting each node in the AST
+        symbols = new _symbols.SymbolTableVisitor().withAst(result.ast).generate();
 
-    // Perform the actual analysis
-    var diagnostics = [].concat(new _analysis.RedeclarationAnalyser(result.ast, symbols).analyse()).concat(new _analysis.MissingDeclarationAnalyser(result.ast, symbols).analyse());
+        // Perform the actual analysis
+        diagnostics = [].concat(new _analysis.RedeclarationAnalyser(result.ast, symbols).analyse()).concat(new _analysis.MissingDeclarationAnalyser(result.ast, symbols).analyse());
+    }
 
-    // 3. Transform the AST into SVG data
-    var output = result.isValid() ? new _transformer.SVGTransformer(result.ast).transform() : '';
+    if (result.isValid()) {
+        output = new _transformer.SVGTransformer(result.ast).transform();
+    }
 
     var errors = diagnostics.filter(function (d) {
         return d.type === _analysis.DiagnosticError;
@@ -9919,7 +9940,7 @@ exports.PredictionMode = __webpack_require__(30).PredictionMode;
 var Set = __webpack_require__(0).Set;
 var BitSet = __webpack_require__(0).BitSet;
 var Token = __webpack_require__(1).Token;
-var ATNConfig = __webpack_require__(15).ATNConfig;
+var ATNConfig = __webpack_require__(16).ATNConfig;
 var Interval = __webpack_require__(2).Interval;
 var IntervalSet = __webpack_require__(2).IntervalSet;
 var RuleStopState = __webpack_require__(3).RuleStopState;
@@ -10161,7 +10182,7 @@ exports.ATNType = ATNType;
 ///
 
 var Token = __webpack_require__(1).Token;
-var Lexer = __webpack_require__(17).Lexer;
+var Lexer = __webpack_require__(18).Lexer;
 var ATN = __webpack_require__(8).ATN;
 var ATNSimulator = __webpack_require__(29).ATNSimulator;
 var DFAState = __webpack_require__(12).DFAState;
@@ -10170,7 +10191,7 @@ var OrderedATNConfigSet = __webpack_require__(10).OrderedATNConfigSet;
 var PredictionContext = __webpack_require__(7).PredictionContext;
 var SingletonPredictionContext = __webpack_require__(7).SingletonPredictionContext;
 var RuleStopState = __webpack_require__(3).RuleStopState;
-var LexerATNConfig = __webpack_require__(15).LexerATNConfig;
+var LexerATNConfig = __webpack_require__(16).LexerATNConfig;
 var Transition = __webpack_require__(9).Transition;
 var LexerActionExecutor = __webpack_require__(44).LexerActionExecutor;
 var LexerNoViableAltException = __webpack_require__(5).LexerNoViableAltException;
@@ -11267,14 +11288,14 @@ var BitSet = Utils.BitSet;
 var DoubleDict = Utils.DoubleDict;
 var ATN = __webpack_require__(8).ATN;
 var ATNState = __webpack_require__(3).ATNState;
-var ATNConfig = __webpack_require__(15).ATNConfig;
+var ATNConfig = __webpack_require__(16).ATNConfig;
 var ATNConfigSet = __webpack_require__(10).ATNConfigSet;
 var Token = __webpack_require__(1).Token;
 var DFAState = __webpack_require__(12).DFAState;
 var PredPrediction = __webpack_require__(12).PredPrediction;
 var ATNSimulator = __webpack_require__(29).ATNSimulator;
 var PredictionMode = __webpack_require__(30).PredictionMode;
-var RuleContext = __webpack_require__(16).RuleContext;
+var RuleContext = __webpack_require__(17).RuleContext;
 var ParserRuleContext = __webpack_require__(20).ParserRuleContext;
 var SemanticContext = __webpack_require__(11).SemanticContext;
 var StarLoopEntryState = __webpack_require__(3).StarLoopEntryState;
@@ -12962,7 +12983,7 @@ exports.InputMismatchException = __webpack_require__(5).InputMismatchException;
 exports.FailedPredicateException = __webpack_require__(5).FailedPredicateException;
 exports.DiagnosticErrorListener = __webpack_require__(50).DiagnosticErrorListener;
 exports.BailErrorStrategy = __webpack_require__(33).BailErrorStrategy;
-exports.ErrorListener = __webpack_require__(18).ErrorListener;
+exports.ErrorListener = __webpack_require__(14).ErrorListener;
 
 
 /***/ }),
@@ -12996,7 +13017,7 @@ exports.ErrorListener = __webpack_require__(18).ErrorListener;
 // </ul>
 
 var BitSet = __webpack_require__(0).BitSet;
-var ErrorListener = __webpack_require__(18).ErrorListener;
+var ErrorListener = __webpack_require__(14).ErrorListener;
 var Interval = __webpack_require__(2).Interval;
 
 function DiagnosticErrorListener(exactOnly) {
@@ -13321,7 +13342,7 @@ exports.CommonTokenStream = CommonTokenStream;
 // {@link CommonTokenStream}.</p>
 
 var Token = __webpack_require__(1).Token;
-var Lexer = __webpack_require__(17).Lexer;
+var Lexer = __webpack_require__(18).Lexer;
 var Interval = __webpack_require__(2).Interval;
 
 // this is just to keep meaningful parameter types to Parser
@@ -13980,7 +14001,7 @@ Parser.prototype.getATNWithBypassAlts = function() {
 // String id = m.get("ID");
 // </pre>
 
-var Lexer = __webpack_require__(17).Lexer;
+var Lexer = __webpack_require__(18).Lexer;
 
 Parser.prototype.compileParseTreePattern = function(pattern, patternRuleIndex, lexer) {
 	lexer = lexer || null;
@@ -14368,7 +14389,7 @@ exports.Parser = Parser;
 
 // Generated from ./parser/Sequence.g4 by ANTLR 4.7
 // jshint ignore: start
-var antlr4 = __webpack_require__(14);
+var antlr4 = __webpack_require__(15);
 
 var serializedATN = ["\x03\u608B\uA72A\u8133\uB9ED\u417C\u3BE7\u7786\u5964", "\x02\x0F\xC2\b\x01\x04\x02\t\x02\x04\x03\t\x03\x04", "\x04\t\x04\x04\x05\t\x05\x04\x06\t\x06\x04\x07\t", "\x07\x04\b\t\b\x04\t\t\t\x04\n\t\n\x04\x0B\t\x0B\x04", "\f\t\f\x04\r\t\r\x04\x0E\t\x0E\x04\x0F\t\x0F\x04\x10", "\t\x10\x04\x11\t\x11\x04\x12\t\x12\x04\x13\t\x13", "\x04\x14\t\x14\x03\x02\x03\x02\x03\x02\x03\x02", "\x03\x02\x03\x03\x03\x03\x03\x03\x03\x03\x03\x03", "\x03\x03\x03\x04\x03\x04\x03\x04\x03\x04\x03\x04", "\x03\x04\x03\x04\x03\x05\x03\x05\x03\x05\x03\x06", "\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06\x03\x06", "\x03\x06\x03\x06\x03\x07\x03\x07\x03\x07\x03\x07", "\x03\b\x03\b\x03\b\x03\b\x03\b\x03\t\x03\t\x03\t\x03", "\t\x03\t\x03\t\x03\t\x03\t\x03\n\x06\nZ\n\n\r\n\x0E\n", "[\x03\n\x07\n_\n\n\f\n\x0E\nb\x0B\n\x03\x0B\x03\x0B", "\x06\x0Bf\n\x0B\r\x0B\x0E\x0Bg\x03\x0B\x03\x0B\x05", "\x0Bl\n\x0B\x03\x0B\x03\x0B\x03\f\x03\f\x05\fr\n\f", "\x03\r\x03\r\x03\r\x05\rw\n\r\x03\r\x03\r\x05\r{\n\r\x03", "\r\x05\r~\n\r\x05\r\x80\n\r\x03\r\x03\r\x03\x0E\x03", "\x0E\x03\x0E\x03\x0E\x03\x0F\x06\x0F\x89\n\x0F", "\r\x0F\x0E\x0F\x8A\x03\x10\x03\x10\x03\x11\x03", "\x11\x03\x12\x03\x12\x03\x13\x03\x13\x03\x13\x07", "\x13\x96\n\x13\f\x13\x0E\x13\x99\x0B\x13\x03\x13", "\x03\x13\x03\x13\x03\x13\x07\x13\x9F\n\x13\f\x13", "\x0E\x13\xA2\x0B\x13\x03\x13\x05\x13\xA5\n\x13", "\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x07\x14", "\xAC\n\x14\f\x14\x0E\x14\xAF\x0B\x14\x03\x14\x03", "\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03\x14\x03", "\x14\x07\x14\xB9\n\x14\f\x14\x0E\x14\xBC\x0B\x14", "\x03\x14\x03\x14\x03\x14\x05\x14\xC1\n\x14\x07", "g\x97\xA0\xAD\xBA\x02\x15\x03\x03\x05\x04\x07", "\x05\t\x06\x0B\x07\r\b\x0F\t\x11\n\x13\x0B\x15\f\x17", "\r\x19\x0E\x1B\x0F\x1D\x02\x1F\x02!\x02#\x02%\x02", "'\x02\x03\x02\b\x04\x02\x0B\x0B\"\"\x04\x02C\\c|", "\x05\x022;C\\c|\x03\x022;\x05\x02\f\f\x0F\x0F$$\x05", "\x02\f\f\x0F\x0F))\x02\xCD\x02\x03\x03\x02\x02\x02", "\x02\x05\x03\x02\x02\x02\x02\x07\x03\x02\x02\x02", "\x02\t\x03\x02\x02\x02\x02\x0B\x03\x02\x02\x02", "\x02\r\x03\x02\x02\x02\x02\x0F\x03\x02\x02\x02", "\x02\x11\x03\x02\x02\x02\x02\x13\x03\x02\x02\x02", "\x02\x15\x03\x02\x02\x02\x02\x17\x03\x02\x02\x02", "\x02\x19\x03\x02\x02\x02\x02\x1B\x03\x02\x02\x02", "\x03)\x03\x02\x02\x02\x05.\x03\x02\x02\x02\x07", "4\x03\x02\x02\x02\t;\x03\x02\x02\x02\x0B>\x03\x02", "\x02\x02\rG\x03\x02\x02\x02\x0FK\x03\x02\x02\x02", "\x11P\x03\x02\x02\x02\x13Y\x03\x02\x02\x02\x15", "c\x03\x02\x02\x02\x17q\x03\x02\x02\x02\x19\x7F", "\x03\x02\x02\x02\x1B\x83\x03\x02\x02\x02\x1D\x88", "\x03\x02\x02\x02\x1F\x8C\x03\x02\x02\x02!\x8E", "\x03\x02\x02\x02#\x90\x03\x02\x02\x02%\xA4\x03", "\x02\x02\x02'\xC0\x03\x02\x02\x02)*\x07P\x02\x02", "*+\x07c\x02\x02+,\x07o\x02\x02,-\x07g\x02\x02-\x04", "\x03\x02\x02\x02./\x07C\x02\x02/0\x07e\x02\x020", "1\x07v\x02\x0212\x07q\x02\x0223\x07t\x02\x023\x06", "\x03\x02\x02\x0245\x07Q\x02\x0256\x07d\x02\x026", "7\x07l\x02\x0278\x07g\x02\x0289\x07e\x02\x029:\x07", "v\x02\x02:\b\x03\x02\x02\x02;<\x07k\x02\x02<=\x07", "u\x02\x02=\n\x03\x02\x02\x02>?\x07U\x02\x02?@\x07", "g\x02\x02@A\x07s\x02\x02AB\x07w\x02\x02BC\x07g\x02", "\x02CD\x07p\x02\x02DE\x07e\x02\x02EF\x07g\x02\x02", "F\f\x03\x02\x02\x02GH\x07c\x02\x02HI\x07u\x02\x02", "IJ\x07m\x02\x02J\x0E\x03\x02\x02\x02KL\x07v\x02", "\x02LM\x07g\x02\x02MN\x07n\x02\x02NO\x07n\x02\x02", "O\x10\x03\x02\x02\x02PQ\x07t\x02\x02QR\x07g\x02", "\x02RS\x07r\x02\x02ST\x07n\x02\x02TU\x07k\x02\x02", "UV\x07g\x02\x02VW\x07u\x02\x02W\x12\x03\x02\x02", "\x02XZ\x05\x1F\x10\x02YX\x03\x02\x02\x02Z[\x03\x02", "\x02\x02[Y\x03\x02\x02\x02[\\\x03\x02\x02\x02\\", "`\x03\x02\x02\x02]_\x05!\x11\x02^]\x03\x02\x02\x02", "_b\x03\x02\x02\x02`^\x03\x02\x02\x02`a\x03\x02\x02", "\x02a\x14\x03\x02\x02\x02b`\x03\x02\x02\x02ce\x07", "%\x02\x02df\x0B\x02\x02\x02ed\x03\x02\x02\x02fg", "\x03\x02\x02\x02gh\x03\x02\x02\x02ge\x03\x02\x02", "\x02hk\x03\x02\x02\x02il\x05\x19\r\x02jl\x07\x02", "\x02\x03ki\x03\x02\x02\x02kj\x03\x02\x02\x02lm\x03", "\x02\x02\x02mn\b\x0B\x02\x02n\x16\x03\x02\x02\x02", "or\x05%\x13\x02pr\x05'\x14\x02qo\x03\x02\x02\x02", "qp\x03\x02\x02\x02r\x18\x03\x02\x02\x02st\x06\r", "\x02\x02t\x80\x05\x1D\x0F\x02uw\x07\x0F\x02\x02", "vu\x03\x02\x02\x02vw\x03\x02\x02\x02wx\x03\x02\x02", "\x02x{\x07\f\x02\x02y{\x07\x0F\x02\x02zv\x03\x02", "\x02\x02zy\x03\x02\x02\x02{}\x03\x02\x02\x02|~\x05", "\x1D\x0F\x02}|\x03\x02\x02\x02}~\x03\x02\x02\x02", "~\x80\x03\x02\x02\x02\x7Fs\x03\x02\x02\x02\x7F", "z\x03\x02\x02\x02\x80\x81\x03\x02\x02\x02\x81", "\x82\b\r\x03\x02\x82\x1A\x03\x02\x02\x02\x83\x84", "\x05\x1D\x0F\x02\x84\x85\x03\x02\x02\x02\x85\x86", "\b\x0E\x02\x02\x86\x1C\x03\x02\x02\x02\x87\x89", "\t\x02\x02\x02\x88\x87\x03\x02\x02\x02\x89\x8A", "\x03\x02\x02\x02\x8A\x88\x03\x02\x02\x02\x8A\x8B", "\x03\x02\x02\x02\x8B\x1E\x03\x02\x02\x02\x8C\x8D", "\t\x03\x02\x02\x8D \x03\x02\x02\x02\x8E\x8F\t\x04", "\x02\x02\x8F\"\x03\x02\x02\x02\x90\x91\t\x05\x02", "\x02\x91$\x03\x02\x02\x02\x92\x97\x07$\x02\x02", "\x93\x96\x0B\x02\x02\x02\x94\x96\n\x06\x02\x02", "\x95\x93\x03\x02\x02\x02\x95\x94\x03\x02\x02\x02", "\x96\x99\x03\x02\x02\x02\x97\x98\x03\x02\x02\x02", "\x97\x95\x03\x02\x02\x02\x98\x9A\x03\x02\x02\x02", "\x99\x97\x03\x02\x02\x02\x9A\xA5\x07$\x02\x02", "\x9B\xA0\x07)\x02\x02\x9C\x9F\x0B\x02\x02\x02", "\x9D\x9F\n\x07\x02\x02\x9E\x9C\x03\x02\x02\x02", "\x9E\x9D\x03\x02\x02\x02\x9F\xA2\x03\x02\x02\x02", "\xA0\xA1\x03\x02\x02\x02\xA0\x9E\x03\x02\x02\x02", "\xA1\xA3\x03\x02\x02\x02\xA2\xA0\x03\x02\x02\x02", "\xA3\xA5\x07)\x02\x02\xA4\x92\x03\x02\x02\x02", "\xA4\x9B\x03\x02\x02\x02\xA5&\x03\x02\x02\x02", "\xA6\xA7\x07$\x02\x02\xA7\xA8\x07$\x02\x02\xA8", "\xA9\x07$\x02\x02\xA9\xAD\x03\x02\x02\x02\xAA", "\xAC\x0B\x02\x02\x02\xAB\xAA\x03\x02\x02\x02\xAC", "\xAF\x03\x02\x02\x02\xAD\xAE\x03\x02\x02\x02\xAD", "\xAB\x03\x02\x02\x02\xAE\xB0\x03\x02\x02\x02\xAF", "\xAD\x03\x02\x02\x02\xB0\xB1\x07$\x02\x02\xB1", "\xB2\x07$\x02\x02\xB2\xC1\x07$\x02\x02\xB3\xB4", "\x07)\x02\x02\xB4\xB5\x07)\x02\x02\xB5\xB6\x07", ")\x02\x02\xB6\xBA\x03\x02\x02\x02\xB7\xB9\x0B", "\x02\x02\x02\xB8\xB7\x03\x02\x02\x02\xB9\xBC\x03", "\x02\x02\x02\xBA\xBB\x03\x02\x02\x02\xBA\xB8\x03", "\x02\x02\x02\xBB\xBD\x03\x02\x02\x02\xBC\xBA\x03", "\x02\x02\x02\xBD\xBE\x07)\x02\x02\xBE\xBF\x07", ")\x02\x02\xBF\xC1\x07)\x02\x02\xC0\xA6\x03\x02", "\x02\x02\xC0\xB3\x03\x02\x02\x02\xC1(\x03\x02", "\x02\x02\x15\x02[`gkqvz}\x7F\x8A\x95\x97\x9E\xA0", "\xA4\xAD\xBA\xC0\x04\b\x02\x02\x03\r\x02"].join("");
 
@@ -14745,9 +14766,11 @@ var SymbolTableVisitor = exports.SymbolTableVisitor = function (_AstVisitor) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.MissingDeclarationAnalyser = exports.RedeclarationAnalyser = exports.Diagnostic = exports.ErrorCodes = exports.DiagnosticError = undefined;
+exports.MissingDeclarationAnalyser = exports.RedeclarationAnalyser = exports.AntlrErrorListener = exports.Diagnostic = exports.ErrorCodes = exports.DiagnosticError = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _ErrorListener2 = __webpack_require__(14);
 
 var _ast = __webpack_require__(23);
 
@@ -14761,9 +14784,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 // Copyright (C) - markus.eliasson@gmail.com
 //
 
+/**
+ * Error, the source code is either not parseable (syntax error) or is
+ * semantically invalid (e.g. a missing declaration).
+ */
 var DiagnosticError = exports.DiagnosticError = 1;
 
 var ErrorCodes = exports.ErrorCodes = {
+    SyntaxError: 'SEQ-000',
     RedeclareIdentifier: 'SEQ-001',
     MissingIdentifier: 'SEQ-002'
 };
@@ -14776,7 +14804,55 @@ var Diagnostic = exports.Diagnostic = function Diagnostic(type, code) {
     this.line = 0;
     this.column = 0;
     this.offendingSymbol = undefined;
+    this.message = '';
 };
+
+/**
+ * The error listener used to capture all parser errors reported by
+ * ANTLR and converting these to diagnostic messages.
+ */
+
+
+var AntlrErrorListener = exports.AntlrErrorListener = function (_ErrorListener) {
+    _inherits(AntlrErrorListener, _ErrorListener);
+
+    function AntlrErrorListener() {
+        _classCallCheck(this, AntlrErrorListener);
+
+        var _this = _possibleConstructorReturn(this, (AntlrErrorListener.__proto__ || Object.getPrototypeOf(AntlrErrorListener)).call(this));
+
+        _this.result = [];
+        return _this;
+    }
+
+    _createClass(AntlrErrorListener, [{
+        key: 'syntaxError',
+        value: function syntaxError(recognizer, offendingSymbol, line, column, msg, e) {
+            var diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.SyntaxError);
+            diagnostic.message = msg + ' at line: ' + line + ' column: ' + column;
+            diagnostic.line = parseInt(line);
+            diagnostic.column = parseInt(column);
+            this.result.push(diagnostic);
+        }
+    }, {
+        key: 'reportAmbiguity',
+        value: function reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+            // TODO: Add these as diagnostics under a new type of unexpected error?
+        }
+    }, {
+        key: 'reportAttemptingFullContext',
+        value: function reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+            // TODO: Add these as diagnostics under a new type of unexpected error?
+        }
+    }, {
+        key: 'reportContextSensitivity',
+        value: function reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+            // TODO: Add these as diagnostics under a new type of unexpected error?
+        }
+    }]);
+
+    return AntlrErrorListener;
+}(_ErrorListener2.ErrorListener);
 
 /**
  * Analyse an AST for declaration errors such asreusing an already used
@@ -14790,12 +14866,12 @@ var RedeclarationAnalyser = exports.RedeclarationAnalyser = function (_AstVisito
     function RedeclarationAnalyser(ast, symbols) {
         _classCallCheck(this, RedeclarationAnalyser);
 
-        var _this = _possibleConstructorReturn(this, (RedeclarationAnalyser.__proto__ || Object.getPrototypeOf(RedeclarationAnalyser)).call(this));
+        var _this2 = _possibleConstructorReturn(this, (RedeclarationAnalyser.__proto__ || Object.getPrototypeOf(RedeclarationAnalyser)).call(this));
 
-        _this.ast = ast;
-        _this.symbols = symbols;
-        _this.result = [];
-        return _this;
+        _this2.ast = ast;
+        _this2.symbols = symbols;
+        _this2.result = [];
+        return _this2;
     }
 
     _createClass(RedeclarationAnalyser, [{
@@ -14842,12 +14918,12 @@ var MissingDeclarationAnalyser = exports.MissingDeclarationAnalyser = function (
     function MissingDeclarationAnalyser(ast, symbols) {
         _classCallCheck(this, MissingDeclarationAnalyser);
 
-        var _this2 = _possibleConstructorReturn(this, (MissingDeclarationAnalyser.__proto__ || Object.getPrototypeOf(MissingDeclarationAnalyser)).call(this));
+        var _this3 = _possibleConstructorReturn(this, (MissingDeclarationAnalyser.__proto__ || Object.getPrototypeOf(MissingDeclarationAnalyser)).call(this));
 
-        _this2.ast = ast;
-        _this2.symbols = symbols;
-        _this2.result = [];
-        return _this2;
+        _this3.ast = ast;
+        _this3.symbols = symbols;
+        _this3.result = [];
+        return _this3;
     }
 
     _createClass(MissingDeclarationAnalyser, [{
@@ -14860,19 +14936,19 @@ var MissingDeclarationAnalyser = exports.MissingDeclarationAnalyser = function (
     }, {
         key: 'visit',
         value: function visit(node) {
-            var _this3 = this;
+            var _this4 = this;
 
             if (node instanceof _ast.MessageNode) {
                 [node.getSourceIdentifier(), node.getDestinationIdentifier()].filter(function (n) {
                     return n !== undefined;
                 }).map(function (participantNode) {
-                    if (!_this3.symbols.contains(participantNode.value)) {
+                    if (!_this4.symbols.contains(participantNode.value)) {
                         var diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.MissingIdentifier);
                         diagnostic.line = participantNode.line;
                         diagnostic.column = participantNode.column;
                         diagnostic.offendingSymbol = participantNode.value;
                         diagnostic.message = 'No participant defined ' + participantNode.value + ' could be found';
-                        _this3.result.push(diagnostic);
+                        _this4.result.push(diagnostic);
                     }
                 });
             }

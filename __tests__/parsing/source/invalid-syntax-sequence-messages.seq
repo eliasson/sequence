@@ -1,0 +1,7 @@
+Name "Unit test"
+
+Actor Alice
+Object Bob
+
+Sequence Test
+    Alice -> Bob "Hello"

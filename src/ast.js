@@ -305,6 +305,8 @@ export class IntSequenceListener extends SequenceListener {
     exitActorDefinition(ctx) {
         const me = this.popNode();
 
+        if(!ctx.children) return;
+
         if(ctx.children.length > 1 && ctx.children[1].symbol.type === SequenceParser.IDENTIFIER) {
             me.identifier = this.toIdentifier(1, ctx);
         }
@@ -318,6 +320,8 @@ export class IntSequenceListener extends SequenceListener {
     exitObjectDefinition(ctx) {
         const me = this.popNode();
 
+        if(!ctx.children) return;
+
         if(ctx.children.length > 1 && ctx.children[1].symbol.type === SequenceParser.IDENTIFIER) {
             me.identifier = this.toIdentifier(1, ctx);
         }
@@ -330,6 +334,9 @@ export class IntSequenceListener extends SequenceListener {
 
     exitSequenceDefinition(ctx) {
         const me = this.popNode();
+
+        if(!ctx.children) return;
+
         if(ctx.children.length > 1 && ctx.children[1].symbol.type === SequenceParser.IDENTIFIER) {
             me.identifier = this.toIdentifier(1, ctx);
         }
@@ -342,6 +349,8 @@ export class IntSequenceListener extends SequenceListener {
 
     exitSequenceMessage(ctx) {
         const me = this.popNode();
+
+        if(!ctx.children) return;
 
         if(ctx.children.length > 0 && ctx.children[0].symbol.type === SequenceParser.IDENTIFIER) {
             me.source = this.toIdentifier(0, ctx);

@@ -4,13 +4,19 @@
 // Copyright (C) - markus.eliasson@gmail.com
 //
 
+import { ErrorListener } from 'antlr4/error/ErrorListener'
 import { AstVisitor, ActorNode, ObjectNode, SequenceNode, MessageNode } from "./ast";
 
+/**
+ * Error, the source code is either not parseable (syntax error) or is
+ * semantically invalid (e.g. a missing declaration).
+ */
 export const DiagnosticError = 1;
 
 export const ErrorCodes = {
-    RedeclareIdentifier:  'SEQ-001',
-    MissingIdentifier:  'SEQ-002',
+    SyntaxError:                        'SEQ-000',
+    RedeclareIdentifier:                'SEQ-001',
+    MissingIdentifier:                  'SEQ-002',
 }
 
 export class Diagnostic {
@@ -20,6 +26,38 @@ export class Diagnostic {
         this.line = 0;
         this.column = 0;
         this.offendingSymbol = undefined;
+        this.message = '';
+    }
+}
+
+/**
+ * The error listener used to capture all parser errors reported by
+ * ANTLR and converting these to diagnostic messages.
+ */
+export class AntlrErrorListener extends ErrorListener {
+    constructor() {
+        super();
+        this.result = [];
+    }
+
+    syntaxError(recognizer, offendingSymbol, line, column, msg, e) {
+        const diagnostic = new Diagnostic(DiagnosticError, ErrorCodes.SyntaxError);
+        diagnostic.message = `${msg} at line: ${line} column: ${column}`;
+        diagnostic.line = parseInt(line);
+        diagnostic.column = parseInt(column);
+        this.result.push(diagnostic);
+    }
+
+    reportAmbiguity(recognizer, dfa, startIndex, stopIndex, exact, ambigAlts, configs) {
+        // TODO: Add these as diagnostics under a new type of unexpected error?
+    }
+
+    reportAttemptingFullContext(recognizer, dfa, startIndex, stopIndex, conflictingAlts, configs) {
+        // TODO: Add these as diagnostics under a new type of unexpected error?
+    }
+
+    reportContextSensitivity(recognizer, dfa, startIndex, stopIndex, prediction, configs) {
+        // TODO: Add these as diagnostics under a new type of unexpected error?
     }
 }
 

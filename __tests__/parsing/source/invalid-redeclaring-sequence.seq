@@ -6,6 +6,5 @@ Object Foo
 Sequence Test
     Alice tell Foo "Hello"
 
-# Error! Next sequence is redeclaring using same identifier
 Sequence Test
     Alice tell Foo "Hello again"
