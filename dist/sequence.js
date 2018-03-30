@@ -6386,7 +6386,7 @@ var ReplyMessageType = exports.ReplyMessageType = 'reply';
  * 
  * Looks like this in the DSL:
  * 
- *      Alice tell Bob "Sudo, make me a sandwich"
+ *      Alice ask Bob "Sudo, make me a sandwich"
  * 
  * Three types of messages exists:
  * 
@@ -6631,15 +6631,15 @@ var IntSequenceListener = exports.IntSequenceListener = function (_SequenceListe
             }
 
             if (ctx.children.length > 1) {
-                var type = ctx.children[1].symbol.type || _SequenceParser.SequenceParser.TELL;
+                var type = ctx.children[1].symbol.type || _SequenceParser.SequenceParser.ASL;
                 switch (type) {
-                    case _SequenceParser.SequenceParser.ASK:
+                    case _SequenceParser.SequenceParser.TELL:
                         me.messageType = AsynchronousMessageType;
                         break;
                     case _SequenceParser.SequenceParser.REPLIES:
                         me.messageType = ReplyMessageType;
                         break;
-                    case _SequenceParser.SequenceParser.TELL:
+                    case _SequenceParser.SequenceParser.ASL:
                     default:
                         me.messageType = SynchronousMessageType;
                         break;

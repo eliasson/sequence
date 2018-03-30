@@ -117,7 +117,7 @@ describe('AST', () => {
                 'Object Alice\n' +
                 'Object Bob\n' +
                 'Sequence Hello\n' +
-                '  Alice ask Bob\n' +
+                '  Alice tell Bob\n' +
                 '');
             sequence = result.ast.getSequences()[0];
             message = sequence.getMessages()[0];
@@ -153,7 +153,7 @@ describe('AST', () => {
                 'Object Alice\n' +
                 'Object Bob\n' +
                 'Sequence Hello\n' +
-                '  Alice tell Bob "Hello"\n' +
+                '  Alice ask Bob "Hello"\n' +
                 '');
             sequence = result.ast.getSequences()[0];
             message = sequence.getMessages()[0];
@@ -185,7 +185,7 @@ describe('AST', () => {
                 'Object Alice\n' +
                 'Object Bob\n' +
                 'Sequence Hello\n' +
-                '  Alice tell Bob """\n' +
+                '  Alice ask Bob """\n' +
                 '    Hello there\n' +
                 '  """\n' +
                 '');
@@ -207,7 +207,7 @@ describe('AST', () => {
                 'Object Alice\n' +
                 'Object Bob\n' +
                 'Sequence Hello\n' +
-                '  Alice tell Bob "Hello there!€#!+ ()"\n' +
+                '  Alice ask Bob "Hello there!€#!+ ()"\n' +
                 '');
             sequence = result.ast.getSequences()[0];
             message = sequence.getMessages()[0];
@@ -227,7 +227,7 @@ describe('AST', () => {
                 'Object Alice\n' +
                 'Object Bob\n' +
                 'Sequence Hello\n' +
-                '  Alice tell Bob """\n' +
+                '  Alice ask Bob """\n' +
                 '    Messages support line breaks\n' +
                 '    for maintaining a multi-line\n' +
                 '    string\n' +
@@ -279,8 +279,8 @@ describe('AST', () => {
                     'Actor Alice\n' +
                     'Object Bob\n' +
                     'Sequence Hello\n' +
-                    '  Alice tell Bob "One"\n' +
-                    '  Alice ask Bob "Two"\n' +
+                    '  Alice ask Bob "One"\n' +
+                    '  Alice tell Bob "Two"\n' +
                     '  Bob replies Alice "Three"\n' +
                     '');
                 visitor = new TestVisitor();

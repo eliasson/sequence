@@ -8,19 +8,19 @@ Object Echo
 Object Foxtrot
 
 Sequence First
-    Alpha tell Bravo "One"
-    Bravo tell Charlie "Two"
-    Charlie tell Delta "Three"
-    Delta tell Echo "Four"
-    Echo tell Foxtrot "Five"
+    Alpha ask Bravo "One"
+    Bravo ask Charlie "Two"
+    Charlie ask Delta "Three"
+    Delta ask Echo "Four"
+    Echo ask Foxtrot "Five"
 
 Sequence Second
-    Bravo tell Delta "Future"
+    Bravo ask Delta "Future"
     Foxtrot replies Alpha "And back"
 
 Sequence Three
-    Delta tell Foxtrot "This is a message to you rudy"
-    Delta tell Alpha "Bowie in space"
-    Bravo ask Echo "What's the frequency Kenneth?"
+    Delta ask Foxtrot "This is a message to you rudy"
+    Delta ask Alpha "Bowie in space"
+    Bravo tell Echo "What's the frequency Kenneth?"
     Echo replies Bravo "Que?"
     Bravo replies Echo "Nevermind"

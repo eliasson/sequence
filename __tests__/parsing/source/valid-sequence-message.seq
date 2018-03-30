@@ -4,9 +4,9 @@ Object Alice
 Object Bob
 
 Sequence Hello
-    Alice ask Bob "Sync call gives solid arrow head"
+    Alice tell Bob "Sync call gives solid arrow head"
 
-    Alice tell Bob "Async call gives open arrow head"
+    Alice ask Bob "Async call gives open arrow head"
 
     Bob replies Alice """
         Response messages gives dashed line.

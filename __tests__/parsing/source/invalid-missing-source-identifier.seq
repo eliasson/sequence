@@ -4,4 +4,4 @@ Actor Alice
 Object Foo
 
 Sequence Test
-    Bar tell Foo "Hello"    # Error! Invalid source
+    Bar ask Foo "Hello"    # Error! Invalid source

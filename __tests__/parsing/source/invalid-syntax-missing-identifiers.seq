@@ -4,4 +4,4 @@ Actor
 Object
 
 Sequence
-    Alice tell Bob "Hallo"
+    Alice ask Bob "Hallo"

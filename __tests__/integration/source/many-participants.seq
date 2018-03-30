@@ -8,8 +8,8 @@ Object Echo
 Object Foxtrot
 
 Sequence First
-    Alpha tell Bravo "One"
-    Bravo tell Charlie "Two"
-    Charlie tell Delta "Three"
-    Delta tell Echo "Four"
-    Echo tell Foxtrot "Five"
+    Alpha ask Bravo "One"
+    Bravo ask Charlie "Two"
+    Charlie ask Delta "Three"
+    Delta ask Echo "Four"
+    Echo ask Foxtrot "Five"

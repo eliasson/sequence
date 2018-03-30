@@ -64,8 +64,8 @@ describe('Whitespace in grammar', () => {
             '\n' +
             '\n' +
             'Sequence FOO\n' +
-            '    Alice ask Bob\n' +
-            '    Alice ask Bob\n' +
+            '    Alice tell Bob\n' +
+            '    Alice tell Bob\n' +
             '\n'
         );
         expect(result.parser._syntaxErrors).toEqual(0);
@@ -82,9 +82,9 @@ describe('Whitespace in grammar', () => {
             '\n' +
             'Sequence FOO\n' +
             '\n' +
-            '    Alice ask Bob\n' +
+            '    Alice tell Bob\n' +
             '\n' +
-            '    Alice ask Bob\n' +
+            '    Alice tell Bob\n' +
             '\n'
         );
         expect(result.parser._syntaxErrors).toEqual(0);

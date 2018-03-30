@@ -24,9 +24,9 @@ describe('AST Transformation context', () => {
                 'Actor You\n' +
                 '\n' +
                 'Sequence Alternate\n' +
-                '  Alpha tell Bravo "You are fired"\n' +
-                '  Alpha tell Charlie "You are fired"\n' +
-                '  Alpha tell Delta "You are fired"\n' +
+                '  Alpha ask Bravo "You are fired"\n' +
+                '  Alpha ask Charlie "You are fired"\n' +
+                '  Alpha ask Delta "You are fired"\n' +
                 '');
             context = new SVGTransformer(result.ast).generateContext();
         });
@@ -97,11 +97,11 @@ describe('AST Transformation context', () => {
                 'Object Bravo\n' +
                 '\n' +
                 'Sequence One\n' +
-                '  Alpha tell Bravo "Hello 1"\n' +
-                '  Bravo tell Alpha "Goodbye 1"\n' +
+                '  Alpha ask Bravo "Hello 1"\n' +
+                '  Bravo ask Alpha "Goodbye 1"\n' +
                 'Sequence Two\n' +
-                '  Alpha ask Bravo "Hello 2"\n' +
-                '  Bravo ask Alpha "Goodbye 2"\n' +
+                '  Alpha tell Bravo "Hello 2"\n' +
+                '  Bravo tell Alpha "Goodbye 2"\n' +
                 'Sequence Three\n' +
                 '  Alpha replies Bravo "Hello 3"\n' +
                 '  Bravo replies Alpha "Goodbye 3"\n' +

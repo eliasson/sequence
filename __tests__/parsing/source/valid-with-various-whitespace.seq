@@ -10,7 +10,7 @@ Object Bob
 
 Sequence Hello
 
-    Alice ask Bob
+    Alice tell Bob
 
     # Bob is bob
-    Alice ask Bob
+    Alice tell Bob

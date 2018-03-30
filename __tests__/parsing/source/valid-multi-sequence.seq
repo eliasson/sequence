@@ -5,11 +5,11 @@ Object TodoApp is "Our todo-app SaaS"
 Object IdP is "OpenID Connect Identity Provider"
 
 Sequence Login
-    User tell TodoApp "Loading page"
+    User ask TodoApp "Loading page"
     TodoApp replies User "Go and authenticate"
-    User tell IdP "Authenticating"
+    User ask IdP "Authenticating"
     IdP replies User "Ok, return to TodoApp"
-    User tell TodoApp "Load page"
+    User ask TodoApp "Load page"
 
 Sequence Logout
-    User tell TodoApp "Logout"
+    User ask TodoApp "Logout"

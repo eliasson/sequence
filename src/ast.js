@@ -170,7 +170,7 @@ export const ReplyMessageType = 'reply';
  * 
  * Looks like this in the DSL:
  * 
- *      Alice tell Bob "Sudo, make me a sandwich"
+ *      Alice ask Bob "Sudo, make me a sandwich"
  * 
  * Three types of messages exists:
  * 
@@ -357,15 +357,15 @@ export class IntSequenceListener extends SequenceListener {
         }
 
         if(ctx.children.length > 1) {
-            const type = ctx.children[1].symbol.type || SequenceParser.TELL;
+            const type = ctx.children[1].symbol.type || SequenceParser.ASL;
             switch(type) {
-                case SequenceParser.ASK:
+                case SequenceParser.TELL:
                     me.messageType = AsynchronousMessageType;
                     break;
                 case SequenceParser.REPLIES:
                     me.messageType = ReplyMessageType;
                     break;
-                case SequenceParser.TELL:
+                case SequenceParser.ASL:
                 default:
                     me.messageType = SynchronousMessageType;
                     break;

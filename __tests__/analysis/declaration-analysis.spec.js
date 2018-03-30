@@ -142,10 +142,10 @@ describe('Declaration analysis', () => {
                 'Object Bob\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Alice tell Bob "Hello"\n' +
+                '    Alice ask Bob "Hello"\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Alice tell Bob "Something else"\n' +
+                '    Alice ask Bob "Something else"\n' +
                 '');
         });
 
@@ -189,7 +189,7 @@ describe('Declaration analysis', () => {
                 'Object Bob\n' +
                 '\n' +
                 'Sequence Alice\n' +
-                '    Alice tell Bob "Hello"\n' +
+                '    Alice ask Bob "Hello"\n' +
                 '');
         });
 
@@ -227,10 +227,10 @@ describe('Declaration analysis', () => {
                 'Object Test\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Test tell Test "Hello"\n' +
+                '    Test ask Test "Hello"\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Test tell Test "Something else"\n' +
+                '    Test ask Test "Something else"\n' +
                 '');
         });
 
@@ -276,7 +276,7 @@ describe('Declaration analysis', () => {
                 'Object Two\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Zero tell One "Plus one"\n' +
+                '    Zero ask One "Plus one"\n' +
                 '');
         });
 
@@ -320,7 +320,7 @@ describe('Declaration analysis', () => {
                 'Object Two\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Two tell Three "Plus one"\n' +
+                '    Two ask Three "Plus one"\n' +
                 '');
         });
 
@@ -338,7 +338,7 @@ describe('Declaration analysis', () => {
 
         it('should contain the position of the offending node', () => {
             expect( errorPos(result) ).toEqual([
-                { line: 6, column: 13 }
+                { line: 6, column: 12 }
             ]);
         });
 
@@ -364,7 +364,7 @@ describe('Declaration analysis', () => {
                 'Object Two\n' +
                 '\n' +
                 'Sequence Test\n' +
-                '    Zero tell Three "Failure"\n' +
+                '    Zero ask Three "Failure"\n' +
                 '');
         });
 
@@ -385,7 +385,7 @@ describe('Declaration analysis', () => {
         it('should contain the position of the offending node', () => {
             expect( errorPos(result) ).toEqual([
                 { line: 6, column: 4 },
-                { line: 6, column: 14 }
+                { line: 6, column: 13 }
             ]);
         });
 

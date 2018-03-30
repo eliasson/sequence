@@ -60,8 +60,8 @@ describe('AST transformation positioning', () => {
                 'Object Bravo\n' +
                 '\n' +
                 'Sequence One\n' +
-                '  Alpha tell Bravo "Hi"\n' +
-                '  Alpha ask Bravo "Are you ok"\n' +
+                '  Alpha ask Bravo "Hi"\n' +
+                '  Alpha tell Bravo "Are you ok"\n' +
                 '  Bravo replies Alpha "Yes"\n' +
                 '');
             trans = new SVGTransformer(result.ast);
@@ -103,9 +103,9 @@ describe('AST transformation positioning', () => {
                 'Object Delta\n' +
                 '\n' +
                 'Sequence One\n' +
-                '  Alpha tell Bravo "One"\n' +
-                '  Bravo tell Charlie "Twp"\n' +
-                '  Charlie tell Delta "three"\n' +
+                '  Alpha ask Bravo "One"\n' +
+                '  Bravo ask Charlie "Twp"\n' +
+                '  Charlie ask Delta "three"\n' +
                 '');
             trans = new SVGTransformer(result.ast);
             context = trans.generateContext();
@@ -131,12 +131,12 @@ describe('AST transformation positioning', () => {
                 'Object Bravo\n' +
                 '\n' +
                 'Sequence One\n' +
-                '  Alpha tell Bravo "Hi"\n' +
-                '  Alpha ask Bravo "Are you ok"\n' +
+                '  Alpha ask Bravo "Hi"\n' +
+                '  Alpha tell Bravo "Are you ok"\n' +
                 '  Bravo replies Alpha "Yes"\n' +
                 '\n' +
                 'Sequence Two\n' +
-                '  Alpha tell Bravo "Hi"\n' +
+                '  Alpha ask Bravo "Hi"\n' +
                 '');
             trans = new SVGTransformer(result.ast);
             context = trans.generateContext();

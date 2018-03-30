@@ -166,10 +166,10 @@ describe('Generation a symbol table', () => {
                 'Object Bob\n' +
                 '\n' +
                 'Sequence Hello\n' +
-                '  Alice tell Bob "Hello"\n' +
+                '  Alice ask Bob "Hello"\n' +
                 '\n' +
                 'Sequence Goodbye\n' +
-                '  Bob tell Alice "Goodbye"\n' +
+                '  Bob ask Alice "Goodbye"\n' +
                 '');
             symbols = new SymbolTableVisitor()
                 .withAst(result.ast)

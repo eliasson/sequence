@@ -73,10 +73,10 @@ describe('Compilation result of a valid sequence file', () => {
             'Object Bob\n' +
             '\n' +
             'Sequence Hello\n' +
-            '  Alice tell Bob "Hello"\n' +
+            '  Alice ask Bob "Hello"\n' +
             '\n' +
             'Sequence Goodbye\n' +
-            '  Bob tell Alice "Goodbye"\n' +
+            '  Bob ask Alice "Goodbye"\n' +
             '');
     });
 

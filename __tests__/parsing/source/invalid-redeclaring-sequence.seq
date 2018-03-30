@@ -4,7 +4,7 @@ Actor Alice
 Object Foo
 
 Sequence Test
-    Alice tell Foo "Hello"
+    Alice ask Foo "Hello"
 
 Sequence Test
-    Alice tell Foo "Hello again"
+    Alice ask Foo "Hello again"

@@ -5,6 +5,6 @@ Object Alpha
 Object Bravo
 
 Sequence Test
-    User tell Alpha "Start"
-    Alpha ask Bravo "Send async message"
+    User ask Alpha "Start"
+    Alpha tell Bravo "Send async message"
     Bravo replies Alpha "Response message"

@@ -4,4 +4,4 @@ Actor Alice
 Object Foo
 
 Sequence Alice
-    Alice tell Foo "Hello again"
+    Alice ask Foo "Hello again"

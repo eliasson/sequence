@@ -15,8 +15,8 @@ Object Alpha
 Object Bravo
 
 Sequence Test
-    User tell Alpha "A synchronous message"
-    Alpha ask Bravo "An asynchronous message"
+    User ask Alpha "A synchronous message"
+    Alpha tell Bravo "An asynchronous message"
     Bravo replies Alpha "A response message"
     Alpha replies User "OK"
 ```
