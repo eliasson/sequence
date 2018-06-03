@@ -77,6 +77,7 @@ export class SVGTransformer {
         });
         ctx['actors'] = process(this.ast.getActors());
         ctx['objects'] = process(this.ast.getObjects());
+        ctx['width'] = offsetX === 0 ? this.size.participantMargin : offsetX;
     }
 
     addSequencesToContext(ctx) {
@@ -123,6 +124,7 @@ export class SVGTransformer {
             return s;
         });
         ctx['sequences'] = sequences;
+        ctx['height'] = sequencesStartY === 0? this.size.participantHeight : sequencesStartY;
     }
 
     transform(template='default.svg') {

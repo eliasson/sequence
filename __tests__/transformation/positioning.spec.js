@@ -49,6 +49,16 @@ describe('AST transformation positioning', () => {
             const x = positionX(4);
             expect(context.objects[1].position).toEqual({ x: x, y: 0 });
         });
+
+        describe('the entire diagram', () => {
+            it('should have height of 80 px', () => {
+                expect(context.height).toEqual(80);
+            });
+
+            it('should have width of 800 px', () => {
+                expect(context.width).toEqual(800);
+            });
+        });
     });
 
     describe('sequence with multiple message types', () => {
@@ -151,7 +161,7 @@ describe('AST transformation positioning', () => {
                 expect(sequence.baseY).toEqual(0);
             });
             it('should have height of 360 px', () => {
-                expect(sequence.height).toEqual(360)
+                expect(sequence.height).toEqual(360);
             });
         });
 
@@ -164,7 +174,16 @@ describe('AST transformation positioning', () => {
                 expect(sequence.baseY).toEqual(440);
             });
             it('should have height of 200 px', () => {
-                expect(sequence.height).toEqual(200)
+                expect(sequence.height).toEqual(200);
+            });
+        });
+
+        describe('the entire diagram', () => {
+            it('should have height of 720 px', () => {
+                expect(context.height).toEqual(720);
+            });
+            it('should have width of 400 px', () => {
+                expect(context.width).toEqual(400);
             });
         });
     });

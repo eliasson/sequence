@@ -15075,6 +15075,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
             };
             ctx['actors'] = process(this.ast.getActors());
             ctx['objects'] = process(this.ast.getObjects());
+            ctx['width'] = offsetX === 0 ? this.size.participantMargin : offsetX;
         }
     }, {
         key: 'addSequencesToContext',
@@ -15128,6 +15129,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
                 return s;
             });
             ctx['sequences'] = sequences;
+            ctx['height'] = sequencesStartY === 0 ? this.size.participantHeight : sequencesStartY;
         }
     }, {
         key: 'transform',
