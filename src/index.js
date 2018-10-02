@@ -50,7 +50,12 @@ export function parse(source) {
     };
 }
 
-export function compile(source) {
+/**
+ * Compiles the given source code
+ * @param {string} source The source to compile and generate SVG for
+ * @param {*} templateDirectory The directory that contains the template svg-files
+ */
+export function compile(source, templateDirectory) {
     // Generate a default empty symbol table
     let symbols = new SymbolTable();
     let diagnostics = [];
@@ -73,7 +78,7 @@ export function compile(source) {
     }
 
     if(result.isValid()) {
-        output = new SVGTransformer(result.ast).transform();
+        output = new SVGTransformer(result.ast, templateDirectory).transform();
     }
 
     const errors = diagnostics.filter(d => d.type === DiagnosticError);
