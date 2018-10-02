@@ -9869,13 +9869,20 @@ function parse(source) {
         ast: listener.getRoot(),
         diagnostics: errorListener.result
     };
-} //
+}
+
+/**
+ * Compiles the given source code
+ * @param {string} source The source to compile and generate SVG for
+ * @param {*} templateDirectory The directory that contains the template svg-files
+ */
+//
 // Sequence - A simple sequence diagram tool
 //
 // Copyright (C) - markus.eliasson@gmail.com
 //
 
-function compile(source) {
+function compile(source, templateDirectory) {
     // Generate a default empty symbol table
     var symbols = new _symbols.SymbolTable();
     var diagnostics = [];
@@ -9894,7 +9901,7 @@ function compile(source) {
     }
 
     if (result.isValid()) {
-        output = new _transformer.SVGTransformer(result.ast).transform();
+        output = new _transformer.SVGTransformer(result.ast, templateDirectory).transform();
     }
 
     var errors = diagnostics.filter(function (d) {
@@ -15010,19 +15017,18 @@ var DEFAULT_SIZES = exports.DEFAULT_SIZES = {
  * It is needed since the template will be read from various locations when
  * sequence is used as a CLI program.
  *
- * @param {string} template The template file to resolve path to
  * @returns The absolute path to the template file
  */
-function resolveTemplate(template) {
+function resolveTemplate() {
     // Favour a local file if existing
-    var templatePath = path.join('./templates/', template);
+    var templatePath = path.join('.', 'templates');
     if (fs.existsSync(templatePath)) return templatePath;
 
     try {
         var packagePath = (0, _getInstalledPath.getInstalledPathSync)('@eliasson/sequence');
-        templatePath = path.join(packagePath, path.join('templates/', template));
+        templatePath = path.join(packagePath, 'templates');
     } catch (e) {
-        throw new Error('No template file found either in installed package or locally (templates/' + template + ')');
+        throw new Error('No template directory found either in installed package or locally');
     }
     return templatePath;
 }
@@ -15033,10 +15039,11 @@ function resolveTemplate(template) {
  */
 
 var SVGTransformer = exports.SVGTransformer = function () {
-    function SVGTransformer(ast) {
+    function SVGTransformer(ast, templateDirectory) {
         _classCallCheck(this, SVGTransformer);
 
         this.ast = ast;
+        this.templateDirectory = templateDirectory || resolveTemplate();
         this.size = DEFAULT_SIZES;
     }
 
@@ -15121,7 +15128,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
                     name: seq.getIdentifier().value,
                     baseX: 0, // Currently all sequences start at X(0)
                     baseY: sequencesStartY,
-                    // NOTE: Messages *must* mbe last since it alters the Y value!
+                    // NOTE: Messages *must* be last since it alters the Y value!
                     messages: seq.getMessages().map(processMessage),
                     height: innerSequenceStartY + 0
                 };
@@ -15136,7 +15143,7 @@ var SVGTransformer = exports.SVGTransformer = function () {
         value: function transform() {
             var template = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'default.svg';
 
-            var sourceXML = fs.readFileSync(resolveTemplate(template), 'utf-8');
+            var sourceXML = fs.readFileSync(path.join(this.templateDirectory, template), 'utf-8');
             var templateFn = doT.template(sourceXML);
             return templateFn(this.generateContext());
         }

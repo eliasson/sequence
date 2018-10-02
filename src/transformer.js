@@ -23,20 +23,19 @@ export const DEFAULT_SIZES = {
  * It is needed since the template will be read from various locations when
  * sequence is used as a CLI program.
  *
- * @param {string} template The template file to resolve path to
  * @returns The absolute path to the template file
  */
-function resolveTemplate(template) {
+function resolveTemplate() {
     // Favour a local file if existing
-    let templatePath = path.join('./templates/', template);
+    let templatePath = path.join('.', 'templates');
     if (fs.existsSync(templatePath)) return templatePath;
 
     try {
         const packagePath = getInstalledPathSync('@eliasson/sequence');
-        templatePath = path.join(packagePath, path.join('templates/', template));
+        templatePath = path.join(packagePath, 'templates');
     }
     catch(e) {
-        throw new Error(`No template file found either in installed package or locally (templates/${template})`);
+        throw new Error(`No template directory found either in installed package or locally`);
     }
     return templatePath;
 }
@@ -46,8 +45,9 @@ function resolveTemplate(template) {
  * here to keep the templates simple.
  */
 export class SVGTransformer {
-    constructor(ast) {
+    constructor(ast, templateDirectory) {
         this.ast = ast;
+        this.templateDirectory = templateDirectory || resolveTemplate();
         this.size = DEFAULT_SIZES;
     }
 
@@ -116,7 +116,7 @@ export class SVGTransformer {
                 name: seq.getIdentifier().value,
                 baseX: 0, // Currently all sequences start at X(0)
                 baseY: sequencesStartY,
-                // NOTE: Messages *must* mbe last since it alters the Y value!
+                // NOTE: Messages *must* be last since it alters the Y value!
                 messages: seq.getMessages().map(processMessage),
                 height: innerSequenceStartY + 0,
             };
@@ -128,7 +128,7 @@ export class SVGTransformer {
     }
 
     transform(template='default.svg') {
-        const sourceXML = fs.readFileSync(resolveTemplate(template), 'utf-8');
+        const sourceXML = fs.readFileSync(path.join(this.templateDirectory, template), 'utf-8');
         const templateFn = doT.template(sourceXML);
         return templateFn(this.generateContext());
     }
